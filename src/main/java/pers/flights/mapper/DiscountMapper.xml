@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pers.flights.mapper.DiscountMapper" >
+
+  <select id="selectByPrimaryKey" resultType="pers.flights.model.Discount" >
+    select `id` ,`discountType` ,`discountRate` ,`createTime`  from discount where  `id` = #{id}
+  </select>
+  
+  <select id="search" resultType="pers.flights.model.Discount">
+    select `id` ,`discountType` ,`discountRate` ,`createTime`  from discount
+  </select>
+  
+  <insert id="insert" parameterType="pers.flights.model.Discount" useGeneratedKeys="true" >
+    insert into discount (`discountType` ,`discountRate` ,`createTime` ) values (#{discountType},#{discountRate},#{createTime})
+  </insert>
+  
+  <delete id="deleteByPrimaryKey">
+    delete from discount where  `id` = #{id}
+  </delete>
+  
+  <update id="updateByPrimaryKey" parameterType="pers.flights.model.Discount" >
+    update discount set `discountType` = #{discountType},`discountRate` = #{discountRate},`createTime` = #{createTime} where  `id` = #{id}
+  </update>
+  
+</mapper>

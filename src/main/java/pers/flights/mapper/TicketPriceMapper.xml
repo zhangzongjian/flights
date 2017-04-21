@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pers.flights.mapper.TicketPriceMapper" >
+
+  <select id="selectByPrimaryKey" resultType="pers.flights.model.TicketPrice" >
+    select `id` ,`classType` ,`classAmount` ,`price` ,`flightId` ,`discountId` ,`dprice` ,`createTime`  from ticketPrice where  `id` = #{id}
+  </select>
+  
+  <select id="search" resultType="pers.flights.model.TicketPrice">
+    select `id` ,`classType` ,`classAmount` ,`price` ,`flightId` ,`discountId` ,`dprice` ,`createTime`  from ticketPrice
+  </select>
+  
+  <insert id="insert" parameterType="pers.flights.model.TicketPrice" useGeneratedKeys="true" >
+    insert into ticketPrice (`classType` ,`classAmount` ,`price` ,`flightId` ,`discountId` ,`dprice` ,`createTime` ) values (#{classType},#{classAmount},#{price},#{flightId},#{discountId},#{dprice},#{createTime})
+  </insert>
+  
+  <delete id="deleteByPrimaryKey">
+    delete from ticketPrice where  `id` = #{id}
+  </delete>
+  
+  <update id="updateByPrimaryKey" parameterType="pers.flights.model.TicketPrice" >
+    update ticketPrice set `classType` = #{classType},`classAmount` = #{classAmount},`price` = #{price},`flightId` = #{flightId},`discountId` = #{discountId},`dprice` = #{dprice},`createTime` = #{createTime} where  `id` = #{id}
+  </update>
+  
+</mapper>

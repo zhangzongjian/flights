@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pers.flights.mapper.CustomerMapper" >
+
+  <select id="selectByPrimaryKey" resultType="pers.flights.model.Customer" >
+    select `id` ,`email` ,`mobilePhone` ,`accountType` ,`nickName` ,`realName` ,`password` ,`birthday` ,`sex` ,`phone` ,`createTime`  from customer where  `id` = #{id}
+  </select>
+  
+  <select id="search" resultType="pers.flights.model.Customer">
+    select `id` ,`email` ,`mobilePhone` ,`accountType` ,`nickName` ,`realName` ,`password` ,`birthday` ,`sex` ,`phone` ,`createTime`  from customer
+  </select>
+  
+  <insert id="insert" parameterType="pers.flights.model.Customer" useGeneratedKeys="true" >
+    insert into customer (`email` ,`mobilePhone` ,`accountType` ,`nickName` ,`realName` ,`password` ,`birthday` ,`sex` ,`phone` ,`createTime` ) values (#{email},#{mobilePhone},#{accountType},#{nickName},#{realName},#{password},#{birthday},#{sex},#{phone},#{createTime})
+  </insert>
+  
+  <delete id="deleteByPrimaryKey">
+    delete from customer where  `id` = #{id}
+  </delete>
+  
+  <update id="updateByPrimaryKey" parameterType="pers.flights.model.Customer" >
+    update customer set `email` = #{email},`mobilePhone` = #{mobilePhone},`accountType` = #{accountType},`nickName` = #{nickName},`realName` = #{realName},`password` = #{password},`birthday` = #{birthday},`sex` = #{sex},`phone` = #{phone},`createTime` = #{createTime} where  `id` = #{id}
+  </update>
+  
+</mapper>

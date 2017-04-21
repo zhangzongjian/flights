@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pers.flights.mapper.FlightMapper" >
+
+  <select id="selectByPrimaryKey" resultType="pers.flights.model.Flight" >
+    select `id` ,`flightNo` ,`startTime` ,`startAirportId` ,`arrivalTime` ,`endAirportId` ,`planeId` ,`startRealTime` ,`arrivalRealTIme` ,`status` ,`createTime`  from flight where  `id` = #{id}
+  </select>
+  
+  <select id="search" resultType="pers.flights.model.Flight">
+    select `id` ,`flightNo` ,`startTime` ,`startAirportId` ,`arrivalTime` ,`endAirportId` ,`planeId` ,`startRealTime` ,`arrivalRealTIme` ,`status` ,`createTime`  from flight
+  </select>
+  
+  <insert id="insert" parameterType="pers.flights.model.Flight" useGeneratedKeys="true" >
+    insert into flight (`flightNo` ,`startTime` ,`startAirportId` ,`arrivalTime` ,`endAirportId` ,`planeId` ,`startRealTime` ,`arrivalRealTIme` ,`status` ,`createTime` ) values (#{flightNo},#{startTime},#{startAirportId},#{arrivalTime},#{endAirportId},#{planeId},#{startRealTime},#{arrivalRealTIme},#{status},#{createTime})
+  </insert>
+  
+  <delete id="deleteByPrimaryKey">
+    delete from flight where  `id` = #{id}
+  </delete>
+  
+  <update id="updateByPrimaryKey" parameterType="pers.flights.model.Flight" >
+    update flight set `flightNo` = #{flightNo},`startTime` = #{startTime},`startAirportId` = #{startAirportId},`arrivalTime` = #{arrivalTime},`endAirportId` = #{endAirportId},`planeId` = #{planeId},`startRealTime` = #{startRealTime},`arrivalRealTIme` = #{arrivalRealTIme},`status` = #{status},`createTime` = #{createTime} where  `id` = #{id}
+  </update>
+  
+</mapper>

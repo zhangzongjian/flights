@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pers.flights.mapper.PassengerMapper" >
+
+  <select id="selectByPrimaryKey" resultType="pers.flights.model.Passenger" >
+    select `id` ,`passengerName` ,`passengerCard` ,`passengerType` ,`mobilePhone` ,`customerId`  from passenger where  `id` = #{id}
+  </select>
+  
+  <select id="search" resultType="pers.flights.model.Passenger">
+    select `id` ,`passengerName` ,`passengerCard` ,`passengerType` ,`mobilePhone` ,`customerId`  from passenger
+  </select>
+  
+  <insert id="insert" parameterType="pers.flights.model.Passenger" useGeneratedKeys="true" >
+    insert into passenger (`passengerName` ,`passengerCard` ,`passengerType` ,`mobilePhone` ,`customerId` ) values (#{passengerName},#{passengerCard},#{passengerType},#{mobilePhone},#{customerId})
+  </insert>
+  
+  <delete id="deleteByPrimaryKey">
+    delete from passenger where  `id` = #{id}
+  </delete>
+  
+  <update id="updateByPrimaryKey" parameterType="pers.flights.model.Passenger" >
+    update passenger set `passengerName` = #{passengerName},`passengerCard` = #{passengerCard},`passengerType` = #{passengerType},`mobilePhone` = #{mobilePhone},`customerId` = #{customerId} where  `id` = #{id}
+  </update>
+  
+</mapper>

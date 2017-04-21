@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pers.flights.mapper.AirportMapper" >
+
+  <select id="selectByPrimaryKey" resultType="pers.flights.model.Airport" >
+    select `id` ,`airportName` ,`airportCity` ,`createTime`  from airport where  `id` = #{id}
+  </select>
+  
+  <select id="search" resultType="pers.flights.model.Airport">
+    select `id` ,`airportName` ,`airportCity` ,`createTime`  from airport
+  </select>
+  
+  <insert id="insert" parameterType="pers.flights.model.Airport" useGeneratedKeys="true" >
+    insert into airport (`airportName` ,`airportCity` ,`createTime` ) values (#{airportName},#{airportCity},#{createTime})
+  </insert>
+  
+  <delete id="deleteByPrimaryKey">
+    delete from airport where  `id` = #{id}
+  </delete>
+  
+  <update id="updateByPrimaryKey" parameterType="pers.flights.model.Airport" >
+    update airport set `airportName` = #{airportName},`airportCity` = #{airportCity},`createTime` = #{createTime} where  `id` = #{id}
+  </update>
+  
+</mapper>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pers.flights.mapper.OrderMapper" >
+
+  <select id="selectByPrimaryKey" resultType="pers.flights.model.Order" >
+    select `id` ,`orderNo` ,`flightId` ,`ticketPriceId` ,`orderTime` ,`person` ,`phone` ,`orderStatus` ,`customerId` ,`createTime`  from `order` where  `id` = #{id}
+  </select>
+  
+  <select id="search" resultType="pers.flights.model.Order">
+    select `id` ,`orderNo` ,`flightId` ,`ticketPriceId` ,`orderTime` ,`person` ,`phone` ,`orderStatus` ,`customerId` ,`createTime`  from `order`
+  </select>
+  
+  <insert id="insert" parameterType="pers.flights.model.Order" useGeneratedKeys="true" >
+    insert into `order` (`orderNo` ,`flightId` ,`ticketPriceId` ,`orderTime` ,`person` ,`phone` ,`orderStatus` ,`customerId` ,`createTime` ) values (#{orderNo},#{flightId},#{ticketPriceId},#{orderTime},#{person},#{phone},#{orderStatus},#{customerId},#{createTime})
+  </insert>
+  
+  <delete id="deleteByPrimaryKey">
+    delete from `order` where  `id` = #{id}
+  </delete>
+  
+  <update id="updateByPrimaryKey" parameterType="pers.flights.model.Order" >
+    update `order` set `orderNo` = #{orderNo},`flightId` = #{flightId},`ticketPriceId` = #{ticketPriceId},`orderTime` = #{orderTime},`person` = #{person},`phone` = #{phone},`orderStatus` = #{orderStatus},`customerId` = #{customerId},`createTime` = #{createTime} where  `id` = #{id}
+  </update>
+  
+</mapper>

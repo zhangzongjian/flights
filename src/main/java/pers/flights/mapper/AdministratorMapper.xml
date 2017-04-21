@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pers.flights.mapper.AdministratorMapper" >
+
+  <select id="selectByPrimaryKey" resultType="pers.flights.model.Administrator" >
+    select `id` ,`username` ,`password` ,`realName` ,`position` ,`lastLoginTime` ,`createTime` ,`authority`  from administrator where  `id` = #{id}
+  </select>
+  
+  <select id="search" resultType="pers.flights.model.Administrator">
+    select `id` ,`username` ,`password` ,`realName` ,`position` ,`lastLoginTime` ,`createTime` ,`authority`  from administrator
+  </select>
+  
+  <insert id="insert" parameterType="pers.flights.model.Administrator" useGeneratedKeys="true" >
+    insert into administrator (`username` ,`password` ,`realName` ,`position` ,`lastLoginTime` ,`createTime` ,`authority` ) values (#{username},#{password},#{realName},#{position},#{lastLoginTime},#{createTime},#{authority})
+  </insert>
+  
+  <delete id="deleteByPrimaryKey">
+    delete from administrator where  `id` = #{id}
+  </delete>
+  
+  <update id="updateByPrimaryKey" parameterType="pers.flights.model.Administrator" >
+    update administrator set `username` = #{username},`password` = #{password},`realName` = #{realName},`position` = #{position},`lastLoginTime` = #{lastLoginTime},`createTime` = #{createTime},`authority` = #{authority} where  `id` = #{id}
+  </update>
+  
+</mapper>

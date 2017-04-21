@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<typeAliases>
+	   <!-- 在mapper文件中，可以使用类的别名进行编写，这样可以减少配置代码 -->
+	   <!-- <typeAlias alias="Airport" type="pers.flights.model.Airport" /> -->
+		<package name="pers.flights.model"/>
+	</typeAliases>
+	
+	<mappers>
+		<mapper resource="pers/flights/mapper/AirportMapper.xml" />
+		<mapper resource="pers/flights/mapper/AdministratorMapper.xml" />
+		<mapper resource="pers/flights/mapper/CompanyMapper.xml" />
+		<mapper resource="pers/flights/mapper/CustomerMapper.xml" />
+		<mapper resource="pers/flights/mapper/DiscountMapper.xml" />
+		<mapper resource="pers/flights/mapper/FlightMapper.xml" />
+		<mapper resource="pers/flights/mapper/OrderMapper.xml" />
+		<mapper resource="pers/flights/mapper/PassengerMapper.xml" />
+		<mapper resource="pers/flights/mapper/PlaneMapper.xml" />
+		<mapper resource="pers/flights/mapper/TicketPriceMapper.xml" />
+	</mappers>
+	
+</configuration>  

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pers.flights.mapper.PlaneMapper" >
+
+  <select id="selectByPrimaryKey" resultType="pers.flights.model.Plane" >
+    select `id` ,`planeVersion` ,`planeType` ,`planeAge` ,`businessClassAmount` ,`firstClassAmount` ,`economyClassAmount` ,`createTime`  from plane where  `id` = #{id}
+  </select>
+  
+  <select id="search" resultType="pers.flights.model.Plane">
+    select `id` ,`planeVersion` ,`planeType` ,`planeAge` ,`businessClassAmount` ,`firstClassAmount` ,`economyClassAmount` ,`createTime`  from plane
+  </select>
+  
+  <insert id="insert" parameterType="pers.flights.model.Plane" useGeneratedKeys="true" >
+    insert into plane (`planeVersion` ,`planeType` ,`planeAge` ,`businessClassAmount` ,`firstClassAmount` ,`economyClassAmount` ,`createTime` ) values (#{planeVersion},#{planeType},#{planeAge},#{businessClassAmount},#{firstClassAmount},#{economyClassAmount},#{createTime})
+  </insert>
+  
+  <delete id="deleteByPrimaryKey">
+    delete from plane where  `id` = #{id}
+  </delete>
+  
+  <update id="updateByPrimaryKey" parameterType="pers.flights.model.Plane" >
+    update plane set `planeVersion` = #{planeVersion},`planeType` = #{planeType},`planeAge` = #{planeAge},`businessClassAmount` = #{businessClassAmount},`firstClassAmount` = #{firstClassAmount},`economyClassAmount` = #{economyClassAmount},`createTime` = #{createTime} where  `id` = #{id}
+  </update>
+  
+</mapper>
