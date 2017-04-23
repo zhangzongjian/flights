@@ -4,11 +4,32 @@
 <mapper namespace="pers.flights.mapper.CompanyMapper" >
 
   <select id="selectByPrimaryKey" resultType="pers.flights.model.Company" >
-    select `id` ,`companyCode` ,`information` ,`companyName` ,`mobilePhone` ,`companyPhone` ,`companyUrl` ,`createTime`  from company where  `id` = #{id}
+    select `id` ,`companyCode` ,`information` ,`companyName` ,`mobilePhone` ,`companyPhone` ,`companyUrl` ,`createTime`   from company where   `id` = #{id}
+  </select>
+  
+  <select id="searchByAttributes" resultType="pers.flights.model.Company" statementType="STATEMENT">
+    select `id` ,`companyCode` ,`information` ,`companyName` ,`mobilePhone` ,`companyPhone` ,`companyUrl` ,`createTime`  from company where
+    <foreach item="attribute" collection="list" separator="and">
+    	 ${attribute.name} = ${attribute.value}
+    </foreach> 
+  </select>
+  
+  <select id="searchByKeywords" resultType="pers.flights.model.Company" statementType="STATEMENT">
+    select `id` ,`companyCode` ,`information` ,`companyName` ,`mobilePhone` ,`companyPhone` ,`companyUrl` ,`createTime`  from company where
+    <foreach item="keyword" collection="list" separator="or">
+  		   `id`  like '%${keyword}%' 
+  		or `companyCode`  like '%${keyword}%' 
+  		or `information`  like '%${keyword}%' 
+  		or `companyName`  like '%${keyword}%' 
+  		or `mobilePhone`  like '%${keyword}%' 
+  		or `companyPhone`  like '%${keyword}%' 
+  		or `companyUrl`  like '%${keyword}%' 
+  		or `createTime`  like '%${keyword}%' 
+    </foreach> 
   </select>
   
   <select id="search" resultType="pers.flights.model.Company">
-    select `id` ,`companyCode` ,`information` ,`companyName` ,`mobilePhone` ,`companyPhone` ,`companyUrl` ,`createTime`  from company
+    select `id` ,`companyCode` ,`information` ,`companyName` ,`mobilePhone` ,`companyPhone` ,`companyUrl` ,`createTime`   from company limit #{offset},#{limit}	
   </select>
   
   <insert id="insert" parameterType="pers.flights.model.Company" useGeneratedKeys="true" >
@@ -16,11 +37,15 @@
   </insert>
   
   <delete id="deleteByPrimaryKey">
-    delete from company where  `id` = #{id}
+    delete from company where   `id` = #{id}
   </delete>
   
+  <select id="getTotal" resultType="long">
+  	select count(`id`) from company;
+  </select>
+  
   <update id="updateByPrimaryKey" parameterType="pers.flights.model.Company" >
-    update company set `companyCode` = #{companyCode},`information` = #{information},`companyName` = #{companyName},`mobilePhone` = #{mobilePhone},`companyPhone` = #{companyPhone},`companyUrl` = #{companyUrl},`createTime` = #{createTime} where  `id` = #{id}
+    update company set `companyCode` = #{companyCode},`information` = #{information},`companyName` = #{companyName},`mobilePhone` = #{mobilePhone},`companyPhone` = #{companyPhone},`companyUrl` = #{companyUrl},`createTime` = #{createTime} where   `id` = #{id}
   </update>
   
 </mapper>

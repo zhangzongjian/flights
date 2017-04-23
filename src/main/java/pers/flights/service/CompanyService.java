@@ -1,10 +1,15 @@
 package pers.flights.service;
+import java.util.List;
+
+import pers.flights.util.Attribute;
 import pers.flights.util.Pager;
 import pers.flights.model.Company;
 
 public interface CompanyService {
 
-	Company searchById(Integer id);
+	Company searchByPrimaryKey(Integer id);
+	
+	List<Company> searchByAttributes(List<Attribute> attributes);
 	
 	Pager search(Pager pager);
 	
@@ -14,4 +19,5 @@ public interface CompanyService {
 	
 	int delete(Integer id);
 	
+	List<Company> searchByKeywords(List<String> list);
 }

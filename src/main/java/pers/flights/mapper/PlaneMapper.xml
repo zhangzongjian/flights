@@ -4,11 +4,32 @@
 <mapper namespace="pers.flights.mapper.PlaneMapper" >
 
   <select id="selectByPrimaryKey" resultType="pers.flights.model.Plane" >
-    select `id` ,`planeVersion` ,`planeType` ,`planeAge` ,`businessClassAmount` ,`firstClassAmount` ,`economyClassAmount` ,`createTime`  from plane where  `id` = #{id}
+    select `id` ,`planeVersion` ,`planeType` ,`planeAge` ,`businessClassAmount` ,`firstClassAmount` ,`economyClassAmount` ,`createTime`   from plane where   `id` = #{id}
+  </select>
+  
+  <select id="searchByAttributes" resultType="pers.flights.model.Plane" statementType="STATEMENT">
+    select `id` ,`planeVersion` ,`planeType` ,`planeAge` ,`businessClassAmount` ,`firstClassAmount` ,`economyClassAmount` ,`createTime`  from plane where
+    <foreach item="attribute" collection="list" separator="and">
+    	 ${attribute.name} = ${attribute.value}
+    </foreach> 
+  </select>
+  
+  <select id="searchByKeywords" resultType="pers.flights.model.Plane" statementType="STATEMENT">
+    select `id` ,`planeVersion` ,`planeType` ,`planeAge` ,`businessClassAmount` ,`firstClassAmount` ,`economyClassAmount` ,`createTime`  from plane where
+    <foreach item="keyword" collection="list" separator="or">
+  		   `id`  like '%${keyword}%' 
+  		or `planeVersion`  like '%${keyword}%' 
+  		or `planeType`  like '%${keyword}%' 
+  		or `planeAge`  like '%${keyword}%' 
+  		or `businessClassAmount`  like '%${keyword}%' 
+  		or `firstClassAmount`  like '%${keyword}%' 
+  		or `economyClassAmount`  like '%${keyword}%' 
+  		or `createTime`  like '%${keyword}%' 
+    </foreach> 
   </select>
   
   <select id="search" resultType="pers.flights.model.Plane">
-    select `id` ,`planeVersion` ,`planeType` ,`planeAge` ,`businessClassAmount` ,`firstClassAmount` ,`economyClassAmount` ,`createTime`  from plane
+    select `id` ,`planeVersion` ,`planeType` ,`planeAge` ,`businessClassAmount` ,`firstClassAmount` ,`economyClassAmount` ,`createTime`   from plane limit #{offset},#{limit}	
   </select>
   
   <insert id="insert" parameterType="pers.flights.model.Plane" useGeneratedKeys="true" >
@@ -16,11 +37,15 @@
   </insert>
   
   <delete id="deleteByPrimaryKey">
-    delete from plane where  `id` = #{id}
+    delete from plane where   `id` = #{id}
   </delete>
   
+  <select id="getTotal" resultType="long">
+  	select count(`id`) from plane;
+  </select>
+  
   <update id="updateByPrimaryKey" parameterType="pers.flights.model.Plane" >
-    update plane set `planeVersion` = #{planeVersion},`planeType` = #{planeType},`planeAge` = #{planeAge},`businessClassAmount` = #{businessClassAmount},`firstClassAmount` = #{firstClassAmount},`economyClassAmount` = #{economyClassAmount},`createTime` = #{createTime} where  `id` = #{id}
+    update plane set `planeVersion` = #{planeVersion},`planeType` = #{planeType},`planeAge` = #{planeAge},`businessClassAmount` = #{businessClassAmount},`firstClassAmount` = #{firstClassAmount},`economyClassAmount` = #{economyClassAmount},`createTime` = #{createTime} where   `id` = #{id}
   </update>
   
 </mapper>

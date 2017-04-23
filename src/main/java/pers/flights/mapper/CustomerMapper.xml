@@ -4,11 +4,35 @@
 <mapper namespace="pers.flights.mapper.CustomerMapper" >
 
   <select id="selectByPrimaryKey" resultType="pers.flights.model.Customer" >
-    select `id` ,`email` ,`mobilePhone` ,`accountType` ,`nickName` ,`realName` ,`password` ,`birthday` ,`sex` ,`phone` ,`createTime`  from customer where  `id` = #{id}
+    select `id` ,`email` ,`mobilePhone` ,`accountType` ,`nickName` ,`realName` ,`password` ,`birthday` ,`sex` ,`phone` ,`createTime`   from customer where   `id` = #{id}
+  </select>
+  
+  <select id="searchByAttributes" resultType="pers.flights.model.Customer" statementType="STATEMENT">
+    select `id` ,`email` ,`mobilePhone` ,`accountType` ,`nickName` ,`realName` ,`password` ,`birthday` ,`sex` ,`phone` ,`createTime`  from customer where
+    <foreach item="attribute" collection="list" separator="and">
+    	 ${attribute.name} = ${attribute.value}
+    </foreach> 
+  </select>
+  
+  <select id="searchByKeywords" resultType="pers.flights.model.Customer" statementType="STATEMENT">
+    select `id` ,`email` ,`mobilePhone` ,`accountType` ,`nickName` ,`realName` ,`password` ,`birthday` ,`sex` ,`phone` ,`createTime`  from customer where
+    <foreach item="keyword" collection="list" separator="or">
+  		   `id`  like '%${keyword}%' 
+  		or `email`  like '%${keyword}%' 
+  		or `mobilePhone`  like '%${keyword}%' 
+  		or `accountType`  like '%${keyword}%' 
+  		or `nickName`  like '%${keyword}%' 
+  		or `realName`  like '%${keyword}%' 
+  		or `password`  like '%${keyword}%' 
+  		or `birthday`  like '%${keyword}%' 
+  		or `sex`  like '%${keyword}%' 
+  		or `phone`  like '%${keyword}%' 
+  		or `createTime`  like '%${keyword}%' 
+    </foreach> 
   </select>
   
   <select id="search" resultType="pers.flights.model.Customer">
-    select `id` ,`email` ,`mobilePhone` ,`accountType` ,`nickName` ,`realName` ,`password` ,`birthday` ,`sex` ,`phone` ,`createTime`  from customer
+    select `id` ,`email` ,`mobilePhone` ,`accountType` ,`nickName` ,`realName` ,`password` ,`birthday` ,`sex` ,`phone` ,`createTime`   from customer limit #{offset},#{limit}	
   </select>
   
   <insert id="insert" parameterType="pers.flights.model.Customer" useGeneratedKeys="true" >
@@ -16,11 +40,15 @@
   </insert>
   
   <delete id="deleteByPrimaryKey">
-    delete from customer where  `id` = #{id}
+    delete from customer where   `id` = #{id}
   </delete>
   
+  <select id="getTotal" resultType="long">
+  	select count(`id`) from customer;
+  </select>
+  
   <update id="updateByPrimaryKey" parameterType="pers.flights.model.Customer" >
-    update customer set `email` = #{email},`mobilePhone` = #{mobilePhone},`accountType` = #{accountType},`nickName` = #{nickName},`realName` = #{realName},`password` = #{password},`birthday` = #{birthday},`sex` = #{sex},`phone` = #{phone},`createTime` = #{createTime} where  `id` = #{id}
+    update customer set `email` = #{email},`mobilePhone` = #{mobilePhone},`accountType` = #{accountType},`nickName` = #{nickName},`realName` = #{realName},`password` = #{password},`birthday` = #{birthday},`sex` = #{sex},`phone` = #{phone},`createTime` = #{createTime} where   `id` = #{id}
   </update>
   
 </mapper>

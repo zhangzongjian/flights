@@ -4,28 +4,28 @@
 <mapper namespace="pers.flights.mapper.AirportMapper" >
 
   <select id="selectByPrimaryKey" resultType="pers.flights.model.Airport" >
-    select `id` ,`airportName` ,`airportCity` ,`createTime`  from airport where  `id` = #{id}
+    select `id` ,`airportName` ,`airportCity` ,`createTime`   from airport where   `id` = #{id}
   </select>
   
   <select id="searchByAttributes" resultType="pers.flights.model.Airport" statementType="STATEMENT">
     select `id` ,`airportName` ,`airportCity` ,`createTime`  from airport where
     <foreach item="attribute" collection="list" separator="and">
-    	${attribute.name} = ${attribute.value}
+    	 ${attribute.name} = ${attribute.value}
     </foreach> 
   </select>
   
   <select id="searchByKeywords" resultType="pers.flights.model.Airport" statementType="STATEMENT">
     select `id` ,`airportName` ,`airportCity` ,`createTime`  from airport where
     <foreach item="keyword" collection="list" separator="or">
-    	   `id` like '%${keyword}%' 
-    	or `airportName` like '%${keyword}%' 
-    	or `airportCity` like '%${keyword}%' 
-    	or `createTime` like '%${keyword}%'
+  		   `id`  like '%${keyword}%' 
+  		or `airportName`  like '%${keyword}%' 
+  		or `airportCity`  like '%${keyword}%' 
+  		or `createTime`  like '%${keyword}%' 
     </foreach> 
   </select>
   
   <select id="search" resultType="pers.flights.model.Airport">
-    select `id` ,`airportName` ,`airportCity` ,`createTime`  from airport limit #{offset},#{limit}	
+    select `id` ,`airportName` ,`airportCity` ,`createTime`   from airport limit #{offset},#{limit}	
   </select>
   
   <insert id="insert" parameterType="pers.flights.model.Airport" useGeneratedKeys="true" >
@@ -33,7 +33,7 @@
   </insert>
   
   <delete id="deleteByPrimaryKey">
-    delete from airport where  `id` = #{id}
+    delete from airport where   `id` = #{id}
   </delete>
   
   <select id="getTotal" resultType="long">
@@ -41,7 +41,7 @@
   </select>
   
   <update id="updateByPrimaryKey" parameterType="pers.flights.model.Airport" >
-    update airport set `airportName` = #{airportName},`airportCity` = #{airportCity},`createTime` = #{createTime} where  `id` = #{id}
+    update airport set `airportName` = #{airportName},`airportCity` = #{airportCity},`createTime` = #{createTime} where   `id` = #{id}
   </update>
   
 </mapper>

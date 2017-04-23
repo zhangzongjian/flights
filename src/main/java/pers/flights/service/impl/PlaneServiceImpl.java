@@ -4,6 +4,8 @@ import java.util.List;
 import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import pers.flights.util.Attribute;
 import pers.flights.util.Pager;
 import pers.flights.model.Plane;
 import pers.flights.mapper.PlaneMapper;
@@ -15,7 +17,7 @@ public class PlaneServiceImpl implements PlaneService {
 	@Resource
 	private PlaneMapper planeMapper;
 	
-	public Plane searchById(Integer id){
+	public Plane searchByPrimaryKey(Integer id){
 		return planeMapper.selectByPrimaryKey(id);
 	}
 	
@@ -39,8 +41,27 @@ public class PlaneServiceImpl implements PlaneService {
 		  pager = new Pager();
 		}
 		List<Plane> items = planeMapper.search(pager);
+		long total = planeMapper.getTotal();
+		pager.setTotal(total);
 		pager.setDatas(items);	  
 		return pager;
 	}
 
+	/**
+	 * 模糊查询
+	 * @param attributes
+	 * @return
+	 */
+	public List<Plane> searchByKeywords(List<String> keywords) {
+		return planeMapper.searchByKeywords(keywords);
+	}
+
+	/**
+	 * 按属性查询
+	 * @param attributes
+	 * @return
+	 */
+	public List<Plane> searchByAttributes(List<Attribute> attributes) {
+		return planeMapper.searchByAttributes(attributes);
+	}
 }

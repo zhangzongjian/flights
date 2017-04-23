@@ -1,6 +1,5 @@
 package pers.flights.model;
 
-
 public class Airport {
 	
 	private Integer id;//编号
@@ -41,13 +40,6 @@ public class Airport {
 	
 	public void setCreateTime(String createTime) {
 		 this.createTime = createTime;
-	}
-
-	@Override
-	public String toString() {
-		return "Airport [id=" + id + ", airportName=" + airportName
-				+ ", airportCity=" + airportCity + ", createTime=" + createTime
-				+ "]";
 	}
 	
 }

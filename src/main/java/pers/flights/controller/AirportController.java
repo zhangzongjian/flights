@@ -46,7 +46,7 @@ public class AirportController {
 	
 	@RequestMapping("intoUpdate")
 	public String intoUpdate(HttpServletRequest request, Model model, Airport airport, Pager pager){
-		airport = airportService.searchById(airport.getId());
+		airport = airportService.searchByPrimaryKey(airport.getId());
 		model.addAttribute("airport", airport); 
 		model.addAttribute("pager", pager);
 		return "webpages/airport/update";
@@ -59,10 +59,10 @@ public class AirportController {
 	}
 	
 	@RequestMapping("detail")
-	public String detail(HttpServletRequest request, int id, Pager pager){
-		Airport airport = airportService.searchById(id);
-		request.setAttribute("airport", airport); 
-		request.setAttribute("pager", pager);
+	public String detail(HttpServletRequest request, Model model, Airport airport, Pager pager){
+		airport = airportService.searchByPrimaryKey(airport.getId());
+		model.addAttribute("airport", airport); 
+		model.addAttribute("pager", pager);
 		return "webpages/airport/detail";
 	}
 }

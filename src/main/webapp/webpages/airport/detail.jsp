@@ -8,7 +8,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Airport detail</title>
-<link href="${contextPath }/css/style.css" rel="stylesheet" type="text/css" />
+<link href="${contextPath}/css/style.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -25,12 +25,11 @@
     
     <div class="formtitle"><span>数据详情</span></div>
     
-    <form action="${contextPath }/airport/update">
+    <form action="${contextPath}/airport/update">
 	    <ul class="forminfo">
-	    <li><label>编号</label><input name="airportName" type="text" class="dfinput" value="${airport.id }" readonly="readonly"/></li>
-	    <li><label>机场名称</label><input name="airportName" type="text" class="dfinput" value="${airport.airportName }" readonly="readonly"/></li>
-	    <li><label>所属城市</label><input name="airportCity" type="text" class="dfinput" value="${airport.airportCity }" readonly="readonly"/></li>
-	    <li><label>创建时间</label><input name="createTime" type="text" class="dfinput" value="${airport.createTime }" readonly="readonly"/></li>
+	  	<li><label>机场名称</label><input name="airportName" type="text" class="dfinput" value="${airport.airportName }" readonly="readonly"/></li>
+	  	<li><label>所属城市</label><input name="airportCity" type="text" class="dfinput" value="${airport.airportCity }" readonly="readonly"/></li>
+	  	<li><label>创建时间</label><input name="createTime" type="text" class="dfinput" value="${airport.createTime }" readonly="readonly"/></li>
 	    <li><label>&nbsp;</label><input name="" type="button" class="btn" value="返回" onclick="javascript:history.go(-1);"/></li>
 	    </ul>
 	    <input name="page" type="hidden" class="dfinput" value="${pager.page }"/>

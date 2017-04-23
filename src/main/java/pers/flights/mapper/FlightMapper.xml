@@ -4,11 +4,35 @@
 <mapper namespace="pers.flights.mapper.FlightMapper" >
 
   <select id="selectByPrimaryKey" resultType="pers.flights.model.Flight" >
-    select `id` ,`flightNo` ,`startTime` ,`startAirportId` ,`arrivalTime` ,`endAirportId` ,`planeId` ,`startRealTime` ,`arrivalRealTIme` ,`status` ,`createTime`  from flight where  `id` = #{id}
+    select `id` ,`flightNo` ,`startTime` ,`startAirportId` ,`arrivalTime` ,`endAirportId` ,`planeId` ,`startRealTime` ,`arrivalRealTIme` ,`status` ,`createTime`   from flight where   `id` = #{id}
+  </select>
+  
+  <select id="searchByAttributes" resultType="pers.flights.model.Flight" statementType="STATEMENT">
+    select `id` ,`flightNo` ,`startTime` ,`startAirportId` ,`arrivalTime` ,`endAirportId` ,`planeId` ,`startRealTime` ,`arrivalRealTIme` ,`status` ,`createTime`  from flight where
+    <foreach item="attribute" collection="list" separator="and">
+    	 ${attribute.name} = ${attribute.value}
+    </foreach> 
+  </select>
+  
+  <select id="searchByKeywords" resultType="pers.flights.model.Flight" statementType="STATEMENT">
+    select `id` ,`flightNo` ,`startTime` ,`startAirportId` ,`arrivalTime` ,`endAirportId` ,`planeId` ,`startRealTime` ,`arrivalRealTIme` ,`status` ,`createTime`  from flight where
+    <foreach item="keyword" collection="list" separator="or">
+  		   `id`  like '%${keyword}%' 
+  		or `flightNo`  like '%${keyword}%' 
+  		or `startTime`  like '%${keyword}%' 
+  		or `startAirportId`  like '%${keyword}%' 
+  		or `arrivalTime`  like '%${keyword}%' 
+  		or `endAirportId`  like '%${keyword}%' 
+  		or `planeId`  like '%${keyword}%' 
+  		or `startRealTime`  like '%${keyword}%' 
+  		or `arrivalRealTIme`  like '%${keyword}%' 
+  		or `status`  like '%${keyword}%' 
+  		or `createTime`  like '%${keyword}%' 
+    </foreach> 
   </select>
   
   <select id="search" resultType="pers.flights.model.Flight">
-    select `id` ,`flightNo` ,`startTime` ,`startAirportId` ,`arrivalTime` ,`endAirportId` ,`planeId` ,`startRealTime` ,`arrivalRealTIme` ,`status` ,`createTime`  from flight
+    select `id` ,`flightNo` ,`startTime` ,`startAirportId` ,`arrivalTime` ,`endAirportId` ,`planeId` ,`startRealTime` ,`arrivalRealTIme` ,`status` ,`createTime`   from flight limit #{offset},#{limit}	
   </select>
   
   <insert id="insert" parameterType="pers.flights.model.Flight" useGeneratedKeys="true" >
@@ -16,11 +40,15 @@
   </insert>
   
   <delete id="deleteByPrimaryKey">
-    delete from flight where  `id` = #{id}
+    delete from flight where   `id` = #{id}
   </delete>
   
+  <select id="getTotal" resultType="long">
+  	select count(`id`) from flight;
+  </select>
+  
   <update id="updateByPrimaryKey" parameterType="pers.flights.model.Flight" >
-    update flight set `flightNo` = #{flightNo},`startTime` = #{startTime},`startAirportId` = #{startAirportId},`arrivalTime` = #{arrivalTime},`endAirportId` = #{endAirportId},`planeId` = #{planeId},`startRealTime` = #{startRealTime},`arrivalRealTIme` = #{arrivalRealTIme},`status` = #{status},`createTime` = #{createTime} where  `id` = #{id}
+    update flight set `flightNo` = #{flightNo},`startTime` = #{startTime},`startAirportId` = #{startAirportId},`arrivalTime` = #{arrivalTime},`endAirportId` = #{endAirportId},`planeId` = #{planeId},`startRealTime` = #{startRealTime},`arrivalRealTIme` = #{arrivalRealTIme},`status` = #{status},`createTime` = #{createTime} where   `id` = #{id}
   </update>
   
 </mapper>

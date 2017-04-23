@@ -8,7 +8,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Airport add</title>
-<link href="${contextPath }/css/style.css" rel="stylesheet" type="text/css" />
+<link href="${contextPath}/css/style.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -25,12 +25,12 @@
     
     <div class="formtitle"><span>添加数据</span></div>
     
-    <form action="${contextPath }/airport/add">
+    <form action="${contextPath}/airport/add">
 	    <input name="" type="hidden" class="dfinput" />
 	    <ul class="forminfo">
-	    <li><label>机场名称</label><input name="airportName" type="text" class="dfinput" /></li>
-	    <li><label>所属城市</label><input name="airportCity" type="text" class="dfinput" /></li>
-	    <li><label>创建时间</label><input name="createTime" type="text" class="dfinput" /></li>
+	  	<li><label>机场名称</label><input name="airportName" type="text" class="dfinput" /></li>
+	  	<li><label>所属城市</label><input name="airportCity" type="text" class="dfinput" /></li>
+	  	<li><label>创建时间</label><input name="createTime" type="text" class="dfinput" /></li>
 	    <li><label>&nbsp;</label><input name="" type="submit" class="btn" value="确认保存"/></li>
 	    </ul>
     </form>

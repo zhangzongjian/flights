@@ -1,10 +1,15 @@
 package pers.flights.service;
+import java.util.List;
+
+import pers.flights.util.Attribute;
 import pers.flights.util.Pager;
 import pers.flights.model.Passenger;
 
 public interface PassengerService {
 
-	Passenger searchById(Integer id);
+	Passenger searchByPrimaryKey(Integer id);
+	
+	List<Passenger> searchByAttributes(List<Attribute> attributes);
 	
 	Pager search(Pager pager);
 	
@@ -14,4 +19,5 @@ public interface PassengerService {
 	
 	int delete(Integer id);
 	
+	List<Passenger> searchByKeywords(List<String> list);
 }

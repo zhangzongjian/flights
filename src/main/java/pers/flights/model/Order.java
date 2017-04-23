@@ -1,6 +1,5 @@
 package pers.flights.model;
 
-
 public class Order {
 	
 	private Integer id;//编号

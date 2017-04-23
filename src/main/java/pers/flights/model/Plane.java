@@ -1,6 +1,5 @@
 package pers.flights.model;
 
-
 public class Plane {
 	
 	private Integer id;//编号

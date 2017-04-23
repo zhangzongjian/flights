@@ -1,9 +1,12 @@
 package pers.flights.mapper;
 
 import java.util.List;
-import pers.flights.util.Pager;
+
 import org.apache.ibatis.annotations.Param;
+
 import pers.flights.model.Passenger;
+import pers.flights.util.Attribute;
+import pers.flights.util.Pager;
 
 public interface PassengerMapper {
 	
@@ -16,5 +19,21 @@ public interface PassengerMapper {
     int updateByPrimaryKey(Passenger passenger);
 
 	List<Passenger> search(Pager pager);
+	
+	/**
+	 * 按属性查询
+	 * @param attributes
+	 * @return
+	 */
+	List<Passenger> searchByAttributes(List<Attribute> attributes);
+	
+	/**
+	 * 模糊查询
+	 * @param attributes
+	 * @return
+	 */
+	List<Passenger> searchByKeywords(List<String> keywords);
+	
+	long getTotal();
 	
 }

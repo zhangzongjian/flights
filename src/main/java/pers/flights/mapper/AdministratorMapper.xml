@@ -4,11 +4,32 @@
 <mapper namespace="pers.flights.mapper.AdministratorMapper" >
 
   <select id="selectByPrimaryKey" resultType="pers.flights.model.Administrator" >
-    select `id` ,`username` ,`password` ,`realName` ,`position` ,`lastLoginTime` ,`createTime` ,`authority`  from administrator where  `id` = #{id}
+    select `id` ,`username` ,`password` ,`realName` ,`position` ,`lastLoginTime` ,`createTime` ,`authority`   from administrator where   `id` = #{id}
+  </select>
+  
+  <select id="searchByAttributes" resultType="pers.flights.model.Administrator" statementType="STATEMENT">
+    select `id` ,`username` ,`password` ,`realName` ,`position` ,`lastLoginTime` ,`createTime` ,`authority`  from administrator where
+    <foreach item="attribute" collection="list" separator="and">
+    	 ${attribute.name} = ${attribute.value}
+    </foreach> 
+  </select>
+  
+  <select id="searchByKeywords" resultType="pers.flights.model.Administrator" statementType="STATEMENT">
+    select `id` ,`username` ,`password` ,`realName` ,`position` ,`lastLoginTime` ,`createTime` ,`authority`  from administrator where
+    <foreach item="keyword" collection="list" separator="or">
+  		   `id`  like '%${keyword}%' 
+  		or `username`  like '%${keyword}%' 
+  		or `password`  like '%${keyword}%' 
+  		or `realName`  like '%${keyword}%' 
+  		or `position`  like '%${keyword}%' 
+  		or `lastLoginTime`  like '%${keyword}%' 
+  		or `createTime`  like '%${keyword}%' 
+  		or `authority`  like '%${keyword}%' 
+    </foreach> 
   </select>
   
   <select id="search" resultType="pers.flights.model.Administrator">
-    select `id` ,`username` ,`password` ,`realName` ,`position` ,`lastLoginTime` ,`createTime` ,`authority`  from administrator
+    select `id` ,`username` ,`password` ,`realName` ,`position` ,`lastLoginTime` ,`createTime` ,`authority`   from administrator limit #{offset},#{limit}	
   </select>
   
   <insert id="insert" parameterType="pers.flights.model.Administrator" useGeneratedKeys="true" >
@@ -16,11 +37,15 @@
   </insert>
   
   <delete id="deleteByPrimaryKey">
-    delete from administrator where  `id` = #{id}
+    delete from administrator where   `id` = #{id}
   </delete>
   
+  <select id="getTotal" resultType="long">
+  	select count(`id`) from administrator;
+  </select>
+  
   <update id="updateByPrimaryKey" parameterType="pers.flights.model.Administrator" >
-    update administrator set `username` = #{username},`password` = #{password},`realName` = #{realName},`position` = #{position},`lastLoginTime` = #{lastLoginTime},`createTime` = #{createTime},`authority` = #{authority} where  `id` = #{id}
+    update administrator set `username` = #{username},`password` = #{password},`realName` = #{realName},`position` = #{position},`lastLoginTime` = #{lastLoginTime},`createTime` = #{createTime},`authority` = #{authority} where   `id` = #{id}
   </update>
   
 </mapper>

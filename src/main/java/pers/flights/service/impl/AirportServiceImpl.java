@@ -17,7 +17,7 @@ public class AirportServiceImpl implements AirportService {
 	@Resource
 	private AirportMapper airportMapper;
 	
-	public Airport searchById(Integer id){
+	public Airport searchByPrimaryKey(Integer id){
 		return airportMapper.selectByPrimaryKey(id);
 	}
 	

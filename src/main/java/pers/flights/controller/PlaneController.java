@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import pers.flights.model.Plane;
@@ -20,30 +21,48 @@ public class PlaneController {
 	@RequestMapping("index")
 	public String index(HttpServletRequest request, Pager pager){
 		pager = planeService.search(pager);
-		return "";
+		request.setAttribute("pager", pager); 
+		return "webpages/plane/index";
+	}
+	
+	@RequestMapping("intoAdd")
+	public String intoAdd(HttpServletRequest request){
+		return "webpages/plane/add";
 	}
 	
 	@RequestMapping("add")
 	public String add(HttpServletRequest request, Plane plane){
 		planeService.insert(plane);
-		return "";
+		return "redirect:intoAdd";
 	}
 	
 	@RequestMapping("delete")
-	public String delete(HttpServletRequest request, Plane plane){
-		planeService.delete(plane.getId());
-		return "";
+	public String delete(HttpServletRequest request, String[] id, Pager pager){
+		for(int i = 0; i<id.length; i++) {
+			planeService.delete(Integer.valueOf(id[i]));
+		}
+		return "redirect:index?page="+pager.getPage();
 	}
 	
 	@RequestMapping("intoUpdate")
-	public String intoUpdate(HttpServletRequest request, Plane plane){
-		plane = planeService.searchById(plane.getId());
-		return "";
+	public String intoUpdate(HttpServletRequest request, Model model, Plane plane, Pager pager){
+		plane = planeService.searchByPrimaryKey(plane.getId());
+		model.addAttribute("plane", plane); 
+		model.addAttribute("pager", pager);
+		return "webpages/plane/update";
 	}
 	
 	@RequestMapping("update")
-	public String update(HttpServletRequest request, Plane plane){
+	public String update(HttpServletRequest request, Plane plane, Pager pager){
 		planeService.update(plane);
-		return "";
+		return "redirect:index?page="+pager.getPage();
+	}
+	
+	@RequestMapping("detail")
+	public String detail(HttpServletRequest request, Model model, Plane plane, Pager pager){
+		plane = planeService.searchByPrimaryKey(plane.getId());
+		model.addAttribute("plane", plane); 
+		model.addAttribute("pager", pager);
+		return "webpages/plane/detail";
 	}
 }

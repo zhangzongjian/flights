@@ -4,11 +4,32 @@
 <mapper namespace="pers.flights.mapper.TicketPriceMapper" >
 
   <select id="selectByPrimaryKey" resultType="pers.flights.model.TicketPrice" >
-    select `id` ,`classType` ,`classAmount` ,`price` ,`flightId` ,`discountId` ,`dprice` ,`createTime`  from ticketPrice where  `id` = #{id}
+    select `id` ,`classType` ,`classAmount` ,`price` ,`flightId` ,`discountId` ,`dprice` ,`createTime`   from ticketPrice where   `id` = #{id}
+  </select>
+  
+  <select id="searchByAttributes" resultType="pers.flights.model.TicketPrice" statementType="STATEMENT">
+    select `id` ,`classType` ,`classAmount` ,`price` ,`flightId` ,`discountId` ,`dprice` ,`createTime`  from ticketPrice where
+    <foreach item="attribute" collection="list" separator="and">
+    	 ${attribute.name} = ${attribute.value}
+    </foreach> 
+  </select>
+  
+  <select id="searchByKeywords" resultType="pers.flights.model.TicketPrice" statementType="STATEMENT">
+    select `id` ,`classType` ,`classAmount` ,`price` ,`flightId` ,`discountId` ,`dprice` ,`createTime`  from ticketPrice where
+    <foreach item="keyword" collection="list" separator="or">
+  		   `id`  like '%${keyword}%' 
+  		or `classType`  like '%${keyword}%' 
+  		or `classAmount`  like '%${keyword}%' 
+  		or `price`  like '%${keyword}%' 
+  		or `flightId`  like '%${keyword}%' 
+  		or `discountId`  like '%${keyword}%' 
+  		or `dprice`  like '%${keyword}%' 
+  		or `createTime`  like '%${keyword}%' 
+    </foreach> 
   </select>
   
   <select id="search" resultType="pers.flights.model.TicketPrice">
-    select `id` ,`classType` ,`classAmount` ,`price` ,`flightId` ,`discountId` ,`dprice` ,`createTime`  from ticketPrice
+    select `id` ,`classType` ,`classAmount` ,`price` ,`flightId` ,`discountId` ,`dprice` ,`createTime`   from ticketPrice limit #{offset},#{limit}	
   </select>
   
   <insert id="insert" parameterType="pers.flights.model.TicketPrice" useGeneratedKeys="true" >
@@ -16,11 +37,15 @@
   </insert>
   
   <delete id="deleteByPrimaryKey">
-    delete from ticketPrice where  `id` = #{id}
+    delete from ticketPrice where   `id` = #{id}
   </delete>
   
+  <select id="getTotal" resultType="long">
+  	select count(`id`) from ticketPrice;
+  </select>
+  
   <update id="updateByPrimaryKey" parameterType="pers.flights.model.TicketPrice" >
-    update ticketPrice set `classType` = #{classType},`classAmount` = #{classAmount},`price` = #{price},`flightId` = #{flightId},`discountId` = #{discountId},`dprice` = #{dprice},`createTime` = #{createTime} where  `id` = #{id}
+    update ticketPrice set `classType` = #{classType},`classAmount` = #{classAmount},`price` = #{price},`flightId` = #{flightId},`discountId` = #{discountId},`dprice` = #{dprice},`createTime` = #{createTime} where   `id` = #{id}
   </update>
   
 </mapper>

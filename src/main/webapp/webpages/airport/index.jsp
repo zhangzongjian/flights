@@ -10,15 +10,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Airport index</title>
-<link href="${contextPath }/css/style.css" rel="stylesheet" type="text/css" />
-<link href="${contextPath }/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="${contextPath }/js/jquery.js"></script>
+<link href="${contextPath}/css/style.css" rel="stylesheet" type="text/css" />
+<link href="${contextPath}/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="${contextPath}/js/jquery.js"></script>
 
 <script type="text/javascript">
 $(document).ready(function(){
 
   $(".add").click(function(){
-	  location.href = "${contextPath }/airport/intoAdd";
+	  location.href = "${contextPath}/airport/intoAdd";
   });
   
   $(".update").click(function(){
@@ -27,13 +27,13 @@ $(document).ready(function(){
 		  return;
 	  }
 	  var id = $("[name='id']:checked").val();
-	  location.href = "${contextPath }/airport/intoUpdate?id="+id+"&page=${pager.page }";
+	  location.href = "${contextPath}/airport/intoUpdate?id="+id+"&page=${pager.page }";
   });
 
   $(".delete").click(function(){
 	  if(confirm("确定删除多条记录？")) {
 		  if($("[name='id']:checked").length == 0) return;
-		  var url = "${contextPath }/airport/delete?";
+		  var url = "${contextPath}/airport/delete?";
 		  $("[name='id']:checked").each(function() {
 		  	url = url+"id="+$(this).val()+"&";			  		
 		  });
@@ -63,15 +63,15 @@ $(document).ready(function(){
     <div class="tools">
     
     	<ul class="toolbar">
-        <li class="add"><span><img src="${contextPath }/images/t01.png" /></span>添加</li>
-        <li class="update"><span><img src="${contextPath }/images/t02.png" /></span>修改</li>
-        <li class="delete"><span><img src="${contextPath }/images/t03.png" /></span>删除</li>
-        <li><span><img src="${contextPath }/images/t04.png" /></span>统计</li>
+        <li class="add"><span><img src="${contextPath}/images/t01.png" /></span>添加</li>
+        <li class="update"><span><img src="${contextPath}/images/t02.png" /></span>修改</li>
+        <li class="delete"><span><img src="${contextPath}/images/t03.png" /></span>删除</li>
+        <li><span><img src="${contextPath}/images/t04.png" /></span>统计</li>
         </ul>
         
         
         <ul class="toolbar1">
-        <li><span><img src="${contextPath }/images/t05.png" /></span>显示设置</li>
+        <li><span><img src="${contextPath}/images/t05.png" /></span>显示设置</li>
         </ul>
     
     </div>
@@ -81,9 +81,9 @@ $(document).ready(function(){
     	<thead>
     	<tr>
         <th style="width:35px;"><input class="checkAll" type="checkbox" value=""/></th>
-        <th>机场名称</th>
-        <th>所属城市</th>
-        <th>创建时间</th>
+	  	<th>机场名称</th>
+	  	<th>所属城市</th>
+	  	<th>创建时间</th>
         <th style="width:150px;">操作</th>
         </tr>
         </thead>
@@ -91,13 +91,13 @@ $(document).ready(function(){
         <c:forEach items="${pager.datas }" var="airport">
 	        <tr>
 	        <td><input name="id" type="checkbox" value="${airport.id }" /></td>
-	        <td>${airport.airportName }</td>
-	        <td>${airport.airportCity }</td>
-	        <td>${airport.createTime }</td>
+	  		<td>${airport.airportName }</td>
+	  		<td>${airport.airportCity }</td>
+	  		<td>${airport.createTime }</td>
 	        <td>
-		        <a href="${contextPath }/airport/detail?&id=${airport.id }&page=${pager.page }" class="tablelink">查看</a>     
-		        <a href="${contextPath }/airport/intoUpdate?&id=${airport.id }&page=${pager.page }" class="tablelink">修改</a>
-		        <a href="${contextPath }/airport/delete?id=${airport.id }&page=${pager.page }" onclick="javascript:if(!confirm('确定删除该记录？')) return false;" class="tablelink">删除</a>
+		        <a href="${contextPath}/airport/detail?id=${airport.id }&page=${pager.page }" class="tablelink">查看</a>     
+		        <a href="${contextPath}/airport/intoUpdate?id=${airport.id }&page=${pager.page }" class="tablelink">修改</a>
+		        <a href="${contextPath}/airport/delete?id=${airport.id }&page=${pager.page }" onclick="javascript:if(!confirm('确定删除该记录？')) return false;" class="tablelink">删除</a>
 	        </td>
 	        </tr> 
         </c:forEach>
@@ -124,35 +124,13 @@ $(document).ready(function(){
     </div>
     
     
- <!-- 右键菜单，待完成 -->
- <!--    
- <div class="container" style="margin-top:150px;">
-  <table class="table table-bordered table-striped">
-    <thead>
-      <tr>
-    	<th style="width:20px;"><input type="checkbox"/></th>
-      	<th>编程语言</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><input type="checkbox"/></td>
-        <td>C</td>
-      </tr>
-      <tr>
-        <td><input type="checkbox"/></td>
-        <td>Java</td>
-      </tr>
-    </tbody>
-  </table>
- </div>
- -->  
-    
-  	<script src="${contextPath }/js/jquery-1.11.3.min.js"></script> 
- 	<script src="${contextPath }/js/jquery.tableCheckbox.js"></script> 
+  	<script src="${contextPath}/js/jquery-1.11.3.min.js"></script> 
+ 	<script src="${contextPath}/js/jquery.tableCheckbox.js"></script> 
     <script type="text/javascript">
+    
 	$('.tablelist tbody tr:odd').addClass('odd');
-	//全选
+	
+	//自定义全选 ? 与jquery.tableCheckbox似乎冲突
 	$('.checkAll').click(function(){
 		if($('.checkAll').attr('checked')) {
 			$("[name='id']").attr("checked",'true');//全选
@@ -168,41 +146,18 @@ $(document).ready(function(){
 			pageNum = document.getElementById('page_input').value;
 		}
 		if(pageNum > 0 && pageNum <= '${pager.pageSum }') {
-			location.href = "${contextPath }/airport/index?page="+pageNum;
+			location.href = "${contextPath}/airport/index?page="+pageNum;
 		}
 	}
 	//每页显示条目
 	function setLimit(limit) {
 		if(limit > 0 && limit <= 1000) {
-			location.href = "${contextPath }/airport/index?limit="+limit;
+			location.href = "${contextPath}/airport/index?limit="+limit;
 		}
 	}
 	
 	$('tablelist').tableCheckbox({ /* options */ });
 	$('table').tableCheckbox({ /* options */ });
-	//初始化隐藏某列
-	function initHide(cell) {
-	    obj = document.getElementsByClassName("tablelist")[0];
-	    for (i = 0; i < obj.rows.length; i++) {
-	        obj.rows[i].cells[cell].style.display = "none";
-	    }
-	}
-
-	//table隐藏某列
-	function hide(cell) {
-	    obj = document.getElementsByClassName("tablelist")[0];
-	    for (i = 0; i < obj.rows.length; i++) {
-	        obj.rows[i].cells[cell].style.display = "none";
-	    }
-	}
-
-	//table显示某列
-	function show(cell) {
-	    obj = document.getElementsByClassName("tablelist")[0];
-	    for (i = 0; i < obj.rows.length; i++) {
-	        obj.rows[i].cells[cell].style.display = "block";
-	    }
-	}
 	</script>
 </body>
 </html>

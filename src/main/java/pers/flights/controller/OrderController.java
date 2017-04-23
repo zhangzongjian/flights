@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import pers.flights.model.Order;
@@ -20,30 +21,48 @@ public class OrderController {
 	@RequestMapping("index")
 	public String index(HttpServletRequest request, Pager pager){
 		pager = orderService.search(pager);
-		return "";
+		request.setAttribute("pager", pager); 
+		return "webpages/order/index";
+	}
+	
+	@RequestMapping("intoAdd")
+	public String intoAdd(HttpServletRequest request){
+		return "webpages/order/add";
 	}
 	
 	@RequestMapping("add")
 	public String add(HttpServletRequest request, Order order){
 		orderService.insert(order);
-		return "";
+		return "redirect:intoAdd";
 	}
 	
 	@RequestMapping("delete")
-	public String delete(HttpServletRequest request, Order order){
-		orderService.delete(order.getId());
-		return "";
+	public String delete(HttpServletRequest request, String[] id, Pager pager){
+		for(int i = 0; i<id.length; i++) {
+			orderService.delete(Integer.valueOf(id[i]));
+		}
+		return "redirect:index?page="+pager.getPage();
 	}
 	
 	@RequestMapping("intoUpdate")
-	public String intoUpdate(HttpServletRequest request, Order order){
-		order = orderService.searchById(order.getId());
-		return "";
+	public String intoUpdate(HttpServletRequest request, Model model, Order order, Pager pager){
+		order = orderService.searchByPrimaryKey(order.getId());
+		model.addAttribute("order", order); 
+		model.addAttribute("pager", pager);
+		return "webpages/order/update";
 	}
 	
 	@RequestMapping("update")
-	public String update(HttpServletRequest request, Order order){
+	public String update(HttpServletRequest request, Order order, Pager pager){
 		orderService.update(order);
-		return "";
+		return "redirect:index?page="+pager.getPage();
+	}
+	
+	@RequestMapping("detail")
+	public String detail(HttpServletRequest request, Model model, Order order, Pager pager){
+		order = orderService.searchByPrimaryKey(order.getId());
+		model.addAttribute("order", order); 
+		model.addAttribute("pager", pager);
+		return "webpages/order/detail";
 	}
 }

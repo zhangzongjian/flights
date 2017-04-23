@@ -1,6 +1,5 @@
 package pers.flights.model;
 
-
 public class Company {
 	
 	private Integer id;//编号

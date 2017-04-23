@@ -4,6 +4,8 @@ import java.util.List;
 import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import pers.flights.util.Attribute;
 import pers.flights.util.Pager;
 import pers.flights.model.Administrator;
 import pers.flights.mapper.AdministratorMapper;
@@ -15,7 +17,7 @@ public class AdministratorServiceImpl implements AdministratorService {
 	@Resource
 	private AdministratorMapper administratorMapper;
 	
-	public Administrator searchById(Integer id){
+	public Administrator searchByPrimaryKey(Integer id){
 		return administratorMapper.selectByPrimaryKey(id);
 	}
 	
@@ -39,8 +41,27 @@ public class AdministratorServiceImpl implements AdministratorService {
 		  pager = new Pager();
 		}
 		List<Administrator> items = administratorMapper.search(pager);
+		long total = administratorMapper.getTotal();
+		pager.setTotal(total);
 		pager.setDatas(items);	  
 		return pager;
 	}
 
+	/**
+	 * 模糊查询
+	 * @param attributes
+	 * @return
+	 */
+	public List<Administrator> searchByKeywords(List<String> keywords) {
+		return administratorMapper.searchByKeywords(keywords);
+	}
+
+	/**
+	 * 按属性查询
+	 * @param attributes
+	 * @return
+	 */
+	public List<Administrator> searchByAttributes(List<Attribute> attributes) {
+		return administratorMapper.searchByAttributes(attributes);
+	}
 }

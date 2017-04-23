@@ -7,7 +7,7 @@ import pers.flights.model.Airport;
 
 public interface AirportService {
 
-	Airport searchById(Integer id);
+	Airport searchByPrimaryKey(Integer id);
 	
 	List<Airport> searchByAttributes(List<Attribute> attributes);
 	

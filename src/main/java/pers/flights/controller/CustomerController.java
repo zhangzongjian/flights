@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import pers.flights.model.Customer;
@@ -20,30 +21,48 @@ public class CustomerController {
 	@RequestMapping("index")
 	public String index(HttpServletRequest request, Pager pager){
 		pager = customerService.search(pager);
-		return "";
+		request.setAttribute("pager", pager); 
+		return "webpages/customer/index";
+	}
+	
+	@RequestMapping("intoAdd")
+	public String intoAdd(HttpServletRequest request){
+		return "webpages/customer/add";
 	}
 	
 	@RequestMapping("add")
 	public String add(HttpServletRequest request, Customer customer){
 		customerService.insert(customer);
-		return "";
+		return "redirect:intoAdd";
 	}
 	
 	@RequestMapping("delete")
-	public String delete(HttpServletRequest request, Customer customer){
-		customerService.delete(customer.getId());
-		return "";
+	public String delete(HttpServletRequest request, String[] id, Pager pager){
+		for(int i = 0; i<id.length; i++) {
+			customerService.delete(Integer.valueOf(id[i]));
+		}
+		return "redirect:index?page="+pager.getPage();
 	}
 	
 	@RequestMapping("intoUpdate")
-	public String intoUpdate(HttpServletRequest request, Customer customer){
-		customer = customerService.searchById(customer.getId());
-		return "";
+	public String intoUpdate(HttpServletRequest request, Model model, Customer customer, Pager pager){
+		customer = customerService.searchByPrimaryKey(customer.getId());
+		model.addAttribute("customer", customer); 
+		model.addAttribute("pager", pager);
+		return "webpages/customer/update";
 	}
 	
 	@RequestMapping("update")
-	public String update(HttpServletRequest request, Customer customer){
+	public String update(HttpServletRequest request, Customer customer, Pager pager){
 		customerService.update(customer);
-		return "";
+		return "redirect:index?page="+pager.getPage();
+	}
+	
+	@RequestMapping("detail")
+	public String detail(HttpServletRequest request, Model model, Customer customer, Pager pager){
+		customer = customerService.searchByPrimaryKey(customer.getId());
+		model.addAttribute("customer", customer); 
+		model.addAttribute("pager", pager);
+		return "webpages/customer/detail";
 	}
 }

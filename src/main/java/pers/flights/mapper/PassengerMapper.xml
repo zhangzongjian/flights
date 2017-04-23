@@ -4,11 +4,30 @@
 <mapper namespace="pers.flights.mapper.PassengerMapper" >
 
   <select id="selectByPrimaryKey" resultType="pers.flights.model.Passenger" >
-    select `id` ,`passengerName` ,`passengerCard` ,`passengerType` ,`mobilePhone` ,`customerId`  from passenger where  `id` = #{id}
+    select `id` ,`passengerName` ,`passengerCard` ,`passengerType` ,`mobilePhone` ,`customerId`   from passenger where   `id` = #{id}
+  </select>
+  
+  <select id="searchByAttributes" resultType="pers.flights.model.Passenger" statementType="STATEMENT">
+    select `id` ,`passengerName` ,`passengerCard` ,`passengerType` ,`mobilePhone` ,`customerId`  from passenger where
+    <foreach item="attribute" collection="list" separator="and">
+    	 ${attribute.name} = ${attribute.value}
+    </foreach> 
+  </select>
+  
+  <select id="searchByKeywords" resultType="pers.flights.model.Passenger" statementType="STATEMENT">
+    select `id` ,`passengerName` ,`passengerCard` ,`passengerType` ,`mobilePhone` ,`customerId`  from passenger where
+    <foreach item="keyword" collection="list" separator="or">
+  		   `id`  like '%${keyword}%' 
+  		or `passengerName`  like '%${keyword}%' 
+  		or `passengerCard`  like '%${keyword}%' 
+  		or `passengerType`  like '%${keyword}%' 
+  		or `mobilePhone`  like '%${keyword}%' 
+  		or `customerId`  like '%${keyword}%' 
+    </foreach> 
   </select>
   
   <select id="search" resultType="pers.flights.model.Passenger">
-    select `id` ,`passengerName` ,`passengerCard` ,`passengerType` ,`mobilePhone` ,`customerId`  from passenger
+    select `id` ,`passengerName` ,`passengerCard` ,`passengerType` ,`mobilePhone` ,`customerId`   from passenger limit #{offset},#{limit}	
   </select>
   
   <insert id="insert" parameterType="pers.flights.model.Passenger" useGeneratedKeys="true" >
@@ -16,11 +35,15 @@
   </insert>
   
   <delete id="deleteByPrimaryKey">
-    delete from passenger where  `id` = #{id}
+    delete from passenger where   `id` = #{id}
   </delete>
   
+  <select id="getTotal" resultType="long">
+  	select count(`id`) from passenger;
+  </select>
+  
   <update id="updateByPrimaryKey" parameterType="pers.flights.model.Passenger" >
-    update passenger set `passengerName` = #{passengerName},`passengerCard` = #{passengerCard},`passengerType` = #{passengerType},`mobilePhone` = #{mobilePhone},`customerId` = #{customerId} where  `id` = #{id}
+    update passenger set `passengerName` = #{passengerName},`passengerCard` = #{passengerCard},`passengerType` = #{passengerType},`mobilePhone` = #{mobilePhone},`customerId` = #{customerId} where   `id` = #{id}
   </update>
   
 </mapper>

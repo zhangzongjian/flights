@@ -1,6 +1,5 @@
 package pers.flights.model;
 
-
 public class TicketPrice {
 	
 	private Integer id;//编号
