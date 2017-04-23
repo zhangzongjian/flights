@@ -4,6 +4,8 @@ import java.util.List;
 import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import pers.flights.util.Attribute;
 import pers.flights.util.Pager;
 import pers.flights.model.Airport;
 import pers.flights.mapper.AirportMapper;
@@ -45,4 +47,21 @@ public class AirportServiceImpl implements AirportService {
 		return pager;
 	}
 
+	/**
+	 * 模糊查询
+	 * @param attributes
+	 * @return
+	 */
+	public List<Airport> searchByKeywords(List<String> keywords) {
+		return airportMapper.searchByKeywords(keywords);
+	}
+
+	/**
+	 * 按属性查询
+	 * @param attributes
+	 * @return
+	 */
+	public List<Airport> searchByAttributes(List<Attribute> attributes) {
+		return airportMapper.searchByAttributes(attributes);
+	}
 }

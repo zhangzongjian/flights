@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Pager {
 
-	  private int limit = 1;   //每页显示记录条数
+	  private int limit = 10;   //每页显示记录条数
 	  private int page = 1;		//当前页码
 	  private long total = 0;	//总记录条数
 	  private List<?> datas = new ArrayList<Object>();

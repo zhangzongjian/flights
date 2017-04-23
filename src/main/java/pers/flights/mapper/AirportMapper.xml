@@ -7,6 +7,20 @@
     select `id` ,`airportName` ,`airportCity` ,`createTime`  from airport where  `id` = #{id}
   </select>
   
+  <select id="searchByAttributes" resultType="pers.flights.model.Airport" statementType="STATEMENT">
+    select `id` ,`airportName` ,`airportCity` ,`createTime`  from airport where
+    <foreach item="attribute" collection="list" separator="and">
+    	${attribute.name} = ${attribute.value}
+    </foreach> 
+  </select>
+  
+  <select id="searchByKeywords" resultType="pers.flights.model.Airport" statementType="STATEMENT">
+    select `id` ,`airportName` ,`airportCity` ,`createTime`  from airport where
+    <foreach item="keyword" collection="list" separator="or">
+    	`id` like '%${keyword}%' or `airportName` like '%${keyword}%' or `airportCity` like '%${keyword}%' or `createTime`like '%${keyword}%'
+    </foreach> 
+  </select>
+  
   <select id="search" resultType="pers.flights.model.Airport">
     select `id` ,`airportName` ,`airportCity` ,`createTime`  from airport limit #{offset},#{limit}	
   </select>

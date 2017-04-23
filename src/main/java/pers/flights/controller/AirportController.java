@@ -32,7 +32,7 @@ public class AirportController {
 	@RequestMapping("add")
 	public String add(HttpServletRequest request, Airport airport){
 		airportService.insert(airport);
-		return "redirect:index";
+		return "redirect:intoAdd";
 	}
 	
 	@RequestMapping("delete")
@@ -44,8 +44,8 @@ public class AirportController {
 	}
 	
 	@RequestMapping("intoUpdate")
-	public String intoUpdate(HttpServletRequest request, Airport airport, Pager pager){
-		airport = airportService.searchById(airport.getId());
+	public String intoUpdate(HttpServletRequest request, int id, Pager pager){
+		Airport airport = airportService.searchById(id);
 		request.setAttribute("airport", airport); 
 		request.setAttribute("pager", pager);
 		return "webpages/airport/update";
@@ -55,5 +55,13 @@ public class AirportController {
 	public String update(HttpServletRequest request, Airport airport, Pager pager){
 		airportService.update(airport);
 		return "redirect:index?page="+pager.getPage();
+	}
+	
+	@RequestMapping("detail")
+	public String detail(HttpServletRequest request, int id, Pager pager){
+		Airport airport = airportService.searchById(id);
+		request.setAttribute("airport", airport); 
+		request.setAttribute("pager", pager);
+		return "webpages/airport/detail";
 	}
 }

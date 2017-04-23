@@ -42,5 +42,12 @@ public class Airport {
 	public void setCreateTime(String createTime) {
 		 this.createTime = createTime;
 	}
+
+	@Override
+	public String toString() {
+		return "Airport [id=" + id + ", airportName=" + airportName
+				+ ", airportCity=" + airportCity + ", createTime=" + createTime
+				+ "]";
+	}
 	
 }
