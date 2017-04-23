@@ -34,6 +34,6 @@ public class AirportTest {
 	public static void main(String[] args) {
 		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-common.xml");
 		AirportMapper mapper = (AirportMapper) applicationContext.getBean("airportMapper");
-		System.out.println(mapper.search(new Pager()));
+		System.out.println(mapper.getTotal());
 	}
 }

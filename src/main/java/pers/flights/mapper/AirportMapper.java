@@ -17,4 +17,6 @@ public interface AirportMapper {
 
 	List<Airport> search(Pager pager);
 	
+	long getTotal();
+	
 }

@@ -10,7 +10,7 @@
 	</typeAliases>
 	
 	<mappers>
-		<mapper resource="pers/flights/mapper/AirportMapper.xml" />
+		<!-- <mapper resource="pers/flights/mapper/AirportMapper.xml" />
 		<mapper resource="pers/flights/mapper/AdministratorMapper.xml" />
 		<mapper resource="pers/flights/mapper/CompanyMapper.xml" />
 		<mapper resource="pers/flights/mapper/CustomerMapper.xml" />
@@ -19,7 +19,7 @@
 		<mapper resource="pers/flights/mapper/OrderMapper.xml" />
 		<mapper resource="pers/flights/mapper/PassengerMapper.xml" />
 		<mapper resource="pers/flights/mapper/PlaneMapper.xml" />
-		<mapper resource="pers/flights/mapper/TicketPriceMapper.xml" />
+		<mapper resource="pers/flights/mapper/TicketPriceMapper.xml" /> -->
 	</mappers>
 	
 </configuration>  

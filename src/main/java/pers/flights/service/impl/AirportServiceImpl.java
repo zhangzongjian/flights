@@ -39,6 +39,8 @@ public class AirportServiceImpl implements AirportService {
 		  pager = new Pager();
 		}
 		List<Airport> items = airportMapper.search(pager);
+		long total = airportMapper.getTotal();
+		pager.setTotal(total);
 		pager.setDatas(items);	  
 		return pager;
 	}

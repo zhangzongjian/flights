@@ -20,30 +20,40 @@ public class AirportController {
 	@RequestMapping("index")
 	public String index(HttpServletRequest request, Pager pager){
 		pager = airportService.search(pager);
-		return "";
+		request.setAttribute("pager", pager); 
+		return "webpages/airport/index";
+	}
+	
+	@RequestMapping("intoAdd")
+	public String intoAdd(HttpServletRequest request){
+		return "webpages/airport/add";
 	}
 	
 	@RequestMapping("add")
 	public String add(HttpServletRequest request, Airport airport){
 		airportService.insert(airport);
-		return "";
+		return "redirect:index";
 	}
 	
 	@RequestMapping("delete")
-	public String delete(HttpServletRequest request, Airport airport){
-		airportService.delete(airport.getId());
-		return "";
+	public String delete(HttpServletRequest request, String[] id, Pager pager){
+		for(int i = 0; i<id.length; i++) {
+			airportService.delete(Integer.valueOf(id[i]));
+		}
+		return "redirect:index?page="+pager.getPage();
 	}
 	
 	@RequestMapping("intoUpdate")
-	public String intoUpdate(HttpServletRequest request, Airport airport){
+	public String intoUpdate(HttpServletRequest request, Airport airport, Pager pager){
 		airport = airportService.searchById(airport.getId());
-		return "";
+		request.setAttribute("airport", airport); 
+		request.setAttribute("pager", pager);
+		return "webpages/airport/update";
 	}
 	
 	@RequestMapping("update")
-	public String update(HttpServletRequest request, Airport airport){
+	public String update(HttpServletRequest request, Airport airport, Pager pager){
 		airportService.update(airport);
-		return "";
+		return "redirect:index?page="+pager.getPage();
 	}
 }

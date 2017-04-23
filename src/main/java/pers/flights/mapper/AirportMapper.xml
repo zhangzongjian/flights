@@ -8,7 +8,7 @@
   </select>
   
   <select id="search" resultType="pers.flights.model.Airport">
-    select `id` ,`airportName` ,`airportCity` ,`createTime`  from airport
+    select `id` ,`airportName` ,`airportCity` ,`createTime`  from airport limit #{offset},#{limit}	
   </select>
   
   <insert id="insert" parameterType="pers.flights.model.Airport" useGeneratedKeys="true" >
@@ -18,6 +18,10 @@
   <delete id="deleteByPrimaryKey">
     delete from airport where  `id` = #{id}
   </delete>
+  
+  <select id="getTotal" resultType="long">
+  	select count(`id`) from airport;
+  </select>
   
   <update id="updateByPrimaryKey" parameterType="pers.flights.model.Airport" >
     update airport set `airportName` = #{airportName},`airportCity` = #{airportCity},`createTime` = #{createTime} where  `id` = #{id}

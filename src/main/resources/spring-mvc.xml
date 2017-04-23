@@ -12,7 +12,7 @@
         http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 
 	<!-- Scans the classpath of this application for @Components to deploy as beans -->
-    <context:component-scan base-package="pers.example.controller"/>
+    <context:component-scan base-package="pers.flights.controller"/>
     
 	<mvc:annotation-driven/>
 
@@ -24,5 +24,7 @@
 	</bean>
 	
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources/ directory -->
-	<mvc:resources mapping="/plug-in/**" location="/plug-in/"/>
+	<mvc:resources mapping="/css/**" location="/css/"/>
+	<mvc:resources mapping="/js/**" location="/js/"/>
+	<mvc:resources mapping="/images/**" location="/images/"/>
 </beans>

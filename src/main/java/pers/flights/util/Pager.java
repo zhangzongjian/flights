@@ -5,9 +5,9 @@ import java.util.List;
 
 public class Pager {
 
-	private int limit = 10;
-	  private int offset = 0;
-	  private long total = -1L;
+	  private int limit = 1;   //每页显示记录条数
+	  private int page = 1;		//当前页码
+	  private long total = 0;	//总记录条数
 	  private List<?> datas = new ArrayList<Object>();
 	  private String param;
 	  
@@ -31,14 +31,14 @@ public class Pager {
 	    this.total = total;
 	  }
 	  
-	  public int getOffset()
+	  public int getPage()
 	  {
-	    return this.offset;
+	    return this.page;
 	  }
 	  
-	  public void setOffset(int offset)
+	  public void setPage(int page)
 	  {
-	    this.offset = offset;
+	    this.page = page;
 	  }
 	  
 	  public String getParam()
@@ -59,6 +59,15 @@ public class Pager {
 	  public void setDatas(List<?> datas)
 	  {
 	    this.datas = datas;
+	  }
+	  
+	  public int getPageSum() {
+		  return (int) Math.ceil((double)total/limit);
+	  }
+	  
+	  //分页查询起始位置
+	  public int getOffset() {
+		  return (page-1)*limit;
 	  }
 	
 }
