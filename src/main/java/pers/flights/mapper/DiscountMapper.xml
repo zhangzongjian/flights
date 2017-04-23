@@ -4,11 +4,28 @@
 <mapper namespace="pers.flights.mapper.DiscountMapper" >
 
   <select id="selectByPrimaryKey" resultType="pers.flights.model.Discount" >
-    select `id` ,`discountType` ,`discountRate` ,`createTime`  from discount where  `id` = #{id}
+    select `id` ,`discountType` ,`discountRate` ,`createTime`   from discount where   `id` = #{id}
+  </select>
+  
+  <select id="searchByAttributes" resultType="pers.flights.model.Discount" statementType="STATEMENT">
+    select `id` ,`discountType` ,`discountRate` ,`createTime`  from discount where
+    <foreach item="attribute" collection="list" separator="and">
+    	 ${attribute.name} = ${attribute.value}
+    </foreach> 
+  </select>
+  
+  <select id="searchByKeywords" resultType="pers.flights.model.Discount" statementType="STATEMENT">
+    select `id` ,`discountType` ,`discountRate` ,`createTime`  from discount where
+    <foreach item="keyword" collection="list" separator="or">
+  		   `id`  like '%${keyword}%' 
+  		or `discountType`  like '%${keyword}%' 
+  		or `discountRate`  like '%${keyword}%' 
+  		or `createTime`  like '%${keyword}%' 
+    </foreach> 
   </select>
   
   <select id="search" resultType="pers.flights.model.Discount">
-    select `id` ,`discountType` ,`discountRate` ,`createTime`  from discount
+    select `id` ,`discountType` ,`discountRate` ,`createTime`   from discount limit #{offset},#{limit}	
   </select>
   
   <insert id="insert" parameterType="pers.flights.model.Discount" useGeneratedKeys="true" >
@@ -16,11 +33,15 @@
   </insert>
   
   <delete id="deleteByPrimaryKey">
-    delete from discount where  `id` = #{id}
+    delete from discount where   `id` = #{id}
   </delete>
   
+  <select id="getTotal" resultType="long">
+  	select count(`id`) from discount;
+  </select>
+  
   <update id="updateByPrimaryKey" parameterType="pers.flights.model.Discount" >
-    update discount set `discountType` = #{discountType},`discountRate` = #{discountRate},`createTime` = #{createTime} where  `id` = #{id}
+    update discount set `discountType` = #{discountType},`discountRate` = #{discountRate},`createTime` = #{createTime} where   `id` = #{id}
   </update>
   
 </mapper>

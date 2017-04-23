@@ -17,7 +17,10 @@
   <select id="searchByKeywords" resultType="pers.flights.model.Airport" statementType="STATEMENT">
     select `id` ,`airportName` ,`airportCity` ,`createTime`  from airport where
     <foreach item="keyword" collection="list" separator="or">
-    	`id` like '%${keyword}%' or `airportName` like '%${keyword}%' or `airportCity` like '%${keyword}%' or `createTime`like '%${keyword}%'
+    	   `id` like '%${keyword}%' 
+    	or `airportName` like '%${keyword}%' 
+    	or `airportCity` like '%${keyword}%' 
+    	or `createTime` like '%${keyword}%'
     </foreach> 
   </select>
   

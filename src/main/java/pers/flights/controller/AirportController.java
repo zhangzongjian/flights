@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import pers.flights.model.Airport;
@@ -44,10 +45,10 @@ public class AirportController {
 	}
 	
 	@RequestMapping("intoUpdate")
-	public String intoUpdate(HttpServletRequest request, int id, Pager pager){
-		Airport airport = airportService.searchById(id);
-		request.setAttribute("airport", airport); 
-		request.setAttribute("pager", pager);
+	public String intoUpdate(HttpServletRequest request, Model model, Airport airport, Pager pager){
+		airport = airportService.searchById(airport.getId());
+		model.addAttribute("airport", airport); 
+		model.addAttribute("pager", pager);
 		return "webpages/airport/update";
 	}
 	
