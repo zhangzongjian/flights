@@ -22,12 +22,12 @@ public class AirportController {
 	public String index(HttpServletRequest request, Pager pager){
 		pager = airportService.search(pager);
 		request.setAttribute("pager", pager); 
-		return "webpages/airport/index";
+		return "webpage/flights/airport/index";
 	}
 	
 	@RequestMapping("intoAdd")
 	public String intoAdd(HttpServletRequest request){
-		return "webpages/airport/add";
+		return "webpage/flights/airport/add";
 	}
 	
 	@RequestMapping("add")
@@ -49,7 +49,7 @@ public class AirportController {
 		airport = airportService.searchByPrimaryKey(airport.getId());
 		model.addAttribute("airport", airport); 
 		model.addAttribute("pager", pager);
-		return "webpages/airport/update";
+		return "webpage/flights/airport/update";
 	}
 	
 	@RequestMapping("update")
@@ -63,6 +63,6 @@ public class AirportController {
 		airport = airportService.searchByPrimaryKey(airport.getId());
 		model.addAttribute("airport", airport); 
 		model.addAttribute("pager", pager);
-		return "webpages/airport/detail";
+		return "webpage/flights/airport/detail";
 	}
 }

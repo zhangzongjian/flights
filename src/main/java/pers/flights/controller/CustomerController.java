@@ -22,12 +22,12 @@ public class CustomerController {
 	public String index(HttpServletRequest request, Pager pager){
 		pager = customerService.search(pager);
 		request.setAttribute("pager", pager); 
-		return "webpages/customer/index";
+		return "webpage/flights/customer/index";
 	}
 	
 	@RequestMapping("intoAdd")
 	public String intoAdd(HttpServletRequest request){
-		return "webpages/customer/add";
+		return "webpage/flights/customer/add";
 	}
 	
 	@RequestMapping("add")
@@ -49,7 +49,7 @@ public class CustomerController {
 		customer = customerService.searchByPrimaryKey(customer.getId());
 		model.addAttribute("customer", customer); 
 		model.addAttribute("pager", pager);
-		return "webpages/customer/update";
+		return "webpage/flights/customer/update";
 	}
 	
 	@RequestMapping("update")
@@ -63,6 +63,6 @@ public class CustomerController {
 		customer = customerService.searchByPrimaryKey(customer.getId());
 		model.addAttribute("customer", customer); 
 		model.addAttribute("pager", pager);
-		return "webpages/customer/detail";
+		return "webpage/flights/customer/detail";
 	}
 }

@@ -81,5 +81,14 @@ public class Administrator {
 	public void setAuthority(String authority) {
 		 this.authority = authority;
 	}
+
+	@Override
+	public String toString() {
+		return "Administrator [id=" + id + ", username=" + username
+				+ ", password=" + password + ", realName=" + realName
+				+ ", position=" + position + ", lastLoginTime=" + lastLoginTime
+				+ ", createTime=" + createTime + ", authority=" + authority
+				+ "]";
+	}
 	
 }

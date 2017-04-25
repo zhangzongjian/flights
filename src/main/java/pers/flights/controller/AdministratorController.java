@@ -22,12 +22,12 @@ public class AdministratorController {
 	public String index(HttpServletRequest request, Pager pager){
 		pager = administratorService.search(pager);
 		request.setAttribute("pager", pager); 
-		return "webpages/administrator/index";
+		return "webpage/flights/administrator/index";
 	}
 	
 	@RequestMapping("intoAdd")
 	public String intoAdd(HttpServletRequest request){
-		return "webpages/administrator/add";
+		return "webpage/flights/administrator/add";
 	}
 	
 	@RequestMapping("add")
@@ -49,7 +49,7 @@ public class AdministratorController {
 		administrator = administratorService.searchByPrimaryKey(administrator.getId());
 		model.addAttribute("administrator", administrator); 
 		model.addAttribute("pager", pager);
-		return "webpages/administrator/update";
+		return "webpage/flights/administrator/update";
 	}
 	
 	@RequestMapping("update")
@@ -63,6 +63,6 @@ public class AdministratorController {
 		administrator = administratorService.searchByPrimaryKey(administrator.getId());
 		model.addAttribute("administrator", administrator); 
 		model.addAttribute("pager", pager);
-		return "webpages/administrator/detail";
+		return "webpage/flights/administrator/detail";
 	}
 }

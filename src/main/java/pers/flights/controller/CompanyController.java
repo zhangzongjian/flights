@@ -22,12 +22,12 @@ public class CompanyController {
 	public String index(HttpServletRequest request, Pager pager){
 		pager = companyService.search(pager);
 		request.setAttribute("pager", pager); 
-		return "webpages/company/index";
+		return "webpage/flights/company/index";
 	}
 	
 	@RequestMapping("intoAdd")
 	public String intoAdd(HttpServletRequest request){
-		return "webpages/company/add";
+		return "webpage/flights/company/add";
 	}
 	
 	@RequestMapping("add")
@@ -49,7 +49,7 @@ public class CompanyController {
 		company = companyService.searchByPrimaryKey(company.getId());
 		model.addAttribute("company", company); 
 		model.addAttribute("pager", pager);
-		return "webpages/company/update";
+		return "webpage/flights/company/update";
 	}
 	
 	@RequestMapping("update")
@@ -63,6 +63,6 @@ public class CompanyController {
 		company = companyService.searchByPrimaryKey(company.getId());
 		model.addAttribute("company", company); 
 		model.addAttribute("pager", pager);
-		return "webpages/company/detail";
+		return "webpage/flights/company/detail";
 	}
 }

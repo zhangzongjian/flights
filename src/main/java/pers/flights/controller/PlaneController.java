@@ -22,12 +22,12 @@ public class PlaneController {
 	public String index(HttpServletRequest request, Pager pager){
 		pager = planeService.search(pager);
 		request.setAttribute("pager", pager); 
-		return "webpages/plane/index";
+		return "webpage/flights/plane/index";
 	}
 	
 	@RequestMapping("intoAdd")
 	public String intoAdd(HttpServletRequest request){
-		return "webpages/plane/add";
+		return "webpage/flights/plane/add";
 	}
 	
 	@RequestMapping("add")
@@ -49,7 +49,7 @@ public class PlaneController {
 		plane = planeService.searchByPrimaryKey(plane.getId());
 		model.addAttribute("plane", plane); 
 		model.addAttribute("pager", pager);
-		return "webpages/plane/update";
+		return "webpage/flights/plane/update";
 	}
 	
 	@RequestMapping("update")
@@ -63,6 +63,6 @@ public class PlaneController {
 		plane = planeService.searchByPrimaryKey(plane.getId());
 		model.addAttribute("plane", plane); 
 		model.addAttribute("pager", pager);
-		return "webpages/plane/detail";
+		return "webpage/flights/plane/detail";
 	}
 }

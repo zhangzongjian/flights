@@ -22,12 +22,12 @@ public class DiscountController {
 	public String index(HttpServletRequest request, Pager pager){
 		pager = discountService.search(pager);
 		request.setAttribute("pager", pager); 
-		return "webpages/discount/index";
+		return "webpage/flights/discount/index";
 	}
 	
 	@RequestMapping("intoAdd")
 	public String intoAdd(HttpServletRequest request){
-		return "webpages/discount/add";
+		return "webpage/flights/discount/add";
 	}
 	
 	@RequestMapping("add")
@@ -49,7 +49,7 @@ public class DiscountController {
 		discount = discountService.searchByPrimaryKey(discount.getId());
 		model.addAttribute("discount", discount); 
 		model.addAttribute("pager", pager);
-		return "webpages/discount/update";
+		return "webpage/flights/discount/update";
 	}
 	
 	@RequestMapping("update")
@@ -63,6 +63,6 @@ public class DiscountController {
 		discount = discountService.searchByPrimaryKey(discount.getId());
 		model.addAttribute("discount", discount); 
 		model.addAttribute("pager", pager);
-		return "webpages/discount/detail";
+		return "webpage/flights/discount/detail";
 	}
 }

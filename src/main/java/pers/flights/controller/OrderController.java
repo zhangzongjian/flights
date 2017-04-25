@@ -22,12 +22,12 @@ public class OrderController {
 	public String index(HttpServletRequest request, Pager pager){
 		pager = orderService.search(pager);
 		request.setAttribute("pager", pager); 
-		return "webpages/order/index";
+		return "webpage/flights/order/index";
 	}
 	
 	@RequestMapping("intoAdd")
 	public String intoAdd(HttpServletRequest request){
-		return "webpages/order/add";
+		return "webpage/flights/order/add";
 	}
 	
 	@RequestMapping("add")
@@ -49,7 +49,7 @@ public class OrderController {
 		order = orderService.searchByPrimaryKey(order.getId());
 		model.addAttribute("order", order); 
 		model.addAttribute("pager", pager);
-		return "webpages/order/update";
+		return "webpage/flights/order/update";
 	}
 	
 	@RequestMapping("update")
@@ -63,6 +63,6 @@ public class OrderController {
 		order = orderService.searchByPrimaryKey(order.getId());
 		model.addAttribute("order", order); 
 		model.addAttribute("pager", pager);
-		return "webpages/order/detail";
+		return "webpage/flights/order/detail";
 	}
 }

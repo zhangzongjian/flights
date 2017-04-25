@@ -22,12 +22,12 @@ public class TicketPriceController {
 	public String index(HttpServletRequest request, Pager pager){
 		pager = ticketPriceService.search(pager);
 		request.setAttribute("pager", pager); 
-		return "webpages/ticketPrice/index";
+		return "webpage/flights/ticketPrice/index";
 	}
 	
 	@RequestMapping("intoAdd")
 	public String intoAdd(HttpServletRequest request){
-		return "webpages/ticketPrice/add";
+		return "webpage/flights/ticketPrice/add";
 	}
 	
 	@RequestMapping("add")
@@ -49,7 +49,7 @@ public class TicketPriceController {
 		ticketPrice = ticketPriceService.searchByPrimaryKey(ticketPrice.getId());
 		model.addAttribute("ticketPrice", ticketPrice); 
 		model.addAttribute("pager", pager);
-		return "webpages/ticketPrice/update";
+		return "webpage/flights/ticketPrice/update";
 	}
 	
 	@RequestMapping("update")
@@ -63,6 +63,6 @@ public class TicketPriceController {
 		ticketPrice = ticketPriceService.searchByPrimaryKey(ticketPrice.getId());
 		model.addAttribute("ticketPrice", ticketPrice); 
 		model.addAttribute("pager", pager);
-		return "webpages/ticketPrice/detail";
+		return "webpage/flights/ticketPrice/detail";
 	}
 }

@@ -22,12 +22,12 @@ public class FlightController {
 	public String index(HttpServletRequest request, Pager pager){
 		pager = flightService.search(pager);
 		request.setAttribute("pager", pager); 
-		return "webpages/flight/index";
+		return "webpage/flights/flight/index";
 	}
 	
 	@RequestMapping("intoAdd")
 	public String intoAdd(HttpServletRequest request){
-		return "webpages/flight/add";
+		return "webpage/flights/flight/add";
 	}
 	
 	@RequestMapping("add")
@@ -49,7 +49,7 @@ public class FlightController {
 		flight = flightService.searchByPrimaryKey(flight.getId());
 		model.addAttribute("flight", flight); 
 		model.addAttribute("pager", pager);
-		return "webpages/flight/update";
+		return "webpage/flights/flight/update";
 	}
 	
 	@RequestMapping("update")
@@ -63,6 +63,6 @@ public class FlightController {
 		flight = flightService.searchByPrimaryKey(flight.getId());
 		model.addAttribute("flight", flight); 
 		model.addAttribute("pager", pager);
-		return "webpages/flight/detail";
+		return "webpage/flights/flight/detail";
 	}
 }
