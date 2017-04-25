@@ -1,6 +1,7 @@
 package pers.flights.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
@@ -36,4 +37,11 @@ public interface FlightMapper {
 	
 	long getTotal();
 	
+	/**
+	 * 查询详细航班
+	 * @return
+	 */
+	//调用存储过程，@Param不能少。。
+	List<Map<String, Object>> searchFlights(@Param("startCity")String startCity, @Param("arrivalCity")String arrivalCity, @Param("startTime")String startTime);
+		
 }

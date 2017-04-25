@@ -19,7 +19,13 @@
     })  
 });  
 </script> 
-
+<style>
+.error{background:url(${contextPath}/images/500.png) no-repeat; width:490px; margin-top:75px;padding-top:65px;}
+.error h2{font-size:22px; padding-left:154px;}
+.error p{padding-left:154px; line-height:35px;color:#717678;}
+.reindex1{padding-left:154px;}
+.reindex1 a{width:115px; height:35px; font-size:14px; font-weight:bold; color:#fff; background:#3c95c8; display:inline-block; line-height:35px; text-align:center;border-radius: 3px; behavior:url(js/pie.htc);margin-right:20px;margin-top:20px;}
+</style>
 
 </head>
 
@@ -38,8 +44,7 @@
     
     <h2>内部服务器错误！</h2>
     <p>看到这个提示，就自认倒霉吧!</p>
-    <div class="reindex"><a href="${contextPath }/main.html" target="_parent">查看信息</a></div>
-    <div class="reindex"><a href="${contextPath }/main.html" target="_parent">返回首页</a></div>
+    <div class="reindex1"><a href="${contextPath }/main.html" target="_parent">查看信息</a><a href="${contextPath }/main.html" target="_parent">返回首页</a></div>
     
     </div>
 </body>

@@ -1,9 +1,10 @@
 package pers.flights.service;
 import java.util.List;
+import java.util.Map;
 
+import pers.flights.model.Flight;
 import pers.flights.util.Attribute;
 import pers.flights.util.Pager;
-import pers.flights.model.Flight;
 
 public interface FlightService {
 
@@ -20,4 +21,6 @@ public interface FlightService {
 	int delete(Integer id);
 	
 	List<Flight> searchByKeywords(List<String> list);
+	
+	List<Map<String, Object>> searchFlights(String startCity, String arrivalCity, String startTime);
 }

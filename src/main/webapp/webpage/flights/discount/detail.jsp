@@ -16,8 +16,9 @@
 	<div class="place">
     <span>位置：</span>
     <ul class="placeul">
-    <li><a href="#">首页</a></li>
-    <li><a href="#">表单</a></li>
+    <li><a href="${contextPath }/index">首页</a></li>
+    <li><a href="${contextPath }/discount/index">折扣类型列表</a></li>
+    <li><a href="#">详情</a></li>
     </ul>
     </div>
     

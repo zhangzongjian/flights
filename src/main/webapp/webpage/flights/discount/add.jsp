@@ -16,8 +16,9 @@
 	<div class="place">
     <span>位置：</span>
     <ul class="placeul">
-    <li><a href="#">首页</a></li>
-    <li><a href="#">表单</a></li>
+    <li><a href="${contextPath }/index">首页</a></li>
+    <li><a href="${contextPath }/discount/index">折扣类型列表</a></li>
+    <li><a href="#">新增</a></li>
     </ul>
     </div>
     
@@ -30,7 +31,6 @@
 	    <ul class="forminfo">
 	  	<li><label>折扣类型</label><input name="discountType" type="text" class="dfinput" /></li>
 	  	<li><label>折扣率</label><input name="discountRate" type="text" class="dfinput" /></li>
-	  	<li><label>创建时间</label><input name="createTime" type="text" class="dfinput" /></li>
 	    <li><label>&nbsp;</label><input name="" type="submit" class="btn" value="确认保存"/></li>
 	    </ul>
     </form>

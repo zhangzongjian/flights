@@ -16,8 +16,9 @@
 	<div class="place">
     <span>位置：</span>
     <ul class="placeul">
-    <li><a href="#">首页</a></li>
-    <li><a href="#">表单</a></li>
+    <li><a href="${contextPath }/index">首页</a></li>
+    <li><a href="${contextPath }/airport/index">机场列表</a></li>
+    <li><a href="#">修改</a></li>
     </ul>
     </div>
     

@@ -1,11 +1,13 @@
 package pers.flights.service.impl;
 
+import java.util.Date;
 import java.util.List;
 import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import pers.flights.util.Attribute;
+import pers.flights.util.DateTimeUtil;
 import pers.flights.util.Pager;
 import pers.flights.model.Plane;
 import pers.flights.mapper.PlaneMapper;
@@ -23,6 +25,7 @@ public class PlaneServiceImpl implements PlaneService {
 	
 	@Transactional
 	public int insert(Plane plane) {
+		plane.setCreateTime(DateTimeUtil.toString(new Date()));
 		return planeMapper.insert(plane);
 	}
 	

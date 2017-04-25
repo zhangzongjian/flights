@@ -11,7 +11,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Customer index</title>
 <link href="${contextPath}/css/style.css" rel="stylesheet" type="text/css" />
-<link href="${contextPath}/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="${contextPath}/js/jquery.js"></script>
 
 <script type="text/javascript">
@@ -52,9 +51,8 @@ $(document).ready(function(){
 	<div class="place">
     <span>位置：</span>
     <ul class="placeul">
-    <li><a href="#">首页</a></li>
-    <li><a href="#">数据表</a></li>
-    <li><a href="#">基本内容</a></li>
+    <li><a href="${contextPath }/index">首页</a></li>
+    <li><a href="${contextPath }/customer/index">客户列表</a></li>
     </ul>
     </div>
     

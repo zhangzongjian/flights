@@ -16,8 +16,9 @@
 	<div class="place">
     <span>位置：</span>
     <ul class="placeul">
-    <li><a href="#">首页</a></li>
-    <li><a href="#">表单</a></li>
+    <li><a href="${contextPath }/index">首页</a></li>
+    <li><a href="${contextPath }/administrator/index">人员列表</a></li>
+    <li><a href="#">新增</a></li>
     </ul>
     </div>
     

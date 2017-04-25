@@ -16,8 +16,9 @@
 	<div class="place">
     <span>位置：</span>
     <ul class="placeul">
-    <li><a href="#">首页</a></li>
-    <li><a href="#">表单</a></li>
+    <li><a href="${contextPath }/index">首页</a></li>
+    <li><a href="${contextPath }/airport/index">机场列表</a></li>
+    <li><a href="#">新增</a></li>
     </ul>
     </div>
     
@@ -30,7 +31,6 @@
 	    <ul class="forminfo">
 	  	<li><label>机场名称</label><input name="airportName" type="text" class="dfinput" /></li>
 	  	<li><label>所属城市</label><input name="airportCity" type="text" class="dfinput" /></li>
-	  	<li><label>创建时间</label><input name="createTime" type="text" class="dfinput" /></li>
 	    <li><label>&nbsp;</label><input name="" type="submit" class="btn" value="确认保存"/></li>
 	    </ul>
     </form>

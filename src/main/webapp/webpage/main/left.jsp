@@ -12,7 +12,12 @@
 <script language="JavaScript" src="${contextPath }/js/jquery.js"></script>
 
 <script type="text/javascript">
-$(function(){	
+$(function(){
+	
+	var menuid = <%=request.getParameter("menu") %>;
+	if(menuid == null) menuid = 1;
+	$("#menu"+menuid).show();
+	
 	//导航切换
 	$(".menuson li").click(function(){
 		$(".menuson li.active").removeClass("active")
@@ -35,61 +40,81 @@ $(function(){
 </head>
 
 <body style="background:#f0f9fd;">
-	<div class="lefttop"><span></span>通讯录</div>
+
+
+<div id="menu1" style="display: none;">
+	<div class="lefttop"><span></span>信息管理</div>
     
     <dl class="leftmenu">
         
     <dd>
     <div class="title">
-    <span><img src="${contextPath }/images/leftico01.png" /></span>管理信息
+    	<span><img src="${contextPath }/images/leftico01.png" /></span>航班信息管理
     </div>
     	<ul class="menuson">
-        <li><cite></cite><a href="${contextPath }/index.html" target="rightFrame">首页模版</a><i></i></li>
-        <li class="active"><cite></cite><a href="${contextPath }/right.html" target="rightFrame">数据列表</a><i></i></li>
-        <li><cite></cite><a href="${contextPath }/imgtable.html" target="rightFrame">图片数据表</a><i></i></li>
-        <li><cite></cite><a href="${contextPath }/form.html" target="rightFrame">添加编辑</a><i></i></li>
-        <li><cite></cite><a href="${contextPath }/imglist.html" target="rightFrame">图片列表</a><i></i></li>
-        <li><cite></cite><a href="${contextPath }/imglist1.html" target="rightFrame">自定义</a><i></i></li>
-        <li><cite></cite><a href="${contextPath }/tools.html" target="rightFrame">常用工具</a><i></i></li>
-        <li><cite></cite><a href="${contextPath }/filelist.html" target="rightFrame">信息管理</a><i></i></li>
-        <li><cite></cite><a href="${contextPath }/tab.html" target="rightFrame">Tab页</a><i></i></li>
-        <li><cite></cite><a href="${contextPath }/error.html" target="rightFrame">404页面</a><i></i></li>
+        <li class="active"><cite></cite><a href="${contextPath }/index" target="rightFrame">首页</a><i></i></li>
+        <li><cite></cite><a href="${contextPath }/flight/index" target="rightFrame">航班列表</a><i></i></li>
+        <li><cite></cite><a href="${contextPath }/flight/intoAdd" target="rightFrame">新增航班</a><i></i></li>
         </ul>    
     </dd>
         
     
     <dd>
     <div class="title">
-    <span><img src="${contextPath }/images/leftico02.png" /></span>其他设置
+    	<span><img src="${contextPath }/images/leftico02.png" /></span>购票信息管理
     </div>
     <ul class="menuson">
-        <li><cite></cite><a href="${contextPath }/#">编辑内容</a><i></i></li>
-        <li><cite></cite><a href="${contextPath }/#">发布信息</a><i></i></li>
-        <li><cite></cite><a href="${contextPath }/#">档案列表显示</a><i></i></li>
+        <li><cite></cite><a href="${contextPath }/order/index" target="rightFrame">订单列表</a><i></i></li>
+        <li><cite></cite><a href="${contextPath }/order/intoAdd" target="rightFrame">新增订单</a><i></i></li>
         </ul>     
     </dd> 
     
     
-    <dd><div class="title"><span><img src="${contextPath }/images/leftico03.png" /></span>编辑器</div>
+    <dd>
+    <div class="title">
+    	<span><img src="${contextPath }/images/leftico03.png" /></span>人员信息管理
+    </div>
     <ul class="menuson">
-        <li><cite></cite><a href="${contextPath }/#">自定义</a><i></i></li>
-        <li><cite></cite><a href="${contextPath }/#">常用资料</a><i></i></li>
-        <li><cite></cite><a href="${contextPath }/#">信息列表</a><i></i></li>
-        <li><cite></cite><a href="${contextPath }/#">其他</a><i></i></li>
+        <li><cite></cite><a href="${contextPath }/administrator/index" target="rightFrame">人员列表</a><i></i></li>
+        <li><cite></cite><a href="${contextPath }/administrator/intoAdd" target="rightFrame">新增人员</a><i></i></li>
     </ul>    
     </dd>  
     
     
-    <dd><div class="title"><span><img src="${contextPath }/images/leftico04.png" /></span>日期管理</div>
+    <dd>
+    <div class="title">
+    	<span><img src="${contextPath }/images/leftico04.png" /></span>客户信息管理
+    </div>
     <ul class="menuson">
-        <li><cite></cite><a href="${contextPath }/#">自定义</a><i></i></li>
-        <li><cite></cite><a href="${contextPath }/#">常用资料</a><i></i></li>
-        <li><cite></cite><a href="${contextPath }/#">信息列表</a><i></i></li>
-        <li><cite></cite><a href="${contextPath }/#">其他</a><i></i></li>
+        <li><cite></cite><a href="${contextPath }/customer/index" target="rightFrame">客户列表</a><i></i></li>
+        <li><cite></cite><a href="${contextPath }/customer/intoAdd" target="rightFrame">新增客户</a><i></i></li>
     </ul>
-    
     </dd>   
     
     </dl>
+</div>
+
+<div id="menu2" style="display: none;">
+	<div class="lefttop"><span></span>基础数据</div>
+    
+    <dl class="leftmenu">
+          
+    <dd>
+    <div class="title">
+    	<span><img src="${contextPath }/images/leftico04.png" /></span>基础数据管理
+    </div>
+    <ul class="menuson">
+        <li class="active"><cite></cite><a href="${contextPath }/company/index" target="rightFrame">航空公司</a><i></i></li>
+        <li><cite></cite><a href="${contextPath }/plane/index" target="rightFrame">机型信息</a><i></i></li>
+        <li><cite></cite><a href="${contextPath }/airport/index" target="rightFrame">机场信息</a><i></i></li>
+        <li><cite></cite><a href="${contextPath }/ticketPrice/index" target="rightFrame">票价类型</a><i></i></li>
+        <li><cite></cite><a href="${contextPath }/discount/index" target="rightFrame">折扣类型</a><i></i></li>
+        <li><cite></cite><a href="${contextPath }/passenger/index" target="rightFrame">乘客信息</a><i></i></li>
+    </ul>
+    </dd>   
+    
+    </dl>
+</div>
+
 </body>
 </html>

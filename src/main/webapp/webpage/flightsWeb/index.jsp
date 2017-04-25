@@ -41,20 +41,18 @@
 			<span id="slogan">Fast, Frequent &amp; Safe Flights</span>
 			<nav id="top_nav">
 				<ul>
-					<li><a href="${contextPath }/index.html" class="nav1">Home</a></li>
-					<li><a href="${contextPath }/#" class="nav2">Sitemap</a></li>
-					<li><a href="${contextPath }/Contacts.html" class="nav3">Contact</a></li>
+					<li><a href="${contextPath }/index.html" class="nav1">首页</a></li>
+					<li><a href="${contextPath }/#" class="nav2">关于</a></li>
+					<li><a href="${contextPath }/Contacts.html" class="nav3">联系</a></li>
 				</ul>
 			</nav>
 		</div>
 		<nav>
 			<ul id="menu">
-				<li id="menu_active"><a href="${contextPath }/index.html"><span><span>About</span></span></a></li>
-				<li><a href="${contextPath }/Offers.html"><span><span>Offers</span></span></a></li>
-				<li><a href="${contextPath }/Book.html"><span><span>Book</span></span></a></li>
-				<li><a href="${contextPath }/Services.html"><span><span>Services</span></span></a></li>
-				<li><a href="${contextPath }/Safety.html"><span><span>Safety</span></span></a></li>
-				<li class="end"><a href="${contextPath }/Contacts.html"><span><span>Contacts</span></span></a></li>
+				<li id="menu_active"><a href="${contextPath }/index.html"><span><span>dingpiao</span></span></a></li>
+				<li><a href="${contextPath }/Offers.html"><span><span>hangbandongtai</span></span></a></li>
+				<li><a href="${contextPath }/Book.html"><span><span>gerenzhongxin</span></span></a></li>
+				<li class="end"><a href="${contextPath }/Contacts.html"><span><span>lianxiwomen</span></span></a></li>
 			</ul>
 		</nav>
 	</header><div class="ic">More Website Templates</div>
@@ -65,140 +63,48 @@
 			<article class="col1">
 						<div class="tabs">
 							<ul class="nav">
-								<li class="selected"><a href="${contextPath }/#Flight">Flight</a></li>
-								<li><a href="${contextPath }/#Hotel">Hotel</a></li>
-								<li class="end"><a href="${contextPath }/#Rental">Rental</a></li>
+								<li class="selected"><a href="${contextPath }/#Flight">机票查询</a></li>
 							</ul>
 							<div class="content">
 								<div class="tab-content" id="Flight">
-									<form id="form_1" method="post">
+									<form id="form_1" action="${contextPath }/searchFlights">
 										<div>
 											<div class="radio">
 												<div class="wrapper">
-													 <input type="radio" name="name1" checked>
-													 <span class="left">Standard</span>
-													 <input type="radio" name="name1">
-													 <span class="left">World Map</span>
+													 <input type="radio" name="flightType" value="1" checked>
+													 <span class="left">单程</span>
+													 <input type="radio" name="flightType" value="2">
+													 <span class="left">双程</span>
 												</div>
 											</div>
 											<div class="row">
-												<span class="left">From</span>
-												<input type="text" class="input">
+												<span class="left">出发城市</span>
+												<input type="text" class="input" name="startCity">
 											</div>
 											<div class="row">
-												<span class="left">To</span>
-												<input type="text" class="input">
+												<span class="left">到达城市</span>
+												<input type="text" class="input" name="arrivalCity">
 											</div>
 											<div class="wrapper">
 												<div class="col1">
 													<div class="row">
-														<span class="left">Outbound</span>
-														<input type="text" class="input1" value="03.05.2011"  onblur="if(this.value=='') this.value='03.05.2011'" onFocus="if(this.value =='03.05.2011' ) this.value=''">
+														<span class="left">出发日期</span>
+														<input name="startTime" type="text" class="input1" value="03.05.2011"  onblur="if(this.value=='') this.value='03.05.2011'" onFocus="if(this.value =='03.05.2011' ) this.value=''">
 													</div>
 													<div class="row">
-														<span class="left">Return</span>
-														<input type="text" class="input1" value="10.05.2011"  onblur="if(this.value=='') this.value='10.05.2011'" onFocus="if(this.value =='10.05.2011' ) this.value=''">
+														<span class="left">返回日期</span>
+														<input name="returnTime" type="text" class="input1" value="10.05.2011"  onblur="if(this.value=='') this.value='10.05.2011'" onFocus="if(this.value =='10.05.2011' ) this.value=''">
 													</div>
 												</div>
 												<input type="text" class="input1 marg_top1" value="+/- 0 Days"  onblur="if(this.value=='') this.value='+/- 0 Days'" onFocus="if(this.value =='+/- 0 Days' ) this.value=''">
 											</div>
 											<div class="row">
-												<span class="left">Adults</span>
-												<input type="text" class="input2" value="2"  onblur="if(this.value=='') this.value='2'" onFocus="if(this.value =='2' ) this.value=''">
-											</div>
-											<div class="row">
-												<span class="left">Children</span>
-												<input type="text" class="input2" value="0"  onblur="if(this.value=='') this.value='0'" onFocus="if(this.value =='0' ) this.value=''">
-												<span class="pad_left1">(0-11 years)</span>
+												<span class="left">乘客数量</span>
+												<input name="count" type="text" class="input2" value="2"  onblur="if(this.value=='') this.value='2'" onFocus="if(this.value =='2' ) this.value=''">
 											</div>
 											<div class="wrapper">
-												<span class="right relative"><a href="${contextPath }/#" class="button1" onClick="document.getElementById('form_1').submit()"><strong>Search</strong></a></span>
-												<a href="${contextPath }/#" class="link1">More Options</a>
-											</div>
-										</div>
-									</form>
-								</div>
-								<div class="tab-content" id="Hotel">
-									<form id="form_2" method="post">
-										<div>
-											<div class="radio">
-												<div class="wrapper">
-													 <input type="checkbox" checked>
-													 Our Partners
-												</div>
-											</div>
-											<div class="row">
-												<span class="left">Location</span>
-												<input type="text" class="input">
-											</div>
-											<div class="row">
-												<span class="left">Check-in  </span>
-												<input type="text" class="input1" value="03.05.2011"  onblur="if(this.value=='') this.value='03.05.2011'" onFocus="if(this.value =='03.05.2011' ) this.value=''">
-												<a href="${contextPath }/#" class="help"></a>
-											</div>
-											<div class="row">
-												<span class="left">Check-out  </span>
-												<input type="text" class="input1" value="10.05.2011"  onblur="if(this.value=='') this.value='10.05.2011'" onFocus="if(this.value =='10.05.2011' ) this.value=''">
-												<a href="${contextPath }/#" class="help"></a>
-											</div>
-											<div class="row">
-												<span class="left">Rooms</span>
-												<input type="text" class="input2" value="1"  onblur="if(this.value=='') this.value='1'" onFocus="if(this.value =='1' ) this.value=''">
-												<a href="${contextPath }/#" class="help"></a>
-											</div>
-											<div class="row">
-												<span class="left">Adults</span>
-												<input type="text" class="input2" value="2"  onblur="if(this.value=='') this.value='2'" onFocus="if(this.value =='2' ) this.value=''">
-											</div>
-											<div class="row">
-												<span class="left">Children</span>
-												<input type="text" class="input2" value="0"  onblur="if(this.value=='') this.value='0'" onFocus="if(this.value =='0' ) this.value=''">
-												<span class="pad_left1">(0-11 years)</span>
-											</div>
-											<div class="wrapper">
-												<span class="right relative"><a href="${contextPath }/#" class="button1" onClick="document.getElementById('form_2').submit()"><strong>Search</strong></a></span>
-												<a href="${contextPath }/#" class="link1">More Options</a>
-											</div>
-										</div>
-									</form>
-								</div>
-								<div class="tab-content" id="Rental">
-									<form id="form_3" method="post">
-										<div>
-											<div class="radio">
-												<div class="wrapper">
-													 <input type="radio" name="name2" checked>
-													 <span class="left">Avis</span>
-													 <input type="radio" name="name2">
-													 <span class="left">Europcar</span>
-												</div>
-											</div>
-											<div class="row">
-												<span class="left">Rental location</span>
-												<input type="text" class="input">
-											</div>
-											<div class="row">
-												<span class="left">Pick-up</span>
-												<input type="text" class="input1" value="03.05.2011"  onblur="if(this.value=='') this.value='03.05.2011'" onFocus="if(this.value =='03.05.2011' ) this.value=''">
-												<input type="text" class="input2" value="12:00"  onblur="if(this.value=='') this.value='12:00'" onFocus="if(this.value =='12:00' ) this.value=''">
-											</div>
-											<div class="row">
-												<span class="left">Return</span>
-												<input type="text" class="input1" value="10.05.2011"  onblur="if(this.value=='') this.value='10.05.2011'" onFocus="if(this.value =='10.05.2011' ) this.value=''">
-												<input type="text" class="input2" value="12:00"  onblur="if(this.value=='') this.value='12:00'" onFocus="if(this.value =='12:00' ) this.value=''">
-											</div>
-											<div class="row_select">
-												<span class="left">Miles &amp; More</span>
-												<select><option>no membership</option></select>
-											</div>
-											<div class="row_select">
-												<div class="pad_left1">
-													Country of residence<br>
-													<div class="select1"><select><option>&nbsp;</option></select></div>
-												</div>
-											</div>
-											<div class="wrapper">
-												<span class="right relative"><a href="${contextPath }/#" class="button1" onClick="document.getElementById('form_3').submit()"><strong>Search</strong></a></span>
+												<span class="right relative"><a href="javascript:void(0);" class="button1" onClick="document.getElementById('form_1').submit()"><strong>搜索</strong></a></span>
+												<a href="${contextPath }/#" class="link1">更多选项</a>
 											</div>
 										</div>
 									</form>

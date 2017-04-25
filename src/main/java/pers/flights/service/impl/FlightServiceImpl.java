@@ -1,15 +1,20 @@
 package pers.flights.service.impl;
 
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
+
 import javax.annotation.Resource;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import pers.flights.util.Attribute;
-import pers.flights.util.Pager;
-import pers.flights.model.Flight;
 import pers.flights.mapper.FlightMapper;
+import pers.flights.model.Flight;
 import pers.flights.service.FlightService;
+import pers.flights.util.Attribute;
+import pers.flights.util.DateTimeUtil;
+import pers.flights.util.Pager;
 
 @Service
 public class FlightServiceImpl implements FlightService {
@@ -23,6 +28,7 @@ public class FlightServiceImpl implements FlightService {
 	
 	@Transactional
 	public int insert(Flight flight) {
+		flight.setCreateTime(DateTimeUtil.toString(new Date()));
 		return flightMapper.insert(flight);
 	}
 	
@@ -63,5 +69,13 @@ public class FlightServiceImpl implements FlightService {
 	 */
 	public List<Flight> searchByAttributes(List<Attribute> attributes) {
 		return flightMapper.searchByAttributes(attributes);
+	}
+	
+	/**
+	 * 查询详细航班
+	 * @return
+	 */
+	public List<Map<String, Object>> searchFlights(String startCity, String arrivalCity, String startTime) {
+		return flightMapper.searchFlights(startCity, arrivalCity, startTime);
 	}
 }

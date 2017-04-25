@@ -16,8 +16,9 @@
 	<div class="place">
     <span>位置：</span>
     <ul class="placeul">
-    <li><a href="#">首页</a></li>
-    <li><a href="#">表单</a></li>
+    <li><a href="${contextPath }/index">首页</a></li>
+    <li><a href="${contextPath }/flight/index">航班列表</a></li>
+    <li><a href="#">修改新增</a></li>
     </ul>
     </div>
     
@@ -37,7 +38,6 @@
 	  	<li><label>实际出发时间</label><input name="startRealTime" type="text" class="dfinput" /></li>
 	  	<li><label>实际抵达时间</label><input name="arrivalRealTIme" type="text" class="dfinput" /></li>
 	  	<li><label>状态</label><input name="status" type="text" class="dfinput" /></li>
-	  	<li><label>创建时间</label><input name="createTime" type="text" class="dfinput" /></li>
 	    <li><label>&nbsp;</label><input name="" type="submit" class="btn" value="确认保存"/></li>
 	    </ul>
     </form>

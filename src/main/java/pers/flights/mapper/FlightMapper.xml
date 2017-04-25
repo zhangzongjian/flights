@@ -51,4 +51,8 @@
     update flight set `flightNo` = #{flightNo},`startTime` = #{startTime},`startAirportId` = #{startAirportId},`arrivalTime` = #{arrivalTime},`endAirportId` = #{endAirportId},`planeId` = #{planeId},`startRealTime` = #{startRealTime},`arrivalRealTIme` = #{arrivalRealTIme},`status` = #{status},`createTime` = #{createTime} where   `id` = #{id}
   </update>
   
+  <select id="searchFlights" resultType="map" statementType="CALLABLE">
+  	call search_flights(#{startCity}, #{arrivalCity}, #{startTime})
+  </select>
+  
 </mapper>

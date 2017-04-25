@@ -16,8 +16,9 @@
 	<div class="place">
     <span>位置：</span>
     <ul class="placeul">
-    <li><a href="#">首页</a></li>
-    <li><a href="#">表单</a></li>
+    <li><a href="${contextPath }/index">首页</a></li>
+    <li><a href="${contextPath }/company/index">航空公司列表</a></li>
+    <li><a href="#">新增</a></li>
     </ul>
     </div>
     
@@ -34,7 +35,6 @@
 	  	<li><label>联系电话</label><input name="mobilePhone" type="text" class="dfinput" /></li>
 	  	<li><label>固定电话</label><input name="companyPhone" type="text" class="dfinput" /></li>
 	  	<li><label>公司网址</label><input name="companyUrl" type="text" class="dfinput" /></li>
-	  	<li><label>创建时间</label><input name="createTime" type="text" class="dfinput" /></li>
 	    <li><label>&nbsp;</label><input name="" type="submit" class="btn" value="确认保存"/></li>
 	    </ul>
     </form>

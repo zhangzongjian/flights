@@ -16,8 +16,9 @@
 	<div class="place">
     <span>位置：</span>
     <ul class="placeul">
-    <li><a href="#">首页</a></li>
-    <li><a href="#">表单</a></li>
+    <li><a href="${contextPath }/index">首页</a></li>
+    <li><a href="${contextPath }/ticketPrice/index">票价列表</a></li>
+    <li><a href="#">新增</a></li>
     </ul>
     </div>
     
@@ -25,7 +26,7 @@
     
     <div class="formtitle"><span>添加数据</span></div>
     
-    <form action="${contextPath}/ticketprice/add">
+    <form action="${contextPath}/ticketPrice/add">
 	    <input name="" type="hidden" class="dfinput" />
 	    <ul class="forminfo">
 	  	<li><label>舱位类型</label><input name="classType" type="text" class="dfinput" /></li>
@@ -34,7 +35,6 @@
 	  	<li><label>航班编号</label><input name="flightId" type="text" class="dfinput" /></li>
 	  	<li><label>折扣类型</label><input name="discountId" type="text" class="dfinput" /></li>
 	  	<li><label>优惠价</label><input name="dprice" type="text" class="dfinput" /></li>
-	  	<li><label>创建时间</label><input name="createTime" type="text" class="dfinput" /></li>
 	    <li><label>&nbsp;</label><input name="" type="submit" class="btn" value="确认保存"/></li>
 	    </ul>
     </form>

@@ -11,14 +11,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>TicketPrice index</title>
 <link href="${contextPath}/css/style.css" rel="stylesheet" type="text/css" />
-<link href="${contextPath}/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="${contextPath}/js/jquery.js"></script>
 
 <script type="text/javascript">
 $(document).ready(function(){
 
   $(".add").click(function(){
-	  location.href = "${contextPath}/ticketprice/intoAdd";
+	  location.href = "${contextPath}/ticketPrice/intoAdd";
   });
   
   $(".update").click(function(){
@@ -27,13 +26,13 @@ $(document).ready(function(){
 		  return;
 	  }
 	  var id = $("[name='id']:checked").val();
-	  location.href = "${contextPath}/ticketprice/intoUpdate?id="+id+"&page=${pager.page }";
+	  location.href = "${contextPath}/ticketPrice/intoUpdate?id="+id+"&page=${pager.page }";
   });
 
   $(".delete").click(function(){
 	  if(confirm("确定删除多条记录？")) {
 		  if($("[name='id']:checked").length == 0) return;
-		  var url = "${contextPath}/ticketprice/delete?";
+		  var url = "${contextPath}/ticketPrice/delete?";
 		  $("[name='id']:checked").each(function() {
 		  	url = url+"id="+$(this).val()+"&";			  		
 		  });
@@ -52,9 +51,8 @@ $(document).ready(function(){
 	<div class="place">
     <span>位置：</span>
     <ul class="placeul">
-    <li><a href="#">首页</a></li>
-    <li><a href="#">数据表</a></li>
-    <li><a href="#">基本内容</a></li>
+    <li><a href="${contextPath }/index">首页</a></li>
+    <li><a href="${contextPath }/ticketPrice/index">票价列表</a></li>
     </ul>
     </div>
     
@@ -92,20 +90,20 @@ $(document).ready(function(){
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="${pager.datas }" var="ticketprice">
+        <c:forEach items="${pager.datas }" var="ticketPrice">
 	        <tr>
-	        <td><input name="id" type="checkbox" value="${ticketprice.id }" /></td>
-	  		<td>${ticketprice.classType }</td>
-	  		<td>${ticketprice.classAmount }</td>
-	  		<td>${ticketprice.price }</td>
-	  		<td>${ticketprice.flightId }</td>
-	  		<td>${ticketprice.discountId }</td>
-	  		<td>${ticketprice.dprice }</td>
-	  		<td>${ticketprice.createTime }</td>
+	        <td><input name="id" type="checkbox" value="${ticketPrice.id }" /></td>
+	  		<td>${ticketPrice.classType }</td>
+	  		<td>${ticketPrice.classAmount }</td>
+	  		<td>${ticketPrice.price }</td>
+	  		<td>${ticketPrice.flightId }</td>
+	  		<td>${ticketPrice.discountId }</td>
+	  		<td>${ticketPrice.dprice }</td>
+	  		<td>${ticketPrice.createTime }</td>
 	        <td>
-		        <a href="${contextPath}/ticketprice/detail?id=${ticketprice.id }&page=${pager.page }" class="tablelink">查看</a>     
-		        <a href="${contextPath}/ticketprice/intoUpdate?id=${ticketprice.id }&page=${pager.page }" class="tablelink">修改</a>
-		        <a href="${contextPath}/ticketprice/delete?id=${ticketprice.id }&page=${pager.page }" onclick="javascript:if(!confirm('确定删除该记录？')) return false;" class="tablelink">删除</a>
+		        <a href="${contextPath}/ticketPrice/detail?id=${ticketPrice.id }&page=${pager.page }" class="tablelink">查看</a>     
+		        <a href="${contextPath}/ticketPrice/intoUpdate?id=${ticketPrice.id }&page=${pager.page }" class="tablelink">修改</a>
+		        <a href="${contextPath}/ticketPrice/delete?id=${ticketPrice.id }&page=${pager.page }" onclick="javascript:if(!confirm('确定删除该记录？')) return false;" class="tablelink">删除</a>
 	        </td>
 	        </tr> 
         </c:forEach>
@@ -154,13 +152,13 @@ $(document).ready(function(){
 			pageNum = document.getElementById('page_input').value;
 		}
 		if(pageNum > 0 && pageNum <= '${pager.pageSum }') {
-			location.href = "${contextPath}/ticketprice/index?page="+pageNum;
+			location.href = "${contextPath}/ticketPrice/index?page="+pageNum;
 		}
 	}
 	//每页显示条目
 	function setLimit(limit) {
 		if(limit > 0 && limit <= 1000) {
-			location.href = "${contextPath}/ticketprice/index?limit="+limit;
+			location.href = "${contextPath}/ticketPrice/index?limit="+limit;
 		}
 	}
 	

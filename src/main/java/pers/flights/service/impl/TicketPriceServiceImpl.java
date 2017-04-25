@@ -1,11 +1,13 @@
 package pers.flights.service.impl;
 
+import java.util.Date;
 import java.util.List;
 import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import pers.flights.util.Attribute;
+import pers.flights.util.DateTimeUtil;
 import pers.flights.util.Pager;
 import pers.flights.model.TicketPrice;
 import pers.flights.mapper.TicketPriceMapper;
@@ -23,6 +25,7 @@ public class TicketPriceServiceImpl implements TicketPriceService {
 	
 	@Transactional
 	public int insert(TicketPrice ticketPrice) {
+		ticketPrice.setCreateTime(DateTimeUtil.toString(new Date()));
 		return ticketPriceMapper.insert(ticketPrice);
 	}
 	

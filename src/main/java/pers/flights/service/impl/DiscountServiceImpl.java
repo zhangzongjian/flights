@@ -1,11 +1,13 @@
 package pers.flights.service.impl;
 
+import java.util.Date;
 import java.util.List;
 import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import pers.flights.util.Attribute;
+import pers.flights.util.DateTimeUtil;
 import pers.flights.util.Pager;
 import pers.flights.model.Discount;
 import pers.flights.mapper.DiscountMapper;
@@ -23,6 +25,7 @@ public class DiscountServiceImpl implements DiscountService {
 	
 	@Transactional
 	public int insert(Discount discount) {
+		discount.setCreateTime(DateTimeUtil.toString(new Date()));
 		return discountMapper.insert(discount);
 	}
 	
