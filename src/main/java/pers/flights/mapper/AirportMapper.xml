@@ -28,7 +28,7 @@
     select `id` ,`airportName` ,`airportCity` ,`createTime`   from airport limit #{offset},#{limit}	
   </select>
   
-  <insert id="insert" parameterType="pers.flights.model.Airport" useGeneratedKeys="true" >
+  <insert id="insert" parameterType="pers.flights.model.Airport" useGeneratedKeys="true" keyProperty="id">
     insert into airport (`airportName` ,`airportCity` ,`createTime` ) values (#{airportName},#{airportCity},#{createTime})
   </insert>
   

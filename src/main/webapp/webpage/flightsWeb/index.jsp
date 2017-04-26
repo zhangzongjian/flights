@@ -8,6 +8,7 @@
 <head>
 <title>机票预定网站</title>
 <meta charset="utf-8">
+<link rel="stylesheet" href="${contextPath }/css/nav.css">
 <link rel="stylesheet" href="${contextPath }/css/reset.css" type="text/css" media="all">
 <link rel="stylesheet" href="${contextPath }/css/layout.css" type="text/css" media="all">
 <link rel="stylesheet" href="${contextPath }/css/style1.css" type="text/css" media="all">
@@ -47,15 +48,54 @@
 				</ul>
 			</nav>
 		</div>
-		<nav>
-			<ul id="menu">
-				<li id="menu_active"><a href="${contextPath }/index.html"><span><span>dingpiao</span></span></a></li>
-				<li><a href="${contextPath }/Offers.html"><span><span>hangbandongtai</span></span></a></li>
-				<li><a href="${contextPath }/Book.html"><span><span>gerenzhongxin</span></span></a></li>
-				<li class="end"><a href="${contextPath }/Contacts.html"><span><span>lianxiwomen</span></span></a></li>
-			</ul>
-		</nav>
-	</header><div class="ic">More Website Templates</div>
+		
+		<div class="wrapper">
+		<ul class="nav-menu clearfix unstyled">
+			<li>
+				<a href="/" class="three-d active">
+					首页
+					<span class="three-d-box"><span class="front">首页</span><span class="back">首页</span></span>
+				</a>
+			</li>
+			<li>
+				<a href="#" class="three-d">
+					航班动态
+					<span class="three-d-box"><span class="front">航班动态</span><span class="back">航班动态</span></span>
+				</a>
+			</li>
+			<li>
+				<a href="javascript:void(0);" class="three-d">
+					个人中心
+					<span class="three-d-box"><span class="front">个人中心</span><span class="back">个人中心</span></span>
+				</a>
+				<ul class="clearfix unstyled drop-menu">
+					<li>
+						<a href="#" class="three-d">
+							登录/注册
+							<span class="three-d-box"><span class="front">登录/注册</span><span class="back">登录/注册</span></span>
+						</a>
+					</li>
+					<li><a href="#" class="three-d">
+							我的资料
+							<span class="three-d-box"><span class="front">我的资料</span><span class="back">我的资料</span></span>
+						</a>
+					</li>
+					<li><a href="#" class="three-d">
+							我的订单
+							<span class="three-d-box"><span class="front">我的订单</span><span class="back">我的订单</span></span>
+						</a>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<a href="${contextPath }/contact" class="three-d">
+					联系我们
+					<span class="three-d-box"><span class="front">联系我们</span><span class="back">联系我们</span></span>
+				</a>
+			</li>
+		</ul>
+	</div>
+	</header>
 <!-- / header -->
 <!--content -->
 	<section id="content">

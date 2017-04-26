@@ -2,4 +2,6 @@ eclipse.preferences.version=1
 encoding//src/main/java=UTF-8
 encoding//src/main/webapp/webpage/common/404.jsp=UTF-8
 encoding//src/main/webapp/webpage/common/500.jsp=UTF-8
+encoding//src/main/webapp/webpage/flightsWeb/contact.jsp=UTF-8
+encoding//src/main/webapp/webpage/flightsWeb/flightCX.jsp=UTF-8
 encoding//src/main/webapp/webpage/flightsWeb/index.jsp=UTF-8

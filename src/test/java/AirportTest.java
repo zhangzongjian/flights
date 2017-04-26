@@ -42,14 +42,10 @@ public class AirportTest {
 	public static void main(String[] args) {
 		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-common.xml");
 		AirportMapper mapper = (AirportMapper) applicationContext.getBean("airportMapper");
-		List<Attribute> list = new ArrayList<Attribute>();
-		list.add(new Attribute("createTime","709823"));
-		list.add(new Attribute("airportName","name3"));
-		
-		List<String> list1 = new ArrayList<String>();
-		list1.add("o");
-		list1.add("8");
-		for(Airport a : mapper.searchByKeywords(list1))
-			System.out.println(a);
+		Airport a = new Airport();
+		a.setAirportCity("北京");
+		a.setAirportName("北京普通机场123131");
+		System.out.println(mapper.insert(a));
+		System.out.println(a.getId());
 	}
 }
