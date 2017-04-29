@@ -14,38 +14,26 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import pers.flights.mapper.FlightMapper;
-import pers.flights.model.Flight;
-import pers.flights.service.FlightService;
+import pers.flights.mapper.CommonMapper;
 import pers.flights.util.Attribute;
-import pers.flights.util.DateTimeUtil;
 import pers.flights.util.Pager;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:spring-common.xml"})
-public class FlightTest {
+public class CommonTest {
 	
 	@Autowired
-	private FlightMapper mapper;
-	
-	@Autowired
-	private FlightService service;
+	private CommonMapper mapper;
 	
 	@Test
 	public void test() {
 		System.out.println(mapper);
-		System.out.println(service);
-		Pager pager = new Pager();
-		pager = service.search(pager);
-		System.out.println(pager.getDatas());
 	}
 	
 	public static void main(String[] args) {
 		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-common.xml");
-		FlightMapper mapper = (FlightMapper) applicationContext.getBean("flightMapper");
-		FlightService service = (FlightService) applicationContext.getBean("flightServiceImpl");
-		List<String> list = new ArrayList<String>();
-		list.add("2017");
-		System.out.println(mapper.searchFlights("广州", "北京", DateTimeUtil.toDate("2017-04-29", "yyyy-MM-dd")));
+		CommonMapper mapper = (CommonMapper) applicationContext.getBean("commonMapper");
+		int i = mapper.insertOrderAndPassenger(24, 30);
+		System.out.println(i);
 	}
 }

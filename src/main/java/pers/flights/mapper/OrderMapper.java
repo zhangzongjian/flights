@@ -1,6 +1,7 @@
 package pers.flights.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
@@ -35,5 +36,12 @@ public interface OrderMapper {
 	List<Order> searchByKeywords(List<String> keywords);
 	
 	long getTotal();
+	
+	/**
+	 * 查询指定id的详细订单（包括其关联表格的数据）
+	 * @param id
+	 * @return
+	 */
+	Map<String, Object> selectDetailById(@Param("id")int id);
 	
 }

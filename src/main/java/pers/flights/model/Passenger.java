@@ -61,5 +61,13 @@ public class Passenger {
 	public void setCustomerId(Integer customerId) {
 		 this.customerId = customerId;
 	}
+
+	@Override
+	public String toString() {
+		return "Passenger [id=" + id + ", passengerName=" + passengerName
+				+ ", passengerCard=" + passengerCard + ", passengerType="
+				+ passengerType + ", mobilePhone=" + mobilePhone
+				+ ", customerId=" + customerId + "]";
+	}
 	
 }

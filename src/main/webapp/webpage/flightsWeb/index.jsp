@@ -52,13 +52,13 @@
 		<div class="wrapper">
 		<ul class="nav-menu clearfix unstyled">
 			<li>
-				<a href="/" class="three-d active">
+				<a href="${contextPath }/" class="three-d active">
 					首页
 					<span class="three-d-box"><span class="front">首页</span><span class="back">首页</span></span>
 				</a>
 			</li>
 			<li>
-				<a href="#" class="three-d">
+				<a href="${contextPath }/flightDT" class="three-d">
 					航班动态
 					<span class="three-d-box"><span class="front">航班动态</span><span class="back">航班动态</span></span>
 				</a>
@@ -75,12 +75,12 @@
 							<span class="three-d-box"><span class="front">登录/注册</span><span class="back">登录/注册</span></span>
 						</a>
 					</li>
-					<li><a href="#" class="three-d">
+					<li><a href="${contextPath }/myInfo" class="three-d">
 							我的资料
 							<span class="three-d-box"><span class="front">我的资料</span><span class="back">我的资料</span></span>
 						</a>
 					</li>
-					<li><a href="#" class="three-d">
+					<li><a href="${contextPath }/myOrder" class="three-d">
 							我的订单
 							<span class="three-d-box"><span class="front">我的订单</span><span class="back">我的订单</span></span>
 						</a>
@@ -119,28 +119,28 @@
 											</div>
 											<div class="row">
 												<span class="left">出发城市</span>
-												<input type="text" class="input" name="startCity">
+												<input type="text" class="input" name="startCity" value="广州" onblur="if(this.value=='') this.value='广州'" onFocus="if(this.value =='广州' ) this.value=''">
 											</div>
 											<div class="row">
 												<span class="left">到达城市</span>
-												<input type="text" class="input" name="arrivalCity">
+												<input type="text" class="input" name="arrivalCity" value="北京" onblur="if(this.value=='') this.value='北京'" onFocus="if(this.value =='北京' ) this.value=''">
 											</div>
 											<div class="wrapper">
 												<div class="col1">
 													<div class="row">
 														<span class="left">出发日期</span>
-														<input name="startTime" type="text" class="input1" value="03.05.2011"  onblur="if(this.value=='') this.value='03.05.2011'" onFocus="if(this.value =='03.05.2011' ) this.value=''">
+														<input name="startTime" type="text" class="input1" value="2017-04-27"  onblur="if(this.value=='') this.value='2017-04-27'" onFocus="if(this.value =='2017-04-27' ) this.value=''">
 													</div>
 													<div class="row">
 														<span class="left">返回日期</span>
-														<input name="returnTime" type="text" class="input1" value="10.05.2011"  onblur="if(this.value=='') this.value='10.05.2011'" onFocus="if(this.value =='10.05.2011' ) this.value=''">
+														<input name="returnTime" type="text" class="input1" value="2017-04-29"  onblur="if(this.value=='') this.value='2017-04-29'" onFocus="if(this.value =='2017-04-29' ) this.value=''">
 													</div>
 												</div>
 												<input type="text" class="input1 marg_top1" value="+/- 0 Days"  onblur="if(this.value=='') this.value='+/- 0 Days'" onFocus="if(this.value =='+/- 0 Days' ) this.value=''">
 											</div>
 											<div class="row">
 												<span class="left">乘客数量</span>
-												<input name="count" type="text" class="input2" value="2"  onblur="if(this.value=='') this.value='2'" onFocus="if(this.value =='2' ) this.value=''">
+												<input name="count" type="text" class="input2" value="1"  onblur="if(this.value=='') this.value='1'" onFocus="if(this.value =='1' ) this.value=''">
 											</div>
 											<div class="wrapper">
 												<span class="right relative"><a href="javascript:void(0);" class="button1" onClick="document.getElementById('form_1').submit()"><strong>搜索</strong></a></span>

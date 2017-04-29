@@ -30,7 +30,7 @@
     select `id` ,`passengerName` ,`passengerCard` ,`passengerType` ,`mobilePhone` ,`customerId`   from passenger limit #{offset},#{limit}	
   </select>
   
-  <insert id="insert" parameterType="pers.flights.model.Passenger" useGeneratedKeys="true" >
+  <insert id="insert" parameterType="pers.flights.model.Passenger" useGeneratedKeys="true" keyProperty="id">
     insert into passenger (`passengerName` ,`passengerCard` ,`passengerType` ,`mobilePhone` ,`customerId` ) values (#{passengerName},#{passengerCard},#{passengerType},#{mobilePhone},#{customerId})
   </insert>
   

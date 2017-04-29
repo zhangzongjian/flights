@@ -34,8 +34,8 @@
     select `id` ,`orderNo` ,`flightId` ,`ticketPriceId` ,`orderTime` ,`person` ,`phone` ,`orderStatus` ,`customerId` ,`createTime`   from `order` limit #{offset},#{limit}	
   </select>
   
-  <insert id="insert" parameterType="pers.flights.model.Order" useGeneratedKeys="true" >
-    insert into order (`orderNo` ,`flightId` ,`ticketPriceId` ,`orderTime` ,`person` ,`phone` ,`orderStatus` ,`customerId` ,`createTime` ) values (#{orderNo},#{flightId},#{ticketPriceId},#{orderTime},#{person},#{phone},#{orderStatus},#{customerId},#{createTime})
+  <insert id="insert" parameterType="pers.flights.model.Order" useGeneratedKeys="true"  keyProperty="id">
+    insert into `order` (`orderNo` ,`flightId` ,`ticketPriceId` ,`orderTime` ,`person` ,`phone` ,`orderStatus` ,`customerId` ,`createTime` ) values (#{orderNo},#{flightId},#{ticketPriceId},#{orderTime},#{person},#{phone},#{orderStatus},#{customerId},#{createTime})
   </insert>
   
   <delete id="deleteByPrimaryKey">
@@ -47,7 +47,7 @@
   </select>
   
   <update id="updateByPrimaryKey" parameterType="pers.flights.model.Order" >
-    update order set `orderNo` = #{orderNo},`flightId` = #{flightId},`ticketPriceId` = #{ticketPriceId},`orderTime` = #{orderTime},`person` = #{person},`phone` = #{phone},`orderStatus` = #{orderStatus},`customerId` = #{customerId},`createTime` = #{createTime} where   `id` = #{id}
+    update `order` set `orderNo` = #{orderNo},`flightId` = #{flightId},`ticketPriceId` = #{ticketPriceId},`orderTime` = #{orderTime},`person` = #{person},`phone` = #{phone},`orderStatus` = #{orderStatus},`customerId` = #{customerId},`createTime` = #{createTime} where   `id` = #{id}
   </update>
   
 </mapper>

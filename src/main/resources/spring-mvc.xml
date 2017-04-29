@@ -47,5 +47,8 @@
 	<mvc:view-controller view-name="webpage/main/top" path="top"/>   
 	<mvc:view-controller view-name="webpage/main/index" path="index"/>   
 	<mvc:view-controller view-name="webpage/flightsWeb/index" path="/"/>   
+	<mvc:view-controller view-name="webpage/flightsWeb/flightDT" path="flightDT"/>   
+	<mvc:view-controller view-name="webpage/flightsWeb/myInfo" path="myInfo"/>   
+	<mvc:view-controller view-name="webpage/flightsWeb/myOrder" path="myOrder"/>   
 	<mvc:view-controller view-name="webpage/flightsWeb/contact" path="contact"/>   
 </beans>

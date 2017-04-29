@@ -1,5 +1,7 @@
 package pers.flights.model;
 
+import java.util.Date;
+
 public class Order {
 	
 	private Integer id;//编号
@@ -10,7 +12,7 @@ public class Order {
 	  
 	private Integer ticketPriceId;//票价编号
 	  
-	private String orderTime;//预定时间
+	private Date orderTime;//预定时间
 	  
 	private String person;//联系人
 	  
@@ -20,7 +22,7 @@ public class Order {
 	  
 	private Integer customerId;//客户编号
 	  
-	private String createTime;//创建时间
+	private Date createTime;//创建时间
 	  
 	public Integer getId() {
 		 return id;
@@ -54,11 +56,11 @@ public class Order {
 		 this.ticketPriceId = ticketPriceId;
 	}
 	
-	public String getOrderTime() {
+	public Date getOrderTime() {
 		 return orderTime;
 	}
 	
-	public void setOrderTime(String orderTime) {
+	public void setOrderTime(Date orderTime) {
 		 this.orderTime = orderTime;
 	}
 	
@@ -94,12 +96,22 @@ public class Order {
 		 this.customerId = customerId;
 	}
 	
-	public String getCreateTime() {
+	public Date getCreateTime() {
 		 return createTime;
 	}
 	
-	public void setCreateTime(String createTime) {
+	public void setCreateTime(Date createTime) {
 		 this.createTime = createTime;
+	}
+
+	@Override
+	public String toString() {
+		return "Order [id=" + id + ", orderNo=" + orderNo + ", flightId="
+				+ flightId + ", ticketPriceId=" + ticketPriceId
+				+ ", orderTime=" + orderTime + ", person=" + person
+				+ ", phone=" + phone + ", orderStatus=" + orderStatus
+				+ ", customerId=" + customerId + ", createTime=" + createTime
+				+ "]";
 	}
 	
 }

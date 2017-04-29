@@ -1,6 +1,7 @@
 package pers.flights.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
@@ -19,6 +20,8 @@ public interface TicketPriceMapper {
     int updateByPrimaryKey(TicketPrice ticketPrice);
 
 	List<TicketPrice> search(Pager pager);
+	
+	List<Map<String, Object>> searchByFlightid(int flightid);
 	
 	/**
 	 * 按属性查询

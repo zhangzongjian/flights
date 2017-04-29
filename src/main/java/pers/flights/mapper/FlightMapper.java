@@ -1,5 +1,6 @@
 package pers.flights.mapper;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -42,6 +43,6 @@ public interface FlightMapper {
 	 * @return
 	 */
 	//调用存储过程，@Param不能少。。
-	List<Map<String, Object>> searchFlights(@Param("startCity")String startCity, @Param("arrivalCity")String arrivalCity, @Param("startTime")String startTime);
+	List<Map<String, Object>> searchFlights(@Param("startCity")String startCity, @Param("arrivalCity")String arrivalCity, @Param("startTime")Date startTime);
 		
 }

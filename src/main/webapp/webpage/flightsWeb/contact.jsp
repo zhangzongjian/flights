@@ -53,7 +53,7 @@
 		<div class="wrapper">
 		<ul class="nav-menu clearfix unstyled">
 			<li>
-				<a href="/" class="three-d">
+				<a href="${contextPath }/" class="three-d">
 					首页
 					<span class="three-d-box"><span class="front">首页</span><span class="back">首页</span></span>
 				</a>

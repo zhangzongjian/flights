@@ -48,4 +48,8 @@
     update ticketPrice set `classType` = #{classType},`classAmount` = #{classAmount},`price` = #{price},`flightId` = #{flightId},`discountId` = #{discountId},`dprice` = #{dprice},`createTime` = #{createTime} where   `id` = #{id}
   </update>
   
+  <select id="searchByFlightid" resultType="map">
+  	select * from ticketPrice_detail where flightid = #{flightid};
+  </select>
+  
 </mapper>

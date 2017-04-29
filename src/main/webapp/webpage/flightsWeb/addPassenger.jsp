@@ -8,13 +8,16 @@
  <head> 
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
   <title>添加乘客</title> 
-  <link href="http://webresource.c-ctrip.com/ResFlightOnline/R2/css/book.css" type="text/css" rel="stylesheet" />
+  <link href="${contextPath }/css/book.css" type="text/css" rel="stylesheet" />
 
  </head> 
+ 
  <body > 
-
+<script>
+ 	//window.onload = function() {alert('${ticketPriceId}');};
+</script>
 <div class="main" id="J_main" style="">
-
+<form action="${contextPath }/saveOrder">
 <div id="J_step1" style="display: block;">
    <div id="J_bookAttention"> 
    </div>
@@ -28,20 +31,12 @@
      <div id="J_commonListCtx" data-mod="commonList">
       <div class="passenger-select" bind-xclass="{hide:isHide}">
        
-       <!-- 常用乘客 -->
-       <div id="J_cpList" bind-xclass="{hide:commonListModel &amp;&amp; commonListModel.showList &amp;&amp; commonListModel.showList.length==0}" class="passengers-list">
-        <ul class="passengers c-repeat_10" style="display: block;">
-         <li><i class="ico-frequent-flyer  hide "></i> <a title="   " href="javascript:;" ubt="FindPassenger_Check" class="passenger  current  " c-bind-click="onClickPassenger(44938099)">李四<i class="ico-pass-selected"></i></a></li>
-         <li><i class="ico-frequent-flyer  hide "></i> <a title="   " href="javascript:;" ubt="FindPassenger_Check" class="passenger  " c-bind-click="onClickPassenger(44938098)">张三<i class="ico-pass-selected"></i></a></li>
-        </ul>
-       </div>
-       
       </div>
      </div>
      <div id="J_passengerList" style="transition: height 366ms; height: 215px;">
       <div id="passengerMain" class="c-slidedown_14"> 
       <!-- 乘客1 -->
-       <div class="basic-card J_passenger" style="width: 900px">
+       <div class="basic-card J_passenger" style="width: 460px">
         <div class="passenger-info">
          <div class="form">
           <div class="form-line passenger-identity">
@@ -54,8 +49,7 @@
             </div>
            </div>&nbsp;
            <div bind-xclass="{'form-error':passengerList[0].showErrors.cardNo||(passengerList[0].idCardType==1&amp;&amp;passengerList[0].showErrors.birthday)}" class="form-item">
-            <input id="p_card_no_0" bind-xclass="{'text-transform-uppercase':passengerList[0].isCalBirthdayCardType() }" c-formatter-on="passengerList[0].isCalBirthdayCardType() " c-formatter-options="{segments: [6, 8, 4] ,separator: ' ',keepSeparators: false}" class="form-input J_input text-transform-uppercase c-input_4 form-input-hasvalue c-formatter_3" type="text" maxlength="18" bind-value="&lt;&lt;passengerList[0].idCardNo&gt;&gt;" data-cformatter="{&quot;segments&quot;:[6,8,4],&quot;separator&quot;:&quot; &quot;,&quot;keepSeparators&quot;:false}" c-bind-blur="onBlurIDCardNo(passengerList[0],0)" />
-            <label for="p_card_no_0" class="form-input-hint">姓名，请与登机证件姓名保持一致</label>
+            <input id="p_card_no_0" name="passengerName" class="form-input J_input text-transform-uppercase c-input_4 form-input-hasvalue c-formatter_3" type="text" maxlength="18" placeholder="姓名，请与登机证件姓名保持一致"/>
            </div>
           </div>
           <div class="form-line passenger-identity">
@@ -68,8 +62,7 @@
             </div>
            </div>&nbsp;
            <div bind-xclass="{'form-error':passengerList[0].showErrors.cardNo||(passengerList[0].idCardType==1&amp;&amp;passengerList[0].showErrors.birthday)}" class="form-item">
-            <input id="p_card_no_0" bind-xclass="{'text-transform-uppercase':passengerList[0].isCalBirthdayCardType() }" c-formatter-on="passengerList[0].isCalBirthdayCardType() " c-formatter-options="{segments: [6, 8, 4] ,separator: ' ',keepSeparators: false}" class="form-input J_input text-transform-uppercase c-input_4 form-input-hasvalue c-formatter_3" type="text" maxlength="18" bind-value="&lt;&lt;passengerList[0].idCardNo&gt;&gt;" data-cformatter="{&quot;segments&quot;:[6,8,4],&quot;separator&quot;:&quot; &quot;,&quot;keepSeparators&quot;:false}" c-bind-blur="onBlurIDCardNo(passengerList[0],0)" />
-            <label for="p_card_no_0" class="form-input-hint">登机证件号码</label>
+            <input id="p_card_no_0" name="passengerCard" class="form-input J_input text-transform-uppercase c-input_4 form-input-hasvalue c-formatter_3" type="text" maxlength="18" placeholder="登机证件号码" />
            </div>
           </div>
           <div class="form-line passenger-identity">
@@ -82,75 +75,77 @@
             </div>
            </div>&nbsp;
            <div bind-xclass="{'form-error':passengerList[0].showErrors.cardNo||(passengerList[0].idCardType==1&amp;&amp;passengerList[0].showErrors.birthday)}" class="form-item">
-            <input id="p_card_no_0" bind-xclass="{'text-transform-uppercase':passengerList[0].isCalBirthdayCardType() }" c-formatter-on="passengerList[0].isCalBirthdayCardType() " c-formatter-options="{segments: [6, 8, 4] ,separator: ' ',keepSeparators: false}" class="form-input J_input text-transform-uppercase c-input_4 form-input-hasvalue c-formatter_3" type="text" maxlength="18" bind-value="&lt;&lt;passengerList[0].idCardNo&gt;&gt;" data-cformatter="{&quot;segments&quot;:[6,8,4],&quot;separator&quot;:&quot; &quot;,&quot;keepSeparators&quot;:false}" c-bind-blur="onBlurIDCardNo(passengerList[0],0)" />
-            <label for="p_card_no_0" class="form-input-hint">乘机人手机号码，用于接收航变信息，请准确填写</label>
+            <input id="p_card_no_0" name="mobilePhone" class="form-input J_input text-transform-uppercase c-input_4 form-input-hasvalue c-formatter_3" type="text" maxlength="18" placeholder="乘机人手机号码，用于接收航变信息" />
            </div>
           </div> 
          </div>
         </div>
         
-        
-        <!------>
-								<div class="extra-box">
-									<div class="flight-info " style="width:400px">
-										<div class="flight-city">
-											<div class="flt-date">
-												05-08 <span class="week">周一</span>
-											</div>
-											<div class="flt-depart">广州</div>
-											&nbsp;
-											<div class="flt-arrow">
-												<i class="ico-arrow"></i>
-											</div>
-											&nbsp;
-											<div class="flt-arrive">大连</div>
-										</div>
-										<div class="flight-tit">
-											<span class="flt-airline"><img alt="" height="16"
-												width="16"
-												src="http://pic.c-ctrip.com/flight_intl/airline_logo/32/aq.png" />
-												九元航空 AQ1037 </span> <span class="plane-type">波音 737-800</span> <span
-												class="flt-seat">经济舱</span>
-										</div>
-										<div class="flight-detail">
-											<div class="flt-depart">
-												<span class="time">06:15</span> <span class="airport">白云国际机场</span>
-											</div>
-											<div class="flt-arrow flt-transfer">
-												<div class="cost-time">
-													<i class="ico-clock"></i>4h55m
-												</div>
-												<div class="timeline">
-													<i class="dot"></i> <i class="dot dot-end"></i>
-												</div>
-											</div>
-											<div class="flt-arrive">
-												<span class="time">11:10</span>
-												<span class="airport">周水子国际机场</span>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!----->
 								
         <div class="passenger-num">
          <i class="ico-num-1">1</i>
         </div>
        </div>
-       <!-- 乘客1 end-->
        
-      </div>
-     </div>
-    </div>
-   </div>
-   
-   <div id="J_contact">
+       <div class="basic-card J_passenger" style="width: 460px;display:;">
+        <div class="passenger-info">
+         <div class="form">
+          <div class="form-line passenger-identity">
+           <div class="form-item">
+            <div class="form-select c-dropdown_2" c-dropdown-toggle="">
+             <div class="form-select-txt">
+              <span c-dropdown-label="" bind-text="&lt;&lt;idCardTypes[passengerList[0].idCardType]&gt;&gt;">姓名</span>
+              <i class="ico-caret-down"></i>
+             </div>
+            </div>
+           </div>&nbsp;
+           <div bind-xclass="{'form-error':passengerList[0].showErrors.cardNo||(passengerList[0].idCardType==1&amp;&amp;passengerList[0].showErrors.birthday)}" class="form-item">
+            <input id="p_card_no_0" name="passengerName" class="form-input J_input text-transform-uppercase c-input_4 form-input-hasvalue c-formatter_3" type="text" maxlength="18" placeholder="姓名，请与登机证件姓名保持一致"/>
+           </div>
+          </div>
+          <div class="form-line passenger-identity">
+           <div class="form-item">
+            <div class="form-select c-dropdown_2" c-dropdown-toggle="">
+             <div class="form-select-txt">
+              <span c-dropdown-label="" bind-text="&lt;&lt;idCardTypes[passengerList[0].idCardType]&gt;&gt;">身份证</span>
+              <i class="ico-caret-down"></i>
+             </div>
+            </div>
+           </div>&nbsp;
+           <div bind-xclass="{'form-error':passengerList[0].showErrors.cardNo||(passengerList[0].idCardType==1&amp;&amp;passengerList[0].showErrors.birthday)}" class="form-item">
+            <input id="p_card_no_0" name="passengerCard" class="form-input J_input text-transform-uppercase c-input_4 form-input-hasvalue c-formatter_3" type="text" maxlength="18" placeholder="登机证件号码" />
+           </div>
+          </div>
+          <div class="form-line passenger-identity">
+           <div class="form-item">
+            <div class="form-select c-dropdown_2" c-dropdown-toggle="">
+             <div class="form-select-txt">
+              <span c-dropdown-label="" bind-text="&lt;&lt;idCardTypes[passengerList[0].idCardType]&gt;&gt;">手机号码</span>
+              <i class="ico-caret-down"></i>
+             </div>
+            </div>
+           </div>&nbsp;
+           <div bind-xclass="{'form-error':passengerList[0].showErrors.cardNo||(passengerList[0].idCardType==1&amp;&amp;passengerList[0].showErrors.birthday)}" class="form-item">
+            <input id="p_card_no_0" name="mobilePhone" class="form-input J_input text-transform-uppercase c-input_4 form-input-hasvalue c-formatter_3" type="text" maxlength="18" placeholder="乘机人手机号码，用于接收航变信息" />
+           </div>
+          </div> 
+         </div>
+        </div>
+        
+        <div class="passenger-num">
+         <i class="ico-num-2">2</i>
+        </div>
+        
+        </div>
+				
+<div class="basic-card J_passenger" style="width: 460px;height: 133px">
+   <div id="J_contact" >
     <div class="contact-box">
      <div class="box-tit">
       <h2>联系人</h2>
      </div>
-     <div class="basic-card">
-      <div class="form-line">
+     <div class="basic-card" style="width:440px">
+      <div class="form-line" style="margin-left:22px">
        <div class="form-item contact-phone">
         <div class="form-select c-dropdown_2" c-dropdown-toggle="">
          <div class="form-select-txt">
@@ -158,8 +153,7 @@
           <i class="ico-caret-down"></i>
          </div>
         </div>
-        <input id="I_contact_phone" c-formatter-on="useFormat" c-formatter-options="{segments: [3, 4, 4],keepSeparators: true}" type="text" maxlength="11" class="form-input c-formatter_3 c-input_4 form-input-hasvalue" bind-value="&lt;&lt;contact.MobilePhone&gt;&gt;" data-cformatter="{&quot;segments&quot;:[3,4,4],&quot;separator&quot;:&quot; &quot;,&quot;keepSeparators&quot;:true}" c-bind-blur="onBlurContactMobile()" />
-        <label for="I_contact_phone" class="form-input-hint">中文或英文姓名</label>
+        <input id="I_contact_phone" name="person" class="form-input c-formatter_3 c-input_4 form-input-hasvalue" placeholder="订票人" />
        </div>
        <div class="form-item contact-phone">
         <div class="form-select c-dropdown_2" c-dropdown-toggle="">
@@ -168,18 +162,27 @@
           <i class="ico-caret-down"></i>
          </div>
         </div>
-        <input id="I_contact_phone" c-formatter-on="useFormat" c-formatter-options="{segments: [3, 4, 4],keepSeparators: true}" type="text" maxlength="11" class="form-input c-formatter_3 c-input_4 form-input-hasvalue" bind-value="&lt;&lt;contact.MobilePhone&gt;&gt;" data-cformatter="{&quot;segments&quot;:[3,4,4],&quot;separator&quot;:&quot; &quot;,&quot;keepSeparators&quot;:true}" c-bind-blur="onBlurContactMobile()" />
-        <label for="I_contact_phone" class="form-input-hint">手机号码，接收航变信息</label>
+        <input id="I_contact_phone" name="phone" type="text" maxlength="11" class="form-input c-formatter_3 c-input_4 form-input-hasvalue" placeholder="订票人手机号码" />
        </div>
       </div>
      </div>
     </div>
    </div>
-   
-   <div class="action-box">
-    <a ubt="next" data-ui-action="main_createOrder" id="J_saveOrder" href="javascript:void(0);" class="button" content="下一步">下一步</a>
+   </div>		
+   <div class="action-box" style="width:480px">
+    <a ubt="next" id="J_saveOrder" href="javascript:document.forms[0].submit();" class="button" content="提交订单">提交订单</a>
    </div>
+								
+       <!-- 乘客1 end-->
+       
+      </div>
+     </div>
+    </div>
+   </div>
+   
+   
   </div>
+  </form>
 </div>
 
  </body>

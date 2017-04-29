@@ -1,4 +1,7 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <% 
    String contextPath = request.getContextPath(); 
    request.setAttribute("contextPath", contextPath);
@@ -32,29 +35,22 @@
 		</script>
 
 		<!-- 重新搜索表单 start -->
-		<form id="reSearchForm">
+		<form id="reSearchForm" action="${contextPath }/searchFlights">
 			<div id="search_form" class="search_form clearfix">
 				<div class="flight_way">
 					<div class="search_form_select" id="FlightSearchType">
-						<a href="javascript:void(0);" class="select_echo" i="txt"
-							data-ubt="FlightSearchType">单程<b i="ico"
-							class="arr_gray_sm arr_down"></b>
-						</a>
-						<ul class="search_form_option" style="display:none;" i="menu">
-							<li class="option_item" data-val="S"><label>单程</label>
-							</li>
-							<li class="option_item" data-val="S"><label>双程</label>
-							</li>
-						</ul>
-						<input type="hidden" name="FlightSearchType" value="S" />
+						<select name="flightType" disabled="disabled">
+							<option value="1">单程</option>
+							<option value="2">双程</option>
+						</select>
 					</div>
 				</div>
 				<div class="flight_attribute" id="flightTypeList">
 					<div class="">
 						<div class="first_line">
 							<div class="type_item">
-								<span class="ico_search_type ico_search_dcity"></span> <input
-									type="text" id="DCityName1" name="startCity"
+								<span class="ico_search_type ico_search_dcity"></span> <input style="width:130px"
+									type="text" id="DCityName1" name="startCity" value="广州"
 									mod="address|notice" data-ubt="DCityName1" mod_address_tpl="on"
 									mod_address_reference="DCity1" placeholder="出发城市"
 									mod_address_source="flight_new" autocomplete="on" />
@@ -64,79 +60,41 @@
 									data-ubt="ChangeCity"></a>
 							</div>
 							<div class="type_item">
-								<span class="ico_search_type ico_search_acity"></span> <input
-									type="text" id="ACityName1" name="arrivalCity"
+								<span class="ico_search_type ico_search_acity"></span> <input style="width:130px"
+									type="text" id="ACityName1" name="arrivalCity" value="北京"
 									data-ubt="ACityName1" mod_address_reference="ACity1"
 									mod_address_tpl="on" mod="address|notice"
 									mod_address_source="flight_new" placeholder="到达城市"
 									autocomplete="on" />
 							</div>
 							<div class="type_item">
-								<span class="ico_search_type ico_search_ddate"></span> <input
-									id="DDate1" name="DDate1" type="text" value=""
+								<span class="ico_search_type ico_search_ddate"></span> <input style="width:130px"
+									id="DDate1" name="startTime" type="text" value="2017-04-27"
 									mod="calendar|notice" placeholder="出发日期" data-ubt="DDate1"
 									autocomplete="off"
 									style="background-image: url(&quot;http://pic.c-ctrip.com/cquery/pic_fir.png&quot;); background-position: 100% 50%; background-repeat: no-repeat;" />
 							</div>
 							<div class="type_item">
-								<span class="ico_search_type ico_search_adate"></span> <input
-									type="text" id="ReturnDate1" name="ReturnDate1"
+								<span class="ico_search_type ico_search_adate"></span> <input style="width:130px"
+									type="text" id="ReturnDate1" name="returnTime"
 									data-ubt="ReturnDate1" mod="calendar|notice" placeholder="返回日期"
 									autocomplete="off" style="background-image: none;" />
 							</div>
-						</div>
-
-						<!-- 高级搜索 -->
-						<div class="type_number_line" id="advanceOption"
-							style="display:none;">
-							<span id="J_type_number_line_low_text" class="low_text"
-								style="display: none;">&nbsp;&nbsp;</span>
 							<div class="type_item">
-								<div class="search_form_select" id="ClassType">
-									<span class="ico_search_type ico_search_class"></span> <a
-										href="javascript:void(0);" data-ubt="ClassType"
-										class="select_echo" i="txt">乘客数量：1<b i="ico"
-										class="arr_gray_sm arr_down"></b>
-									</a>
-									<ul class="search_form_option" style="display:none;" i="menu">
-										<li class="option_item" data-val=""><label>乘客数量：1</label>
-										</li>
-										<li class="option_item" data-val=""><label>乘客数量：2</label>
-										</li>
-									</ul>
-									<input type="hidden" name="count" value="" />
-								</div>
-							</div>
-							<div id="J_type_item_change" class="type_item_change"></div>
-							<div class="type_item">
-								<div class="search_form_select" id="ClassType">
-									<span class="ico_search_type ico_search_class"></span> <a
-										href="javascript:void(0);" data-ubt="ClassType"
-										class="select_echo" i="txt">经济舱<b i="ico"
-										class="arr_gray_sm arr_down"></b>
-									</a>
-									<ul class="search_form_option" style="display:none;" i="menu">
-										<li class="option_item" data-val=""><label>经济舱</label>
-										</li>
-										<li class="option_item" data-val=""><label>公务舱</label>
-										</li>
-										<li class="option_item" data-val=""><label>头等舱</label>
-										</li>
-									</ul>
-									<input type="hidden" name="ClassType" value="" />
-								</div>
+								<span class="ico_search_type ico_search_class"></span> <input style="width:130px"
+									type="text" id="ACityName1" name="count" value="2"
+									data-ubt="ACityName1" mod_address_reference="ACity1"
+									mod_address_tpl="on" mod="address|notice"
+									mod_address_source="flight_new" placeholder="乘客数量"
+									autocomplete="on" />
 							</div>
 						</div>
-
 
 					</div>
 				</div>
 				<div class="search_tools clearfix" id="searchBtns">
-					<input type="button" data-ubt="ReSearch" value="重新搜索"
-						style="display: " class="btn_search" id="btnReSearch" /> <a
-						rel="nofollow" data-ubt="AdvanceSearch" id="advancedSearch"
-						style="display: " class="arrow_down" href="javascript:void(0);">高级搜索<b></b>
-					</a>
+					<input type="submit" data-ubt="ReSearch" value="重新搜索"
+						 class="btn_search" id="btnReSearch" />
 				</div>
 			</div>
 		</form>
@@ -147,7 +105,7 @@
 		<div class="base_side" id="demo_side" style="float: left;margin-top: 10px">
 			<div class="side-box mb10" id="J_sideFilter">
 				<div class="hd">
-					筛选 <span id="J_flight_num" class="flight-num">（共16条航班信息）</span> <a
+					筛选 <span id="J_flight_num" class="flight-num">（共${fn:length(flightList) }条航班信息）</span> <a
 						style="" href="javascript:;" data-ubt="FilterDelete"
 						id="J_clearAllFilter" class="clear-btn">清除全部</a>
 				</div>
@@ -194,15 +152,15 @@
 					sort="ASC">起飞时间<i class="ico"></i>
 				</a>
 				</li>
-				<li class="atime-sort current"><a id="atime_sort"
+				<li class="atime-sort"><a id="atime_sort"
 					data-ubt="Sort_ArriveTime" ascdesc="到达时间" descdesc="到达时间"
 					original="到达时间" field="atime" cmd="sort" href="javascript:void(0);"
-					sort="ASC">到达时间<i class="ico ico-sort"></i>
+					sort="ASC">到达时间<i class="ico"></i>
 				</a>
 				</li>
 				<li class="ontime-sort"><a href="javascript:void(0);"
-					data-ubt="OnTimeRate" ascdesc="准点率从低到高" descdesc="准点率从高到低"
-					original="准点率" field="punctuality" cmd="sort">准点率<i class="ico"></i>
+					data-ubt="OnTimeRate" ascdesc="舱位类型从低到高" descdesc="舱位类型从高到低"
+					original="舱位类型" field="punctuality" cmd="sort">舱位类型<i class="ico"></i>
 				</a>
 				</li>
 				<li class="sale-sort" style=" "><a href="javascript:void(0);"
@@ -237,53 +195,86 @@
 			
 		</div>
 
-		<div id="J_flightlist2" style="float: right">
-			<div id="flight_AQ1037"
+		<div id="J_flightlist2" style="float: right;width: 944px">
+			<c:forEach items="${flightList }" var="flight">
+			<div id="flight_${flight.flightno }"
 				class="search_box search_box_tag search_box_light " ispromotion=""
 				data-classifyid="__classify_id__0">
+				<form action="${contextPath }/selectFlight">
 				<table class="search_table_header" cellspacing="0" cellpadding="0"
 					border="0">
 					<tbody>
 						<tr class="J_header_row">
 							<td class="logo">
 								<div class="clearfix J_flight_no" data-flight="AQ1037">
-									<strong class="pubFlights_aq flight_logo">九元航空</strong> <span>AQ1037</span>
+									<strong class="pubFlights_aq flight_logo">${flight.companyname }</strong> <span>${flight.flightno }</span>
 								</div>
-								<span class="special_text direction_black_border craft J_craft"
-								code="738">全新737 舒适飞行</span>
+								<span class="special_text direction_black_border craft J_craft">${flight.planetype } ${flight.planeversion }</span>
 							</td>
 							<td class="right">
 								<div>
-									<strong class="time">06:15</strong>
+									<strong class="time">
+										<fmt:formatDate value="${flight.starttime }" pattern="HH:mm"/>
+									</strong>
 								</div>
-								<div>白云国际机场</div>
+								<div>${flight.startAirportName }<br/>
+									<fmt:formatDate value="${flight.starttime }" pattern="yyyy-MM-dd"/>
+								</div>
 							</td>
 							<td class="center">
 								<div class="arrow"></div>
-								<div class="stopover" style="cursor:default">
-									经停 <br /> <span class="low_text">无锡<br />
-									</span>
-								</div>
 							</td>
 							<td class="left">
 								<div>
-									<strong class="time">11:10</strong>
+									<strong class="time">
+										<fmt:formatDate value="${flight.arrivaltime }" pattern="HH:mm"/>
+									</strong>
 								</div>
-								<div>周水子国际机场</div>
+								<div>${flight.arrivalAirportName }<br/>
+									<fmt:formatDate value="${flight.arrivaltime }" pattern="yyyy-MM-dd"/>
+								</div>
 							</td>
-							<td class="service">
+							<td class="service" style="width:50px">
 								<div class="service-item">
-									准点率 <br /> <span class="direction_black_border J_punctuality"
-										data-bit="OnTimeRate">59%</span>
+									<select onchange="changeTicketPrice(this);">
+										<c:forEach items="${flight.ticketPrice }" var="ticketPrice">
+										<option value="${ticketPrice.id },${ticketPrice.discounttype },${ticketPrice.discountrate },${ticketPrice.dprice },${ticketPrice.price }">
+											${ticketPrice.classtype } ${ticketPrice.price }&yen;
+										</option>
+										</c:forEach>
+									</select>
+									<input type="hidden" name="ticketPriceId" value="${flight.ticketPrice[0].id }"/>
 								</div>
 							</td>
-							<td class="label"></td>
+							<td class="label">
+								<c:if test="${flight.ticketPrice[0].discounttype != null }">
+								<span class="ico_whole_aw" >
+								   ${flight.ticketPrice[0].discounttype }
+								</span>
+								</c:if>
+								<c:if test="${flight.ticketPrice[0].discounttype == null && flight.ticketPrice[0].dprice != null}">
+								<span class="ico_whole_aw">
+								<s>${flight.ticketPrice[0].price }&yen;</s>
+								</span>
+								</c:if>
+							</td>
 							<td class="price lowest_price "><span class="J_base_price"><span
-									class="base_price02"><dfn>&yen;</dfn>659</span><i>起</i><br />
+									class="base_price02">
+									<c:if test="${flight.ticketPrice[0].discounttype == null && flight.ticketPrice[0].dprice != null}">
+										${flight.ticketPrice[0].dprice }
+									</c:if>
+									<c:if test="${flight.ticketPrice[0].discounttype == null && flight.ticketPrice[0].dprice == null}">
+										${flight.ticketPrice[0].price }
+									</c:if>
+									<c:if test="${flight.ticketPrice[0].discounttype != null }">
+										${flight.ticketPrice[0].price * flight.ticketPrice[0].discountrate}
+									</c:if>
+									<dfn>&yen;</dfn>
+									</span><br />
 							</span>
 							</td>
 							<td class="book middle">
-								<button class="J_expandBtn btn_book arrow_down"
+								<button class="J_expandBtn btn_book"
 									data-ubt="SubClass_Open">
 									订票<b></b>
 								</button></td>
@@ -291,9 +282,9 @@
 						</tr>
 					</tbody>
 				</table>
-
+				</form>
 			</div>
-
+			</c:forEach>
 		</div>
 
 
@@ -301,5 +292,37 @@
 
 
 	</div>
+
+<script>
+	function changeTicketPrice(selectE) {
+		//id ,discounttype ,discountrate ,dprice, price
+		var data = selectE.value.split(',');
+		var id = data[0];
+		var discounttype = data[1] == ''? null : data[1];
+		var discountrate = data[2] == ''? null : data[2];
+		var dprice = data[3] == ''? null : data[3];
+		var price = data[4] == ''? null : data[4];
+		//当前select所在的<td>节点
+		var td1 = selectE.parentNode.parentNode;
+		var td2 = td1.nextSibling.nextSibling;
+		var td3 = td2.nextSibling.nextSibling;
+		if(discounttype == null && dprice != null) {
+			td2.innerHTML = "<span class='ico_whole_aw' ><s>"+price+"&yen;</s></span>";
+			td3.getElementsByTagName('span')[1].innerHTML = dprice+"<dfn>&yen;</dfn>";
+		}
+		if(discounttype == null && dprice == null) {
+			td2.innerHTML = "";
+			td3.getElementsByTagName('span')[1].innerHTML = price+"<dfn>&yen;</dfn>";
+		}
+		if(discounttype != null) {
+			td2.innerHTML = "<span class='ico_whole_aw' >"+discounttype+"</span>";
+			td3.getElementsByTagName('span')[1].innerHTML = discountrate*price+"<dfn>&yen;</dfn>";
+		}
+		
+		var input = selectE.nextSibling.nextSibling;
+		input.value = id;
+	}
+</script>
+	
 </body>
 </html>

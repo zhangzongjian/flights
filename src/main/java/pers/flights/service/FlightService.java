@@ -1,4 +1,5 @@
 package pers.flights.service;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -22,5 +23,5 @@ public interface FlightService {
 	
 	List<Flight> searchByKeywords(List<String> list);
 	
-	List<Map<String, Object>> searchFlights(String startCity, String arrivalCity, String startTime);
+	List<Map<String, Object>> searchFlights(String startCity, String arrivalCity, Date startTime);
 }
