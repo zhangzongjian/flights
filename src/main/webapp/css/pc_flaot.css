@@ -1,0 +1,247 @@
+.fl_open_wrap{display:none;position:fixed;z-index:99999;left:0;bottom:55px;width:127px;height:136px;overflow:hidden;}
+.fl_open_wrap .fl_open_wrap_cntr{position:absolute;left:0;top:0;width:100%;height:100%;background:url(//images4.c-ctrip.com/img3/marketing/2015/12/float_pc_system/fl_open_wrap.png) no-repeat;cursor: pointer;}
+.fl_pop_wrap{display:none;position:fixed;z-index:99998;left:0;bottom:0;width:100%;height:196px;overflow:hidden;}
+.fl_pop_wrap .fl_pop_ttl,.fl_pop_wrap input,.fl_pop_wrap .fl_pop_btn_normal{font-family:"Microsoft YaHei","Hiragino Sans GB";}
+.fl_pop_wrap .fl_pop_wrap_cntr{position:absolute;left:0;bottom:0;width:100%;}
+.fl_pop_wrap .fl_pop_wrap_cntr_bg{position:absolute;left:0;top:0;width:100%;height:100%;background:#051223;opacity:0.9;filter:alpha(opacity=90);z-index:-200;}
+.fl_pop_wrap .fl_pop_box{position:relative;width:980px;height:176px;margin:auto;font-size:12px;font-weight:1.5;color:#333;}
+.fl_pop_wrap .fl_pop_box .fl_pop_pic{position:absolute;left:0;bottom:0;}
+.fl_pop_wrap .fl_pop_pic img{position:absolute;left:0;bottom:0;}
+.fl_pop_wrap .fl_pop_cnt{position:absolute;top:0;right:42px;height:100%;padding:0 2px 0 16px;color:#fff;}
+.fl_pop_wrap .fl_pop_cnt_bg{position:absolute;left:0;top:0;width:100%;height:100%;background:#fff;opacity:0.2;filter:alpha(opacity=20);z-index:-100;}
+.fl_pop_wrap .fl_pop_form{float:left;width:290px;margin:14px 20px 0 0;}
+.fl_pop_wrap .fl_pop_form .fl_pop_ttl{margin-bottom:12px;font-size:18px;}
+.fl_pop_wrap .fl_pop_form .fl_pop_ttl a{margin-left:10px;font-size:12px;color:#fff;}
+.fl_pop_wrap .fl_pop_form .fl_pop_ttl span{font-size:14px;}
+.fl_pop_wrap .fl_pop_items{position:relative;margin-top:5px;height:100px;}
+.fl_pop_wrap .fl_pop_items input{border:none;padding:0 10px;height:38px;font-size:16px;line-height:38px;color:#333;outline:none;}
+.fl_pop_wrap .fl_pop_items input::-webkit-input-placeholder{color:#999}
+.fl_pop_wrap .fl_pop_items input::-moz-placeholder{color:#999;opacity:1}
+.fl_pop_wrap .fl_pop_items input:-ms-input-placeholder{color:#999;}
+.fl_pop_wrap .fl_pop_items .fl_pop_input_phone{position:absolute;left:0;top:0;width:270px;}
+.fl_pop_wrap .fl_pop_items .fl_pop_submit{position:absolute;left:0;top:44px;width:280px;height:38px;}
+.fl_pop_wrap .fl_pop_items .fl_pop_input_secode{position:absolute;left:0;top:0;width:110px;border-right:1px solid #ddd}
+.fl_pop_wrap .fl_pop_items .float_pop_secode{position:absolute;left:131px;top:0;width:70px;overflow:hidden;}
+.fl_pop_wrap .fl_pop_btn_normal{position:absolute;left:205px;top:0;width:85px;height:38px;line-height:38px;text-align:center;background:#f90;color:#fff;font-size:17px;cursor:pointer;}
+.fl_pop_wrap .fl_pop_btn_normal:hover{text-decoration:none}
+.fl_pop_wrap .fl_pop_btn_disabled{cursor:default;display:none;background-color:#d1d1d1;}
+.fl_pop_wrap .fl_pop_qrcode{position:relative;float:left;width:115px;margin:20px 14px 0 0;}
+.fl_pop_wrap .fl_pop_qrcode .fl_pop_hint{line-height:1.5;text-align:center;}
+.fl_pop_wrap .fl_pop_qrcode img{margin-top:6px;}
+.fl_pop_wrap .fl_wrap_close{position:absolute;top:10px;right:-4px;font-size:38px;line-height:1.2;font-family:Simsun;color:#9aa1a8;outline:0 none}
+.fl_pop_wrap .fl_wrap_close:hover{text-decoration:none}
+.fl_pop_wrap .fl_pop_phone_tip,.fl_pop_wrap .fl_pop_secode_tip{position:absolute;height:38px;line-height:38px;background-color:#fff;padding-left:32px;color:#f90;font-size:14px;font-weight:bold;box-shadow:0 2px 2px #000;}
+.fl_pop_wrap .fl_pop_ico_alert{position:absolute;left:10px;top:10px;width:17px;height:16px;background:url(//images4.c-ctrip.com/img3/marketing/2015/07/float_system_pc/fl_icon_sprite.png) no-repeat -18px 0;}
+.fl_pop_wrap .fl_pop_phone_tip{position:absolute;left:0;top:0;width:258px;}
+.fl_pop_wrap .fl_pop_phone_tip .fl_pop_ico_arrow{position:absolute;left:45px;top:38px;width:18px;height:8px;background:url(//images4.c-ctrip.com/img3/marketing/2015/07/float_system_pc/fl_icon_sprite.png) no-repeat -35px -8px;}
+.fl_pop_wrap .fl_pop_secode_tip{position:absolute;left:0;top:44px;width:169px;}
+.fl_pop_wrap .fl_pop_secode_tip .fl_pop_ico_arrow{position:absolute;left:45px;top:-8px;width:18px;height:8px;background:url(//images4.c-ctrip.com/img3/marketing/2015/07/float_system_pc/fl_icon_sprite.png) no-repeat -35px 0;}
+.fl_pop_wrap .fl_pop_sucess_tip{position:absolute;left:0;top:44px;width:265px;height:18px;line-height:18px;padding-left:22px;font-size:14px;font-weight:bold;color:#fc3;}
+.fl_pop_wrap .fl_pop_sucess_tip .fl_pop_ico_sucess{position:absolute;left:0px;top:0;width:18px;height:18px;background:url(//images4.c-ctrip.com/img3/marketing/2015/07/float_system_pc/fl_icon_sprite.png) no-repeat 0 0;}
+#popfloating_float_img {width:103px;height:103px;position:absolute;top:6px;left:6px;z-index:10;}
+#popfloating_float_img img,#popfloating_float_img table {width:103px;height:103px;margin:0!important;}
+
+/*底部收起样式*/
+.appd_wrap_default{height: 218px;bottom: -117px;}
+.appd_wrap_icon_arrow{position: absolute;top: -24px;left: 50%;margin-left: -36px;width: 73px;height: 24px;background: url(//images4.c-ctrip.com/img3/marketing/2015/08/pop_v2_pc/default_uni_bg.png) no-repeat;z-index: 2;cursor: pointer;}
+.appd_wrap_icon_arrow.down{background-position: 0 -44px;}
+#fl_pop_box_default{width:935px;height: 100%;}
+.appd_wrap_default_pic{float:left;margin-top: -29px;cursor: pointer;}
+.appd_wrap_default_right{float:right;margin-top: -42px;height:101px;padding: 52px 0 0 140px;font-size: 12px;background:url(//images4.c-ctrip.com/img3/marketing/2015/08/pop_v2_pc/default_uni_bg.png) 0 -88px no-repeat;color: #fff;line-height:1.7;}
+.anim_shake{-webkit-animation:shake .5s linear;-moz-animation:shake .5s linear;-ms-animation:shake .5s linear;animation:shake .5s linear;}
+@-webkit-keyframes shake{
+    0%{bottom:-117px;}
+    50%{bottom:-107px;}
+    100%{bottom:-117px;}
+}
+@-moz-keyframes shake{
+    0%{bottom:-117px;}
+    50%{bottom:-107px;}
+    100%{bottom:-117px;}
+}
+@-ms-keyframes shake{
+    0%{bottom:-117px;}
+    50%{bottom:-107px;}
+    100%{bottom:-117px;}
+}
+@keyframes shake{
+    0%{bottom:-117px;}
+    50%{bottom:-107px;}
+    100%{bottom:-117px;}
+}
+@media screen and (max-width:1161px){
+    .fl_open_wrap{width:45px;}
+    .fl_open_wrap .fl_open_wrap_cntr{background-position:-82px 0;}
+}
+@media screen and (min-width:1162px) and (max-width: 1200px){
+    .fl_open_wrap{width:127px;}
+    .fl_open_wrap .fl_open_wrap_cntr{background-position:0 0;}
+}
+@media screen and (min-width:1201px) and (max-width: 1361px){
+    .fl_open_wrap{width:45px;}
+    .fl_open_wrap .fl_open_wrap_cntr{background-position:-82px 0;}
+}
+@media screen and (min-width:1362px){
+    .fl_open_wrap{width:127px;}
+    .fl_open_wrap .fl_open_wrap_cntr{background-position:0 0;}
+}
+
+@charset "utf-8";
+.bu_info_wrap{position: absolute;bottom: 0;left: 192px;height: 176px;width: 280px;color: #fff;}
+.bu_info_wrap .hd{font: 29px/1.1 Arial,"Microsoft Yahei",Simsun,sans-serif;padding-top: 30px}
+.bu_info_wrap .sale{font: 20px/1.1 Arial,"Microsoft Yahei",Simsun,sans-serif;color: #ffc000;}
+.bu_info_wrap .sale b{font-size: 53px;margin-right: 5px;}
+.bu_info_wrap .sale sup{font-size: 30px;font-family: "Microsoft Yahei",Simsun,sans-serif;vertical-align: 10px;margin-right: 5px;}
+.rarr{display: inline-block;width: 22px;height: 18px;margin:0 5px;overflow: hidden;vertical-align:2px;*vertical-align:middle;background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAASBAMAAACtCzMeAAAAJ1BMVEX///////////////////////////////////////////////////9Ruv0SAAAADHRSTlMAFcPExcfKy8zR0tNf3bHNAAAAQklEQVQI12NgAAM3AQY4qJmIYEudREgwriFK4hSyRAGDzhkYOITEPoxQM6cBzpY8LYAQXogQPkVImCEHIcwQBhIGAEFRH/KNKvPvAAAAAElFTkSuQmCC);}
+
+
+
+/*售卖广告位*/
+@charset "utf-8";
+/* float for pc bottom */
+.fl_open_wrap_7{display:none;position:fixed;z-index:99999;left:0;bottom:90px;width:44px;*+width:127px;width:127px\0;height:95px;overflow:hidden;}
+.fl_open_wrap_7 .fl_open_wrap_cntr_7{position:absolute;left:0;bottom:22px;width:100%;height:100%;cursor: pointer;background:url(//images4.c-ctrip.com/img3/marketing/2015/12/float_pc_system/s_open.png) no-repeat bottom;}
+.fl_pop_wrap_7{display:none;position:fixed;z-index:99998;left:0;bottom:0;width:100%;height:196px;overflow:hidden;}
+.fl_pop_wrap_7 .fl_pop_ttl_7,.fl_pop_wrap_7 input,.fl_pop_wrap_7 .fl_pop_btn_normal_7{font-family:"Microsoft YaHei","Hiragino Sans GB";}
+.fl_pop_wrap_7 .fl_pop_wrap_cntr_7{position:absolute;left:0;bottom:0;width:100%;}
+.fl_pop_wrap_7 .fl_pop_wrap_cntr_bg_7{position:absolute;left:0;top:0;width:100%;height:100%;background:#051223;opacity:0.9;filter:alpha(opacity=90);}
+.fl_pop_wrap_7 .fl_pop_box_7{position:relative;width:980px;height:176px;margin:auto;font-size:12px;font-weight:1.5;color:#333;}
+.fl_pop_wrap_7 .fl_pop_box_7 .fl_pop_pic_7{position:absolute;left:0;bottom:0;}
+.fl_pop_wrap_7 .fl_pop_pic_7 img{position:absolute;left:0;bottom:0;}
+.fl_pop_wrap_7 .fl_pop_cnt_7{position:absolute;top:0;right:42px;height:100%;padding:0 2px 0 16px;color:#fff;}
+.fl_pop_wrap_7 .fl_pop_cnt_bg_7{position:absolute;left:0;top:0;width:100%;height:100%;background:#fff;opacity:0.2;filter:alpha(opacity=20);}
+.fl_pop_wrap_7 .fl_pop_form_7{float:left;width:290px;margin:14px 20px 0 0;}
+.fl_pop_wrap_7 .fl_pop_form_7 .fl_pop_ttl_7{margin-bottom:12px;font-size:18px;}
+.fl_pop_wrap_7 .fl_pop_form_7 .fl_pop_ttl_7 a{margin-left:10px;font-size:12px;color:#fff;}
+.fl_pop_wrap_7 .fl_pop_form_7 .fl_pop_ttl_7 span{font-size:14px;}
+.fl_pop_wrap_7 .fl_pop_items_7{position:relative;margin-top:5px;height:100px;}
+.fl_pop_wrap_7 .fl_pop_items_7 input{border:none;padding:0 10px;height:38px;font-size:16px;line-height:38px;color:#333;outline:none;}
+.fl_pop_wrap_7 .fl_pop_items_7 input::-webkit-input-placeholder{color:#999}
+.fl_pop_wrap_7 .fl_pop_items_7 input::-moz-placeholder{color:#999;opacity:1}
+.fl_pop_wrap_7 .fl_pop_items_7 input:-ms-input-placeholder{color:#999;}
+.fl_pop_wrap_7 .fl_pop_items_7 .fl_pop_input_phone_7{position:absolute;left:0;top:0;width:270px;}
+.fl_pop_wrap_7 .fl_pop_items_7 .fl_pop_submit_7{position:absolute;left:0;top:44px;width:280px;height:38px;}
+.fl_pop_wrap_7 .fl_pop_items_7 .fl_pop_input_secode_7{position:absolute;left:0;top:0;width:110px;border-right:1px solid #ddd}
+.fl_pop_wrap_7 .fl_pop_items_7 .float_pop_secode_7{position:absolute;left:131px;top:0;width:70px;overflow:hidden;}
+.fl_pop_wrap_7 .fl_pop_btn_normal_7{position:absolute;left:205px;top:0;width:85px;height:38px;line-height:38px;text-align:center;background:#f90;color:#fff;font-size:17px;cursor:pointer;}
+.fl_pop_wrap_7 .fl_pop_btn_normal_7:hover{text-decoration:none}
+.fl_pop_wrap_7 .fl_pop_btn_disabled_7{cursor:default;background-color:#d1d1d1;}
+.fl_pop_wrap_7 .fl_pop_qrcode_7{position:relative;float:left;width:115px;margin:20px 14px 0 0;}
+.fl_pop_wrap_7 .fl_pop_qrcode_7 .fl_pop_hint_7{line-height:1.5;text-align:center;}
+.fl_pop_wrap_7 .fl_pop_qrcode_7 img{margin-top:7px;}
+.fl_pop_wrap_7 .fl_wrap_close_7{position:absolute;top:10px;right:-4px;font-size:38px;line-height:1.2;font-family:Simsun;color:#9aa1a8;outline:0 none}
+.fl_pop_wrap_7 .fl_wrap_close_7:hover{text-decoration:none}
+.fl_pop_wrap_7 .fl_pop_phone_tip_7,.fl_pop_wrap_7 .fl_pop_secode_tip_7{position:absolute;height:38px;line-height:38px;background-color:#fff;padding-left:32px;color:#f90;font-size:14px;font-weight:bold;box-shadow:0 2px 2px #000;}
+.fl_pop_wrap_7 .fl_pop_ico_alert_7{position:absolute;left:10px;top:10px;width:17px;height:16px;background:url(//images4.c-ctrip.com/img3/marketing/2015/07/float_system_pc/fl_icon_sprite.png) no-repeat -18px 0;}
+.fl_pop_wrap_7 .fl_pop_phone_tip_7{position:absolute;left:0;top:0;width:258px;}
+.fl_pop_wrap_7 .fl_pop_phone_tip_7 .fl_pop_ico_arrow_7{position:absolute;left:45px;top:38px;width:18px;height:8px;background:url(//images4.c-ctrip.com/img3/marketing/2015/07/float_system_pc/fl_icon_sprite.png) no-repeat -35px -8px;}
+.fl_pop_wrap_7 .fl_pop_secode_tip_7{position:absolute;left:0;top:44px;width:169px;}
+.fl_pop_wrap_7 .fl_pop_secode_tip_7 .fl_pop_ico_arrow_7{position:absolute;left:45px;top:-8px;width:18px;height:8px;background:url(//images4.c-ctrip.com/img3/marketing/2015/07/float_system_pc/fl_icon_sprite.png) no-repeat -35px 0;}
+.fl_pop_wrap_7 .fl_pop_sucess_tip_7{position:absolute;left:0;top:44px;width:265px;height:18px;line-height:18px;padding-left:22px;font-size:14px;font-weight:bold;color:#fc3;}
+.fl_pop_wrap_7 .fl_pop_sucess_tip_7 .fl_pop_ico_sucess_7{position:absolute;left:0px;top:0;width:18px;height:18px;background:url(//images4.c-ctrip.com/img3/marketing/2015/07/float_system_pc/fl_icon_sprite.png) no-repeat 0 0;}
+/* float for pc fullscreen */
+.fl_full_mask_7{display:none;z-index:99998;position:fixed;left:0;top:0;width:100%;height:100%;background:#000;opacity:0.5;filter:alpha(opacity=50);}
+.fl_full_wrap_7{display:none;z-index:99999;position:fixed;left:50%;top:50%;width:538px;height:380px;margin:-190px 0 0 -290px;}
+.fl_full_wrap_7 img{border:none;}
+/* float for page side */
+.fl_side_wrap_7{display:none;z-index:99999;position:fixed;top:150px;margin-bottom:1180px;}
+@media screen and (max-width:1200px){
+    .fl_side_wrap_7{margin-bottom:980px;}
+}
+.fl_side_wrap_7 .fl_side_col_7{position:absolute;top:0;}
+.fl_side_wrap_7 .fl_side_exp_7{position:absolute;top:0;right:0;display:none;}
+.fl_side_wrap_7 .fl_side_exp_7 img{border:none;}
+
+@media screen and (max-width:1366px){
+    .fl_open_wrap_7{width:45px;}
+    .fl_open_wrap_7 .fl_open_wrap_cntr_7{background:url(//webresource.c-ctrip.com/ResUnionOnline/R3/float/pic/s_open.png) no-repeat -82px bottom;}
+}
+@media screen and (min-width:1366px){
+    .fl_open_wrap_7{width:127px;}
+    .fl_open_wrap_7 .fl_open_wrap_cntr_7{background:url(//webresource.c-ctrip.com/ResUnionOnline/R3/float/pic/s_open.png) no-repeat bottom;}
+}
+
+
+/*20151204 by zdd 广告版浮层新增样式*/
+
+/*样式覆盖*/
+.fl_pop_wrap_7.ads_7{height: 166px;}
+.fl_pop_wrap_7.ads_7 .fl_pop_box_7{height: 140px;}
+.fl_pop_wrap_7.ads_7 .fl_pop_cnt_7{height: 166px;top: -26px;right:43px;background-color: #4b5461;}
+.fl_pop_wrap_7.ads_7 .fl_pop_qrcode_7{margin-top: 10px;}
+.fl_pop_wrap_7 .fl_pop_qrcode_7 .fl_pop_hint_7{font-size: 14px;}
+/*.fl_pop_wrap_7 .fl_wrap_close_7{-webkit-transition:all .3s;-moz-transition:all .3s;-ms-transition:all .3s;transition:all .3s;}
+.fl_pop_wrap_7 .fl_wrap_close_7:hover{-webkit-transform:rotate(180deg);-moz-transform:rotate(180deg);-ms-transform:rotate(180deg);transform:rotate(180deg);}
+*/
+
+/*广告内容区*/
+.sale_ads_wrap_7{position:relative;float: left;width: 372px;height: 100%;}
+.sale_ads_bg_7{width:100%;height:100%;background-color: #213f55;opacity: .9;filter:alpha(opacity=90);}
+.sale_ads_wrap_7 .sale_ads_pic_7{position: absolute;bottom: 0;left: 0;}
+.sale_ads_mask_7{position: absolute;top: 0;left: 0;width: 100%;height: 100%;cursor: pointer;}
+.sale_ads_mask_7:hover{text-decoration: none;}
+.sale_ads_mask_7 .bg_7{width: 100%;height: 100%;background-color: #0b4c71;opacity: .8;filter:alpha(opacity=80);}
+.sale_ads_mask_7 .info_7{position: absolute;top: 50%;left: 0;width:100%;margin-top: -20px;color: #fff;font-size: 14px;text-align: center;line-height: 3;}
+.sale_ads_mask_7 .info_7.logo_7{margin-top: -40px;}
+.sale_ads_mask_7 .info_7 img{margin-right: 15px;}
+
+.internal_ads_mask_7{position: absolute;bottom: 0;left: 0;width: 790px;height: 140px;background-color: #1e2939;opacity: .9;filter:alpha(opacity=90);}
+.internal_ads_wrap_7{position: absolute;right:190px;bottom:0;width: 372px;height: 166px;overflow: hidden;}
+.internal_ads_pic_7{position: absolute;bottom: 0;left: 0;}
+.fl_pop_wrap_7.ads_7 .fl_pop_cnt_7 .angle_7{position: absolute;top: 0;*top:-18px;*+top:0;right: -11px;/*border-right: 10px transparent dashed;border-bottom: 26px #3a4556 solid;*/background: url(//images4.c-ctrip.com/img3/marketing/2015/12/float_system_pc/sjicon.png);width: 11px;height: 26px;}
+.fl_pop_wrap_7.ads_7 .internal_ads_wrap_7 .fl_pop_cnt_7{left: 372px;top: 0;width: 300px;}
+.fl_pop_wrap_7 .internal_ads_wrap_7 .fl_pop_form_7{margin-top: 10px;}
+
+
+/*彻底关闭按钮*/
+.fl_open_wrap_7{height: 160px;}
+.fl_open_wrap_7 .close_all_7{position:absolute;bottom:0;left:27px;width: 22px;height: 22px;background: url(//images4.c-ctrip.com/img3/marketing/2015/12/float_system_pc/close_all.png) no-repeat;text-indent: -999px;overflow: hidden;color: #484848;font-size: 12px;}
+.fl_open_wrap_7 .close_all_7:hover{width: 74px;left: 5px;border-radius: 11px;background: #ccc;text-indent: 0;text-align: center;text-decoration: none;line-height: 22px;}
+@media screen and (min-width: 1366px){
+    .fl_open_wrap_7 .close_all_7{display: block;}
+}
+
+/*SEO二维码浮层 8号*/
+@charset "utf-8";
+/* float for pc bottom */
+
+.fl_open_wrap_ia{display:none;position:fixed;z-index:99999;left:0;bottom:55px;width:178px;height:136px;overflow:hidden}
+.fl_open_wrap_ia .fl_open_wrap_cntr{position:absolute;left:0;top:0;width:100%;height:100%;background:url(//images4.c-ctrip.com/img3/marketing/2015/12/float_pc_system/fl_open_wrap.png) no-repeat}
+.fl_pop_wrap_ia{display:none;position:fixed;z-index:99998;left:0;bottom:0;width:100%;height:196px;overflow:hidden}
+.fl_pop_wrap_ia .fl_pop_ttl,.fl_pop_wrap_ia input,.fl_pop_wrap_ia .fl_pop_btn_normal{font-family:"Microsoft YaHei","Hiragino Sans GB"}
+.fl_pop_wrap_ia .fl_pop_wrap_cntr{position:absolute;left:0;bottom:0;width:100%}
+.fl_pop_wrap_ia .fl_pop_wrap_cntr_bg{position:absolute;left:0;top:0;width:100%;height:100%;background:#051223;opacity:0.9;filter:alpha(opacity=90)}
+.fl_pop_wrap_ia .fl_pop_box{position:relative;width:980px;height:176px;margin:auto;font-size:12px;font-weight:1.5;color:#333}
+.fl_pop_wrap_ia .fl_pop_box .fl_pop_pic{position:absolute;left:0;bottom:0}
+.fl_pop_wrap_ia .fl_pop_pic img{position:absolute;left:0;bottom:0}
+.fl_pop_wrap_ia .fl_pop_cnt{position:absolute;top:0;right:42px;height:100%;padding:0 2px 0 16px;color:#fff}
+.fl_pop_wrap_ia .fl_pop_cnt_bg{position:absolute;left:0;top:0;width:100%;height:100%;background:#fff;opacity:0.2;filter:alpha(opacity=20)}
+.fl_pop_wrap_ia .fl_pop_qrcode{position:relative;float:left;margin:20px 14px 0 0;overflow: hidden;}
+.fl_pop_wrap_ia .fl_pop_qrcode .fl_pop_hint{line-height:1.5;text-align:center;font-size:15px}
+.fl_pop_wrap_ia .fl_pop_qrcode img{margin-top:7px;vertical-align:baseline;float: left;}
+.fl_pop_wrap_ia .fl_wrap_close{position:absolute;top:10px;right:-4px;font-size:38px;line-height:1.2;font-family:Simsun;color:#9aa1a8;outline:0 none}
+.fl_pop_wrap_ia .fl_wrap_close:hover{text-decoration:none}
+.fl_pop_wrap_ia .fl_pop_code{position:relative;float:left;padding:0 10px 0 22px;margin:0 30px 0 0;height:100%}
+.fl_pop_wrap_ia .fl_pop_code .fl_pop_qrcode .fl_pop_hint{text-align:left}
+.fl_pop_wrap_ia .fl_pop_code .fl_pop_qrcode .fl_pop_hint b{margin-left: 10px;}
+.fl_pop_wrap_ia .fl_pop_dl{float: left;position:relative;top:18px;margin-left:20px;}
+.fl_pop_wrap_ia .fl_pop_dl_iphone,.fl_pop_wrap_ia .fl_pop_dl_android{width:110px;height:40px;display:block}
+.fl_pop_wrap_ia .fl_pop_dl_iphone{background:url(//images4.c-ctrip.com/img3/marketing/2016/08/float_bottom_pc/dl_iphone.png) no-repeat}
+.fl_pop_wrap_ia .fl_pop_dl_android{background:url(//images4.c-ctrip.com/img3/marketing/2016/08/float_bottom_pc/dl_android.png) no-repeat;margin-top:10px}
+
+@media screen and (max-width:1161px){
+    .fl_open_wrap_ia{width:45px;}
+    .fl_open_wrap_ia .fl_open_wrap_cntr{background-position:-82px 0;}
+}
+@media screen and (min-width:1162px) and (max-width: 1200px){
+    .fl_open_wrap_ia{width:127px;}
+    .fl_open_wrap_ia .fl_open_wrap_cntr{background-position:0 0;}
+}
+@media screen and (min-width:1201px) and (max-width: 1361px){
+    .fl_open_wrap_ia{width:45px;}
+    .fl_open_wrap_ia .fl_open_wrap_cntr{background-position:-82px 0;}
+}
+@media screen and (min-width:1362px){
+    .fl_open_wrap_ia{width:127px;}
+    .fl_open_wrap_ia .fl_open_wrap_cntr{background-position:0 0;}
+}

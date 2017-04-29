@@ -1,5 +1,6 @@
 package pers.flights.service.impl;
 
+import java.util.Date;
 import java.util.List;
 import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,7 @@ public class CustomerServiceImpl implements CustomerService {
 	
 	@Transactional
 	public int insert(Customer customer) {
+		customer.setCreateTime(new Date());
 		return customerMapper.insert(customer);
 	}
 	

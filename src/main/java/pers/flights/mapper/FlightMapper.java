@@ -44,5 +44,11 @@ public interface FlightMapper {
 	 */
 	//调用存储过程，@Param不能少。。
 	List<Map<String, Object>> searchFlights(@Param("startCity")String startCity, @Param("arrivalCity")String arrivalCity, @Param("startTime")Date startTime);
+	
+	/**
+	 * 按航班号查询航班
+	 * @return
+	 */
+	List<Map<String, Object>> searchFlightsByNo(@Param("flightNo")String flightNo, @Param("startTime")Date startTime);
 		
 }

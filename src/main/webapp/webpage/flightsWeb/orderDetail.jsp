@@ -1,4 +1,6 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <% 
    String contextPath = request.getContextPath(); 
    request.setAttribute("contextPath", contextPath);
@@ -26,11 +28,11 @@
                 <table cellspacing="0" cellpadding="0" border="0" class="flt_order_info" style="width: 310px">
                     <tr>
                         <td>
-                            ·订单状态：<b>已取消</b><br />
+                            ·订单状态：<b>${orderDetail.orderstatus }</b><br />
 
-                            ·订单号：3615014158<br />
+                            ·订单号：${orderDetail.orderno }<br />
 
-                            ·预订日期：2017-04-07<br />
+                            ·预订时间：<fmt:formatDate value="${orderDetail.ordertime }" pattern="yyyy-MM-dd"/><br />
 
                         </td>
                     </tr>
@@ -38,9 +40,20 @@
             </td>
             <td class="flight_detail_price">
                 <p>
-                    总金额：<span class="base_price">
+                    总金额：<span class="base_price" id="base_price">
                         RMB
-                        672
+                        <c:if test="${orderDetail.discounttype == null && orderDetail.dprice != null}">
+	                        <c:set var="price" value="${orderDetail.dprice * orderDetail.passengerCount }"/>
+							<c:out value="${price}"/>
+						</c:if>
+						<c:if test="${orderDetail.discounttype == null && orderDetail.dprice == null}">
+							<c:set var="price" value="${orderDetail.price * orderDetail.passengerCount }"/>
+							<c:out value="${price}"/>
+						</c:if>
+						<c:if test="${orderDetail.discounttype != null }">
+							<c:set var="price" value="${orderDetail.price * orderDetail.discountrate * orderDetail.passengerCount}"/>
+							<c:out value="${price}"/>
+						</c:if>
                     </span>
                 </p>
             </td>
@@ -59,33 +72,35 @@
                                     <div class="line-flight-title clearfix" >
 
 
-                                            <span class="date">2017-04-13</span><span class="venue">广州&mdash;西安</span>
+                                            <span class="date"><fmt:formatDate value="${orderDetail.starttime }" pattern="yyyy-MM-dd"/></span><span class="venue">${orderDetail.startAirportCity }&mdash;${orderDetail.arrivalAirportCity }</span>
                                         <span class="person">
-                                                <span>李四</span>
+                                        		<c:forEach items="${orderDetail.passenger }" var="passenger">
+                                                <span>${passenger.passengerName }</span>
+                                                </c:forEach>
                                         </span>
                                    </div>
                                 
                                     <div class="line-flight-info">
 <ul class="clearfix">
     <li class="company">
-            <strong class="pubFlights_aq name">九元航空</strong>
+            <strong class="pubFlights_aq name">${orderDetail.companyname }</strong>
         <p>
-            <strong class="mr15">AQ1105</strong><a href="http://flights.ctrip.com/actualtime/fno--AQ1105-20170413.html" target="_blank">航班动态</a>
+            <strong class="mr15">${orderDetail.flightno }</strong><a href="${contextPath }/flightDT?flightno=${orderDetail.flightno }&startTime=${orderDetail.starttime}">航班动态</a>
         </p>
         <p>
                 <span class="f-gray mr15">
-                    经济舱
+                    ${orderDetail.classtype }
                 </span>
-                <span class="f-gray mr5">计划机型</span>
-                    <span class="f-txtblack" crafttype="738" tag="craft">738</span>
+                <span class="f-gray mr5">${orderDetail.planetype }</span>
+                    <span class="f-txtblack" >${orderDetail.planeversion }</span>
         </p>
     </li>
     <li class="departure">
-        <span class="time">06:10</span>
+        <span class="time"><fmt:formatDate value="${orderDetail.starttime }" pattern="HH:mm"/></span>
         <div class="airport">
             <p>
 
-白云国际机场                        <span class="f-txtblue fn-nowrap" smsnamedesc="白云国际机场航站楼" tag="smsName"></span>
+${orderDetail.startAirportName }                        <span class="f-txtblue fn-nowrap"></span>
             </p>
         </div>
     </li>
@@ -93,11 +108,10 @@
         <i class="ico-order i-order-arrow-xl"></i>
     </li>
     <li class="arrive">
-        <span class="time">08:40</span>
-        <span class="long"><i class="ico-order i-order-clock"></i>2h30m</span>
+        <span class="time"><fmt:formatDate value="${orderDetail.arrivaltime }" pattern="HH:mm"/></span>
         <div class="airport">
             <p>
-咸阳国际机场                        <span class="f-txtblue fn-nowrap" smsnamedesc="咸阳国际机场3号航站楼" tag="smsName">T3</span>
+${orderDetail.arrivalAirportName }                        <span class="f-txtblue fn-nowrap"></span>
             </p>
         </div>
     </li>
@@ -116,6 +130,8 @@
         <!--乘客信息-->
 <ul>
     <li class="hotel_detail_info">乘客信息</li>
+    <c:forEach items="${orderDetail.passenger }" var="passenger" varStatus="i">
+    <c:if test="${i.index != 0}"><br/></c:if>
     <li>
         <table class="flight_passenger_table">
             <tbody>
@@ -124,13 +140,13 @@
                                 &nbsp;
                             </td>
                             <td style="width: 203px;">
-                                ·乘客信息：李四
+                                ·乘客信息：${passenger.passengerName }
                             </td>
                             <td style="width: 183px;">
                                 ·证件类型：身份证
                             </td>
                             <td style="width: 183px;">
-                                ·证件号码：441702**********39
+                                ·证件号码：${passenger.passengerCard }
                             </td>
                             <td>&nbsp; </td>
                         </tr>
@@ -140,7 +156,7 @@
                                 </td>
                                 <td colspan="4">
                                     ·手机号码：
-                                    156****5133
+                                    ${passenger.mobilePhone }
                                 </td>
                             </tr>
                         <tr>
@@ -153,6 +169,7 @@
 
         </table>
     </li>
+    </c:forEach>
 </ul>
 
         <!--联系人信息-->
@@ -165,8 +182,8 @@
             <tbody>
                 <tr>
                     <td style="width: 15px;">&nbsp;</td>
-                    <td style="width: 233px;">·联系人姓名：张三 </td>
-                    <td style="width: 230px;">·手机号码：156****5133 </td>
+                    <td style="width: 233px;">·联系人姓名：${orderDetail.person } </td>
+                    <td style="width: 230px;">·手机号码：${orderDetail.phone } </td>
                 </tr>
             </tbody>
         </table>
@@ -174,7 +191,7 @@
 </ul>
 
         <!--支付信息-->
-
+<c:if test="${orderDetail.orderstatus != '未付款' }">
 <ul>
     <li class="hotel_detail_info">支付信息</li>
     <li>
@@ -196,7 +213,7 @@
                         &nbsp;
                     </td>
                     <td>
-                        ·微信：RMB<span class="base_price"><strong>672 </strong></span>元
+                        ·微信：RMB<span class="base_price"><strong><c:out value="${price}"/> </strong></span>元
                     </td>
                     <td>
                         ·现金账户支付：RMB<span class="base_price"><strong>0 </strong></span>元
@@ -207,16 +224,48 @@
         </table>
     </li>
 </ul>
+</c:if>
     </div>
 </div>
 
 
 
         <div class="btnbox_printlist bottombtn_printlist">
-            <input type="button" value="打印订单" class="base_btns2" onclick="window.print();" />
-            <input type="button" value="关闭窗口" class="base_btns2" onclick="closeWindow();" />
+            <c:if test="${orderDetail.orderstatus == '未付款' }">
+            <input type="button" value="取消订单" class="base_btns2" onclick="orderOperate('cancelOrder')" />
+            <input type="button" value="去付款" class="base_btns2" onclick="orderOperate('goPay')" />
+            </c:if>
+            <c:if test="${orderDetail.orderstatus == '已付款' }">
+            <input type="button" value="申请退款" class="base_btns2" onclick="orderOperate('returnMoney')" />
+            </c:if>
+            <c:if test="${orderDetail.orderstatus == '已完成' }">
+            <input type="button" value="打印订单" class="base_btns2" onclick="window.print()" />
+            </c:if>
         </div>
-
+	
+	<script>
+		function orderOperate(op) {
+			if(op == 'goPay') {
+				var value = prompt('输入支付密码','');
+				if(value != null) {
+					//付款，离‘航班出发时间’前半个小时未付款的自动取消，检查舱位剩余量
+					//付款，订单状态置为‘已付款’
+				}
+			}
+			if(op == 'cancelOrder') {
+				var value = confirm('确定取消该订单？');
+				if(value == true) {
+					//取消订单，订单状态置为‘已取消’
+				}
+			}
+			if(op == 'returnMoney') {
+				var value = confirm('申请退款？');
+				if(value == true) {
+					//申请退款，订单状态置为‘退款审核中’
+				}
+			}
+		}
+	</script>
 
  </body>
 </html>

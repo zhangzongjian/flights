@@ -1,5 +1,7 @@
 package pers.flights.model;
 
+import java.util.Date;
+
 public class Customer {
 	
 	private Integer id;//编号
@@ -22,7 +24,7 @@ public class Customer {
 	  
 	private String phone;//联系固话
 	  
-	private String createTime;//创建时间
+	private Date createTime;//创建时间
 	  
 	public Integer getId() {
 		 return id;
@@ -104,11 +106,11 @@ public class Customer {
 		 this.phone = phone;
 	}
 	
-	public String getCreateTime() {
+	public Date getCreateTime() {
 		 return createTime;
 	}
 	
-	public void setCreateTime(String createTime) {
+	public void setCreateTime(Date createTime) {
 		 this.createTime = createTime;
 	}
 	

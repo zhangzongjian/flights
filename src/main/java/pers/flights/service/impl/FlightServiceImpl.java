@@ -91,4 +91,12 @@ public class FlightServiceImpl implements FlightService {
 		}
 		return flightsList_new;
 	}
+	
+	/**
+	 * 按航班号查询航班
+	 * @return
+	 */
+	public List<Map<String, Object>> searchFlightsByNo(String flightNo, Date startTime) {
+		return flightMapper.searchFlightsByNo(flightNo, startTime);
+	}
 }

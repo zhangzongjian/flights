@@ -55,4 +55,8 @@
   	call search_flights(#{startCity}, #{arrivalCity}, #{startTime})
   </select>
   
+  <select id="searchFlightsByNo" resultType="map" statementType="CALLABLE">
+  	call get_flight_detail(#{flightNo}, #{startTime})
+  </select>
+  
 </mapper>

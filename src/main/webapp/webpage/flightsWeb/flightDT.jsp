@@ -1,4 +1,6 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <% 
    String contextPath = request.getContextPath(); 
    request.setAttribute("contextPath", contextPath);
@@ -17,89 +19,103 @@
 <div id="base_bd">
 <!-- 查询form start -->
 <div class="search-box">
+	<form action="${contextPath }/flightDT" method="get">
     <div class="search-inner fsans clearfix">
         <div class="type-select">
             <ul>
-                <li>按起降地</li>
                 <li class="active">按航班号</li>
             </ul>
         </div>
         <div class="type-main">
-            <div class="type-item" style="display:none;">
-                <label class="label-input">
-                    <span class="t">出发</span>
-                    <input type="text" id="WZ_departCity" class="input-text" value="" code="" tabindex="1" autocomplete="on" placeholder="中文/拼音/英文">
-                </label>
-                <i class="ico ico-go"></i>
-                <label class="label-input">
-                    <span class="t">到达</span>
-                    <input type="text" id="WZ_arriveCity" class="input-text" value="" code="" tabindex="2" autocomplete="on" placeholder="中文/拼音/英文">
-                </label>
-                <label class="label-input">
-                    <span class="t">时间</span>
-                    <input type="text" id="ipt_time1" class="input-text" tabindex="3" autocomplete="on" placeholder="yyyy-mm-dd" value="2017-04-26">
-                </label>
-            </div>
             <div class="type-item">
                 <label class="label-input">
                     <span class="t">航班号</span>
-                    <input type="text" id="WZ_flightNo" class="input-text" style="width:370px;" value="" autocomplete="on" placeholder="如 MU1234">
+                    <input type="text" name="flightno" id="WZ_flightNo" class="input-text" style="width:370px;" value="AQ1037" autocomplete="on" placeholder="如 MU1234">
                     <ul class="flight-associate" id="wz_likeFlightNos" style="position: absolute;left: 62px;top:37px;display:none"></ul>
                 </label>
                 <label class="label-input">
                     <span class="t">时间</span>
-                    <input type="text" id="ipt_time2" class="input-text" placeholder="yyyy-mm-dd" value="2017-04-26">
+                    <input type="text" name="startTime" id="ipt_time2" class="input-text" placeholder="yyyy-mm-dd" value="2017-04-27">
                 </label>
             </div>
         </div>
-        <a href="javascript:void(0);" id="WZ_btn_search" class="btn-search">查询</a>
+        <a href="javascript:void(0);" onclick="document.forms[0].submit()" class="btn-search">查询</a>
     </div>
+    </form>
     <div class="search-bg"></div>
 </div>
 <!-- 查询form end -->
 
 
 <!-- 查询结果 start -->
+<c:forEach items="${flightDetail }" var="flight">
 <div class="detail-box clearfix">
                         <div class="detail-info">
                                 <div class="detail-t">
                                     <img width="22" alt="" src="http://pic.c-ctrip.com/flight_intl/airline_logo/40x35/AQ.png" class="middle">
-                                    <span class="ml5">九元航空</span>
-                                    <strong class="ml5">AQ1105</strong>
-                                    <span class="ml10">2017-04-25</span>
-                                    <span class="ml5">
-                                    周二
-                                    </span>
+                                    <span class="ml5">${flight.companyname }</span>
+                                    <strong class="ml5">${flight.flightno }</strong>
+                                    <span class="ml10"><fmt:formatDate value="${flight.starttime }" pattern="yyyy-MM-dd EEEE"/></span>
                                 </div>
+                            <c:if test="${flight.status == '到达' }">    
                             <div class="detail-m">
                                 <div class="detail-fly">
-                                    <div class="inl departure"><p>实际起飞</p><p class="time">06:28</p><p class="gray">计划起飞 06:10</p></div>
+                                    <div class="inl departure"><p>实际起飞</p><p class="time"><fmt:formatDate value="${flight.startrealtime }" pattern="HH:mm"/></p><p class="gray">计划起飞 <fmt:formatDate value="${flight.starttime }" pattern="HH:mm"/></p></div>
                                     <div class="inl between">
                                         <i class="ico fsans ico-status-green-l ">到达<small class="small"></small></i>
                                     </div>
-                                    <div class="inl arrive"><p>实际到达</p><p class="time">08:46</p><p class="gray">计划到达 08:37</p></div>
+                                    <div class="inl arrive"><p>实际到达</p><p class="time"><fmt:formatDate value="${flight.arrivalrealtime }" pattern="HH:mm"/></p><p class="gray">计划到达 <fmt:formatDate value="${flight.arrivaltime }" pattern="HH:mm"/></p></div>
                                 </div>
                                 <div class="detail-fly detail-route">
                                     <div class="inl departure">
-                                        <p>广州 白云国际机场B区</p>
+                                        <p>${flight.startAirportCity } ${flight.startAirportName }</p>
                                         
                                     </div>
                                     <div class="inl between">
                                         <div class="progress-bar">
-                                            <span style="width:50%" class="line-green"></span><i style="left:50%" class="ico ico-posi-green"></i>
+                                            <span style="width:100%" class="line-green"></span><i style="left:100%" class="ico ico-posi-green"></i>
                                         </div>
-                                        <p class="gray">飞行时长 2h18m</p>
                                            
                                     </div>
                                     <div class="inl arrive">
-                                        <p>西安 咸阳国际机场T3</p>
+                                        <p>${flight.arrivalAirportCity } ${flight.arrivalAirportName }</p>
                                        
                                     </div>
                                 </div>
                             </div>
+                            </c:if>
                             
+                            <c:if test="${flight.status != '到达' }">    
+                            <div class="detail-m">
+                                <div class="detail-fly">
+                                    <div class="inl departure"><p>计划起飞</p><p class="time"><fmt:formatDate value="${flight.starttime }" pattern="HH:mm"/></p></div>
+                                    <div class="inl between">
+                                        <i class="ico fsans ico-status-green-l ">${flight.status }<small class="small"></small></i>
+                                    </div>
+                                    <div class="inl arrive"><p>计划到达</p><p class="time"><fmt:formatDate value="${flight.arrivaltime }" pattern="HH:mm"/></p></div>
+                                </div>
+                                <div class="detail-fly detail-route">
+                                    <div class="inl departure">
+                                        <p>${flight.startAirportCity } ${flight.startAirportName }</p>
+                                        
+                                    </div>
+                                    <div class="inl between">
+                                        <div class="progress-bar">
+                                            <span style="width:0%" class="line-green"></span><i style="left:0%" class="ico ico-posi-green"></i>
+                                        </div>
+                                           
+                                    </div>
+                                    <div class="inl arrive">
+                                        <p>${flight.arrivalAirportCity } ${flight.arrivalAirportName }</p>
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                            </c:if>
                         </div>
+                        
             </div>
+</c:forEach>
 <!-- 查询结果 end -->
 
 

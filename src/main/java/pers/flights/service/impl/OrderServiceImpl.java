@@ -1,16 +1,21 @@
 package pers.flights.service.impl;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import pers.flights.mapper.CommonMapper;
 import pers.flights.mapper.OrderMapper;
+import pers.flights.mapper.PassengerMapper;
 import pers.flights.model.Order;
+import pers.flights.model.Passenger;
 import pers.flights.service.OrderService;
 import pers.flights.util.Attribute;
 import pers.flights.util.Pager;
@@ -21,6 +26,12 @@ public class OrderServiceImpl implements OrderService {
 	@Resource
 	private OrderMapper orderMapper;
 	
+	@Autowired
+	private CommonMapper commonMapper;
+	
+	@Autowired
+	private PassengerMapper passengerMapper;
+ 	
 	public Order searchByPrimaryKey(Integer id){
 		return orderMapper.selectByPrimaryKey(id);
 	}
@@ -79,6 +90,14 @@ public class OrderServiceImpl implements OrderService {
 	 * @return
 	 */
 	public Map<String, Object> getOrderDetailById(int orderid) {
-		return orderMapper.selectDetailById(orderid);
+		Map<String, Object> order = orderMapper.selectDetailById(orderid);
+		List<Map<String, Object>> passengers = commonMapper.searchPassengerByOrderId(orderid);
+		List<Passenger> passengerList = new ArrayList<Passenger>();
+		for(Map<String, Object> passenger : passengers) {
+			passengerList.add(passengerMapper.selectByPrimaryKey((Integer) passenger.get("passengerid")));
+		}
+		order.put("passenger", passengerList);
+		order.put("passengerCount", passengers.size());
+		return order;
 	}
 }

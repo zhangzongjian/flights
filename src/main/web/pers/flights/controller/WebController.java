@@ -22,6 +22,7 @@ import pers.flights.model.Customer;
 import pers.flights.model.Order;
 import pers.flights.model.Passenger;
 import pers.flights.service.AdministratorService;
+import pers.flights.service.CustomerService;
 import pers.flights.service.FlightService;
 import pers.flights.service.OrderService;
 import pers.flights.service.PassengerService;
@@ -38,6 +39,9 @@ public class WebController {
 	
 	@Autowired
 	private OrderService orderService;
+	
+	@Autowired
+	private CustomerService customerService;
 	
 	@Autowired
 	private PassengerService passengerService;
@@ -60,7 +64,7 @@ public class WebController {
 								Date startTime, Date returnTime, int count) {
 		List<Map<String, Object>> flightList = flightService.searchFlights(startCity, arrivalCity, startTime);
 		request.setAttribute("flightList", flightList);
-		System.out.println(flightList);
+		request.setAttribute("passengerCount", count);
 		return "webpage/flightsWeb/flightCX";
 	}
 	
@@ -70,23 +74,22 @@ public class WebController {
 	 * @return
 	 */
 	@RequestMapping("selectFlight")
-	public String selectFlight(HttpServletRequest request, int ticketPriceId) {
+	public String selectFlight(HttpServletRequest request, int ticketPriceId, int count) {
 		request.setAttribute("ticketPriceId", ticketPriceId);
+		request.setAttribute("passengerCount", count);
 		return "webpage/flightsWeb/addPassenger";
 	}
 	
 	/**
 	 * 提交订单，跳转订单详情页面
-	 * @param request
 	 * @return
 	 */
 	@RequestMapping("saveOrder")
-	public String saveOrder(HttpServletRequest request, String[] passengerName, String[] passengerCard, String[] mobilePhone, Order order) {
+	public String saveOrder(String[] passengerName, String[] passengerCard, String[] mobilePhone, Order order) {
 		int count = passengerName.length;
 //		Customer loginCustomer = (Customer)request.getSession().getAttribute("loginCustomer");
 //		order.setCustomerId(loginCustomer.getId());
 		order.setCustomerId(1);
-		order.setTicketPriceId(5);
 		orderService.insert(order);
 		int orderid = order.getId();
 		for(int i = 0; i < count; i++) {
@@ -99,10 +102,78 @@ public class WebController {
 			int passengerid = passenger.getId();
 			commonMapper.insertOrderAndPassenger(orderid, passengerid);
 		}
-//		Map<String, Object> orderDetail = orderService.getOrderDetailById(orderid);
-//		request.setAttribute("orderDetail", orderDetail);
-//		System.out.println(orderDetail);
+		return "redirect:orderDetail?orderid="+orderid;
+	}
+	
+	
+	/**
+	 * 根据订单id查看订单详情
+	 * @param request
+	 * @param orderid
+	 * @return
+	 */
+	@RequestMapping("orderDetail")
+	public String orderDetail(HttpServletRequest request, int orderid) {
+		Map<String, Object> orderDetail = orderService.getOrderDetailById(orderid);
+		request.setAttribute("orderDetail", orderDetail);
+		System.out.println(orderDetail);
 		return "webpage/flightsWeb/orderDetail";
+	}
+	
+	/**
+	 * 查询航班动态
+	 * @param request
+	 * @param flightno
+	 * @param startTime
+	 * @return
+	 */
+	@RequestMapping("flightDT")
+	public String flightDT(HttpServletRequest request, String flightno, Date startTime) {
+		List<Map<String, Object>> flightDetail = flightService.searchFlightsByNo(flightno, startTime);
+		request.setAttribute("flightDetail", flightDetail);
+		return "webpage/flightsWeb/flightDT";
+	}
+	
+	/**
+	 * 查看我的资料
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping("myInfo")
+	public String myInfo(HttpServletRequest request) {
+//		Customer loginCustomer = (Customer)request.getSession().getAttribute("loginCustomer");
+		Customer loginCustomer = customerService.searchByPrimaryKey(1);
+		request.setAttribute("customer", loginCustomer);
+		return "webpage/flightsWeb/myInfo";
+	}
+	
+	/**
+	 * 修改我的资料
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping("updateMyInfo")
+	public String updateMyInfo(RedirectAttributes red, Customer customer, String newPassword) {
+//		Customer loginCustomer = (Customer)request.getSession().getAttribute("loginCustomer");
+		Customer c = customerService.searchByPrimaryKey(customer.getId());
+		if(newPassword == null) {
+			c.setNickName(customer.getNickName());
+			c.setRealName(customer.getRealName());
+			c.setSex(customer.getSex());
+			c.setBirthday(customer.getBirthday());
+			c.setPhone(customer.getPhone());
+			customerService.update(c);
+		}
+		else {
+			if(! c.getPassword().equals(customer.getPassword())) {
+				red.addFlashAttribute("message", "当前密码不正确！");
+				return "redirect:myInfo";
+			}
+			c.setPassword(newPassword);
+			customerService.update(c);
+			red.addFlashAttribute("message", "修改成功");
+		}
+		return "redirect:myInfo";
 	}
 	
 	@RequestMapping("intoCustomerLogin")

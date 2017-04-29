@@ -140,7 +140,7 @@
 											</div>
 											<div class="row">
 												<span class="left">乘客数量</span>
-												<input name="count" type="text" class="input2" value="1"  onblur="if(this.value=='') this.value='1'" onFocus="if(this.value =='1' ) this.value=''">
+												<input name="count" type="text" class="input2" value="2"  onblur="if(this.value=='') this.value='2'" onFocus="if(this.value =='2' ) this.value=''">
 											</div>
 											<div class="wrapper">
 												<span class="right relative"><a href="javascript:void(0);" class="button1" onClick="document.getElementById('form_1').submit()"><strong>搜索</strong></a></span>

@@ -50,4 +50,8 @@
     update `order` set `orderNo` = #{orderNo},`flightId` = #{flightId},`ticketPriceId` = #{ticketPriceId},`orderTime` = #{orderTime},`person` = #{person},`phone` = #{phone},`orderStatus` = #{orderStatus},`customerId` = #{customerId},`createTime` = #{createTime} where   `id` = #{id}
   </update>
   
+  <select id="selectDetailById" resultType="map"  statementType="CALLABLE">
+  	call get_order_detail(#{id})
+  </select>
+  
 </mapper>

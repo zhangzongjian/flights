@@ -24,4 +24,6 @@ public interface FlightService {
 	List<Flight> searchByKeywords(List<String> list);
 	
 	List<Map<String, Object>> searchFlights(String startCity, String arrivalCity, Date startTime);
+	
+	List<Map<String, Object>> searchFlightsByNo(String flightNo, Date startTime);
 }

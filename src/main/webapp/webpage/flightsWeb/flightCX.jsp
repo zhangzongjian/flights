@@ -12,15 +12,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>搜索结果</title>
 <link
-	href="http://webresource.c-ctrip.com/ResFlightOnline/R2/Booking/css/fltdomestic111027/searchresult_v2.1.css"
+	href="${contextPath }/css/searchresult_v2.1.css"
 	type="text/css" rel="stylesheet" />
 <link
-	href="http://webresource.c-ctrip.com/ResCRMOnline/R6/member/common/css/login_popup_new.css"
+	href="${contextPath }/css/login_popup_new.css"
 	rel="stylesheet" type="text/css" />
 <link type="text/css" rel="stylesheet"
-	href="http://webresource.c-ctrip.com/ResUnionOnline/R3/float/css/pc_flaot.css" />
+	href="${contextPath }/css/pc_flaot.css" />
 <link
-	href="http://webresource.c-ctrip.com/ResCRMOnline/R1/pageheader/css/PageHeader_v2.css"
+	href="${contextPath }/css/PageHeader_v2.css"
 	rel="stylesheet" />
 </head>
 <body>
@@ -274,6 +274,7 @@
 							</span>
 							</td>
 							<td class="book middle">
+								<input type="hidden" name="count" value="${passengerCount }"/>
 								<button class="J_expandBtn btn_book"
 									data-ubt="SubClass_Open">
 									订票<b></b>
