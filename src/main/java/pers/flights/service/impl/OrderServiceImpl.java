@@ -100,4 +100,8 @@ public class OrderServiceImpl implements OrderService {
 		order.put("passengerCount", passengers.size());
 		return order;
 	}
+	
+	public List<Map<String, Object>> searchDetailByCustomer(int customerid) {
+		return orderMapper.searchDetailByCustomer(customerid);
+	}
 }

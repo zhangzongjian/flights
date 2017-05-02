@@ -22,6 +22,7 @@ public class LoginController {
 	
 	@RequestMapping("intoLogin")
 	public String intoLogin(HttpServletRequest request) {
+		request.getSession().removeAttribute("loginUser");
 		return "webpage/main/login";
 	}
 	
@@ -51,7 +52,7 @@ public class LoginController {
 		}
 	}
 	
-	@RequestMapping("loginOut")
+	@RequestMapping("logout")
 	public String loginOut(HttpServletRequest request) {
 		request.getSession().removeAttribute("loginUser");
 		return "redirect:intoLogin";

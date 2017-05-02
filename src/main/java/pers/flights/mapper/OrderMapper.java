@@ -44,4 +44,10 @@ public interface OrderMapper {
 	 */
 	Map<String, Object> selectDetailById(@Param("id")int id);
 	
+	/**
+	 * 查询客户的所有订单
+	 * @param customerid
+	 * @return
+	 */
+	List<Map<String, Object>> searchDetailByCustomer(@Param("customerid")int customerid);
 }

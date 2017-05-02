@@ -10,8 +10,8 @@
  <head> 
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
   <title>航班动态</title> 
-  <link href="http://webresource.c-ctrip.com/ResFlightOnline/R2/Booking/css/fltdomestic111027/dynamic_v3.0.css" type="text/css" rel="stylesheet" /> 
-  <link href="http://webresource.c-ctrip.com/ResCRMOnline/R1/pageheader/css/PageHeader_v2.css" rel="stylesheet" type="text/css" /> 
+  <link href="${contextPath }/css/dynamic_v3.0.css" type="text/css" rel="stylesheet" /> 
+  <link href="${contextPath }/css/PageHeader_v2.css" rel="stylesheet" type="text/css" /> 
 
  </head> 
  <body > 

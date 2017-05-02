@@ -32,7 +32,7 @@ $(function(){
     <ul class="nav">
     <li><a href="${contextPath }/left?menu=1" target="leftFrame" class="selected"><img src="${contextPath }/images/icon01.png" title="信息管理" /><h2>信息管理</h2></a></li>
     <li><a href="${contextPath }/left?menu=2" target="leftFrame"><img src="${contextPath }/images/icon02.png" title="基础数据" /><h2>基础数据</h2></a></li>
-    <li><a href="${contextPath }/flightsWeb/index"  target="rightFrame"><img src="${contextPath }/images/icon03.png" title="订票网站" /><h2>订票网站</h2></a></li>
+    <li><a href="${contextPath }/#"  target="rightFrame"><img src="${contextPath }/images/icon03.png" title="订票网站" /><h2>订票网站</h2></a></li>
     <li><a href="${contextPath }/tools.html"  target="rightFrame"><img src="${contextPath }/images/icon04.png" title="常用工具" /><h2>常用工具</h2></a></li>
     <li><a href="${contextPath }/computer.html" target="rightFrame"><img src="${contextPath }/images/icon05.png" title="文件管理" /><h2>文件管理</h2></a></li>
     <li><a href="${contextPath }/tab.html"  target="rightFrame"><img src="${contextPath }/images/icon06.png" title="系统设置" /><h2>系统设置</h2></a></li>
@@ -42,7 +42,7 @@ $(function(){
     <ul>
     <li><span><img src="${contextPath }/images/help.png" title="帮助"  class="helpimg"/></span><a href="${contextPath }/#">帮助</a></li>
     <li><a href="${contextPath }/#">关于</a></li>
-    <li><a href="${contextPath }/intoLogin" target="_parent">退出</a></li>
+    <li><a href="${contextPath }/logout" target="_parent">退出</a></li>
     </ul>
      
     <div class="user">

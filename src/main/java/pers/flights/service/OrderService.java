@@ -24,4 +24,6 @@ public interface OrderService {
 	
 	Map<String, Object> getOrderDetailById(int orderid);
 	
+	List<Map<String, Object>> searchDetailByCustomer(int customerid);
+	
 }

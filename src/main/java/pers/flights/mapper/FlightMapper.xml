@@ -51,12 +51,15 @@
     update flight set `flightNo` = #{flightNo},`startTime` = #{startTime},`startAirportId` = #{startAirportId},`arrivalTime` = #{arrivalTime},`endAirportId` = #{endAirportId},`planeId` = #{planeId},`startRealTime` = #{startRealTime},`arrivalRealTIme` = #{arrivalRealTIme},`status` = #{status},`createTime` = #{createTime} where   `id` = #{id}
   </update>
   
-  <select id="searchFlights" resultType="map" statementType="CALLABLE">
-  	call search_flights(#{startCity}, #{arrivalCity}, #{startTime})
+  <select id="searchFlights" resultType="map">
+  	select * from flight_detail where startAirportCity = #{startCity}
+								AND arrivalAirportCity = #{arrivalCity}
+								AND TO_DAYS(starttime) = TO_DAYS(#{startTime});
   </select>
   
-  <select id="searchFlightsByNo" resultType="map" statementType="CALLABLE">
-  	call get_flight_detail(#{flightNo}, #{startTime})
+  <select id="searchFlightsByNo" resultType="map">
+  	select * from flight_detail where flightno = #{flightNo}
+								AND TO_DAYS(starttime) = TO_DAYS(#{startTime});
   </select>
   
 </mapper>

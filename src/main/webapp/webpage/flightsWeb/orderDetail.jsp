@@ -10,9 +10,9 @@
  <head> 
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
   <title>订单详情</title> 
-  <link href="http://webresource.c-ctrip.com/styles/common/cui101103.css?101018.css&ReleaseNo=U8177_2013_04_18_18_43_03" type="text/css" rel="stylesheet" />
-  <link href="http://webresource.c-ctrip.com/ResFlightOnline/R2/Booking/css/fltdomestic111027/ordermanage_flt.css?ReleaseNo=CR2017_04_26_02_50_06" type="text/css" rel="stylesheet" />
-  <link href="http://webresource.c-ctrip.com/styles/common/public_flights_logo.css?ReleaseNo=U8177_2013_04_18_18_43_03" type="text/css" rel="stylesheet" />
+  <link href="${contextPath }/css/cui101103.css" type="text/css" rel="stylesheet" />
+  <link href="${contextPath }/css/ordermanage_flt.css" type="text/css" rel="stylesheet" />
+  <link href="${contextPath }/css/public_flights_logo.css" type="text/css" rel="stylesheet" />
   
  </head> 
  <body > 

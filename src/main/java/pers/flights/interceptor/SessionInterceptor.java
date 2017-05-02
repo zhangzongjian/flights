@@ -6,6 +6,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
+import pers.flights.model.Customer;
+
 public class SessionInterceptor implements HandlerInterceptor {
 
 	@Override
@@ -27,6 +29,30 @@ public class SessionInterceptor implements HandlerInterceptor {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response,
 			Object arg2) throws Exception {
 		// 检查是否有会话记录（检查登录状态）
+		// 订票网站拦截
+		String requestURI = request.getRequestURI();
+        if(requestURI.equals("/flights/myInfo") ||
+			requestURI.equals("/flights/orderDetail") ||
+			requestURI.equals("/flights/myOrder") ||
+			requestURI.equals("/flights/deleteOrder") ||
+			requestURI.equals("/flights/updateMyInfo") ||
+			requestURI.equals("/flights/saveOrder")) {
+        	Customer loginCustomer = (Customer) request.getSession().getAttribute("loginCustomer");
+        	if(loginCustomer == null) {
+				request.getRequestDispatcher("intoCustomerLogin").forward(request, response);
+				return false;
+        	}
+        	else {
+        		return true;
+        	}
+		}
+        if(requestURI.equals("/flights/") ||
+           requestURI.equals("/flights/searchFlights") ||
+        		requestURI.equals("/flights/selectFlight") ||
+        		requestURI.equals("/flights/flightDT")) {
+        	return true;
+        }
+        //后天管理系统拦截
 		if (request.getSession().getAttribute("loginUser") != null) {
 			return true;
 		} else {

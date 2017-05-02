@@ -38,13 +38,13 @@
 <!--header -->
 	<header>
 		<div class="wrapper">
-			<h1><a href="${contextPath }/index.html" id="logo">Air lines</a></h1>
+			<h1><a href="${contextPath }/#" id="logo">Air lines</a></h1>
 			<span id="slogan">Fast, Frequent &amp; Safe Flights</span>
 			<nav id="top_nav">
 				<ul>
-					<li><a href="${contextPath }/index.html" class="nav1">首页</a></li>
+					<li><a href="${contextPath }/#" class="nav1">首页</a></li>
 					<li><a href="${contextPath }/#" class="nav2">关于</a></li>
-					<li><a href="${contextPath }/Contacts.html" class="nav3">联系</a></li>
+					<li><a href="${contextPath }/contact" class="nav3">联系</a></li>
 				</ul>
 			</nav>
 		</div>
@@ -70,7 +70,7 @@
 				</a>
 				<ul class="clearfix unstyled drop-menu">
 					<li>
-						<a href="#" class="three-d">
+						<a href="${contextPath }/intoCustomerLogin" class="three-d">
 							登录/注册
 							<span class="three-d-box"><span class="front">登录/注册</span><span class="back">登录/注册</span></span>
 						</a>
@@ -83,6 +83,11 @@
 					<li><a href="${contextPath }/myOrder" class="three-d">
 							我的订单
 							<span class="three-d-box"><span class="front">我的订单</span><span class="back">我的订单</span></span>
+						</a>
+					</li>
+					<li><a href="${contextPath }/customerLogout" class="three-d">
+							退出账号
+							<span class="three-d-box"><span class="front">退出账号</span><span class="back">退出账号</span></span>
 						</a>
 					</li>
 				</ul>

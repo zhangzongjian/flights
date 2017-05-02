@@ -3,6 +3,10 @@
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
+ 	<settings>
+   		<setting name="callSettersOnNulls" value="true"/>
+  	</settings>
+	
 	<typeAliases>
 	   <!-- 在mapper文件中，可以使用类的别名进行编写，这样可以减少配置代码 -->
 	   <!-- <typeAlias alias="Airport" type="pers.flights.model.Airport" /> -->

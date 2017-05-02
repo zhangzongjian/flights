@@ -86,6 +86,11 @@
 							<span class="three-d-box"><span class="front">我的订单</span><span class="back">我的订单</span></span>
 						</a>
 					</li>
+					<li><a href="${contextPath }/customerLogout" class="three-d">
+							退出账号
+							<span class="three-d-box"><span class="front">退出账号</span><span class="back">退出账号</span></span>
+						</a>
+					</li>
 				</ul>
 			</li>
 			<li>
@@ -96,7 +101,7 @@
 			</li>
 		</ul>
 	</div>
-	</header><div class="ic">More Website Templates</div>
+	</header>
 <!-- / header -->
 <!--content -->
 	<section id="content">

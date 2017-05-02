@@ -4,11 +4,8 @@
 <mapper namespace="pers.flights.mapper.DatetestMapper" >
 
   
-  <select id="test" resultType="pers.flights.model.Datetest" >
-    select * from datetest where
-    <if test="startTime != null">date &gt;= #{startTime}</if>
-    <if test="startTime != null and endTime != null"> and </if>
-    <if test="endTime != null">date &lt;= #{endTime}</if> 
+  <select id="test" resultType="map" >
+    	select * from order_detail where c_phone = #{phone}
   </select>
   
 </mapper>
