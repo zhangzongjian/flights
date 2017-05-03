@@ -35,6 +35,7 @@
 	  	<li><label>公务舱座位数量</label><input name="businessClassAmount" type="text" class="dfinput" /></li>
 	  	<li><label>头等舱座位数量</label><input name="firstClassAmount" type="text" class="dfinput" /></li>
 	  	<li><label>经济舱座位数量</label><input name="economyClassAmount" type="text" class="dfinput" /></li>
+	  	<li><label>所属航空公司ID</label><input name="companyid" type="text" class="dfinput" /></li>
 	    <li><label>&nbsp;</label><input name="" type="submit" class="btn" value="确认保存"/></li>
 	    </ul>
     </form>

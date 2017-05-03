@@ -34,6 +34,7 @@
 	  	<li><label>公务舱座位数量</label><input name="businessClassAmount" type="text" class="dfinput" value="${plane.businessClassAmount }" readonly="readonly"/></li>
 	  	<li><label>头等舱座位数量</label><input name="firstClassAmount" type="text" class="dfinput" value="${plane.firstClassAmount }" readonly="readonly"/></li>
 	  	<li><label>经济舱座位数量</label><input name="economyClassAmount" type="text" class="dfinput" value="${plane.economyClassAmount }" readonly="readonly"/></li>
+	  	<li><label>所属航空公司ID</label><input name="companyid" type="text" class="dfinput" value="${plane.companyid }" readonly="readonly"/></li>
 	  	<li><label>创建时间</label><input name="createTime" type="text" class="dfinput" value="${plane.createTime }" readonly="readonly"/></li>
 	    <li><label>&nbsp;</label><input name="" type="button" class="btn" value="返回" onclick="javascript:history.go(-1);"/></li>
 	    </ul>

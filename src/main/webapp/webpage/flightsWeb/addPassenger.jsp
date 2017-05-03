@@ -19,7 +19,6 @@
 <script>
  	//window.onload = function() {alert('${ticketPriceId}');};
 </script>
-<div class="main" id="J_main" style="">
 <form action="${contextPath }/saveOrder">
 <div id="J_step1" style="display: block;">
    <div id="J_bookAttention"> 
@@ -36,11 +35,11 @@
        
       </div>
      </div>
-     <div id="J_passengerList" style="transition: height 366ms; height: 215px;">
+     <div id="J_passengerList" style="">
       <div id="passengerMain" class="c-slidedown_14"> 
       <!-- 乘客1 -->
       <c:forEach begin="1" end="${passengerCount }" var="i">
-       <div class="basic-card J_passenger" style="width: 460px">
+       <div class="basic-card J_passenger" style="width: 640px">
         <div class="passenger-info">
          <div class="form">
           <div class="form-line passenger-identity">
@@ -93,7 +92,6 @@
        </c:forEach>
        
 				
-<div class="basic-card J_passenger" style="width: 460px;height: 133px">
    <div id="J_contact" >
     <div class="contact-box">
      <div class="box-tit">
@@ -123,7 +121,6 @@
      </div>
     </div>
    </div>
-   </div>		
    <div class="action-box" style="width:480px">
     <a ubt="next" id="J_saveOrder" href="javascript:document.forms[0].submit();" class="button" content="提交订单">提交订单</a>
     <input type="hidden" name="ticketPriceId" value="${ticketPriceId}"/>
@@ -139,7 +136,6 @@
    
   </div>
   </form>
-</div>
 
 <jsp:include page="common/footer.jsp" ></jsp:include>
 </div>

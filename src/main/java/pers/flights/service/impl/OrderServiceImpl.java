@@ -52,6 +52,11 @@ public class OrderServiceImpl implements OrderService {
 	
 	@Transactional
 	public int delete(Integer id){
+		List<Map<String, Object>> passengerList = commonMapper.searchPassengerByOrderId(id);
+		for(Map<String, Object> passenger : passengerList) {
+			passengerMapper.deleteByPrimaryKey((Integer) passenger.get("passengerid"));
+			commonMapper.deleteOrderAndPassenger((Integer) passenger.get("id"));
+		}
 		return orderMapper.deleteByPrimaryKey(id);
 	}
 	

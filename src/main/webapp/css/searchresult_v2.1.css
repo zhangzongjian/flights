@@ -2935,7 +2935,7 @@ td.list_combo1_td { width:140px; text-align:right; padding-right:5px;}
 .sort-controls .sort-guideline .ico-sort{background-position:-136px -649px;}
 .sort-controls .sort-guideline .ico-reverse{background-position:-151px -649px;}
 .sort-controls .sort-guideline .default-sort {margin-left: 30px;width: 80px;}
-.version3 .sort-controls .sort-guideline .default-sort {margin-left: 20px;width: 90px;}
+.version3 .sort-controls .sort-guideline .default-sort {margin-left: 30px;width: 90px;}
 .sort-controls .sort-guideline .dtime-sort {margin-left: 70px;width: 125px;}
 .version3 .sort-controls .sort-guideline .dtime-sort {margin-left: 75px;}
 .sort-controls .sort-guideline .dtime-sort a {text-align: right;}

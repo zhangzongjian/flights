@@ -85,6 +85,7 @@ $(document).ready(function(){
 	  	<th>公务舱座位数量</th>
 	  	<th>头等舱座位数量</th>
 	  	<th>经济舱座位数量</th>
+	  	<th>所属航空公司ID</th>
 	  	<th>创建时间</th>
         <th style="width:150px;">操作</th>
         </tr>
@@ -99,6 +100,7 @@ $(document).ready(function(){
 	  		<td>${plane.businessClassAmount }</td>
 	  		<td>${plane.firstClassAmount }</td>
 	  		<td>${plane.economyClassAmount }</td>
+	  		<td>${plane.companyid }</td>
 	  		<td>${plane.createTime }</td>
 	        <td>
 		        <a href="${contextPath}/plane/detail?id=${plane.id }&page=${pager.page }" class="tablelink">查看</a>     

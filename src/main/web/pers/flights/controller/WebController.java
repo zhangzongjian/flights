@@ -103,7 +103,7 @@ public class WebController {
 			int passengerid = passenger.getId();
 			commonMapper.insertOrderAndPassenger(orderid, passengerid);
 		}
-		return "redirect:orderDetail?orderid="+orderid+"&customerid="+order.getCustomerId();
+		return "redirect:myOrder";
 	}
 	
 	

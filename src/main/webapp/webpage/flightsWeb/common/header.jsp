@@ -1,9 +1,6 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script>
-	function active(a) {
-		a.setAttribute('class','three-d active');
-		alert(a.getAttribute('class'));
-	}
 </script>
 
 <!--header -->
@@ -21,9 +18,9 @@
 		</div>
 		
 		<div class="wrapper">
-		<ul class="nav-menu clearfix unstyled">
+		<ul class="nav-menu clearfix unstyled" style="height:0px">
 			<li>
-				<a href="${contextPath }/" class="three-d" onclick="active(this);">
+				<a href="${contextPath }/" class="three-d">
 					首页
 					<span class="three-d-box"><span class="front">首页</span><span class="back">首页</span></span>
 				</a>
@@ -40,12 +37,15 @@
 					<span class="three-d-box"><span class="front">个人中心</span><span class="back">个人中心</span></span>
 				</a>
 				<ul class="clearfix unstyled drop-menu">
+					<c:if test="${sessionScope.loginCustomer == null}">
 					<li>
 						<a href="${contextPath }/intoCustomerLogin" class="three-d">
 							登录/注册
 							<span class="three-d-box"><span class="front">登录/注册</span><span class="back">登录/注册</span></span>
 						</a>
 					</li>
+					</c:if>
+					<c:if test="${sessionScope.loginCustomer != null}">
 					<li><a href="${contextPath }/myInfo" class="three-d">
 							我的资料
 							<span class="three-d-box"><span class="front">我的资料</span><span class="back">我的资料</span></span>
@@ -61,6 +61,7 @@
 							<span class="three-d-box"><span class="front">退出账号</span><span class="back">退出账号</span></span>
 						</a>
 					</li>
+					</c:if>
 				</ul>
 			</li>
 			<li>

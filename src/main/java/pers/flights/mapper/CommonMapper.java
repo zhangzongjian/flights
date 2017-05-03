@@ -12,4 +12,5 @@ public interface CommonMapper {
     
     List<Map<String, Object>> searchPassengerByOrderId(@Param("orderid")int orderid);
 
+    int deleteOrderAndPassenger(@Param("id")int id);
 }

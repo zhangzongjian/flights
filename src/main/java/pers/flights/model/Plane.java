@@ -15,6 +15,8 @@ public class Plane {
 	private Integer firstClassAmount;//头等舱座位数量
 	  
 	private Integer economyClassAmount;//经济舱座位数量
+	
+	private Integer companyid; //所属航空公司
 	  
 	private String createTime;//创建时间
 	  
@@ -80,6 +82,14 @@ public class Plane {
 	
 	public void setCreateTime(String createTime) {
 		 this.createTime = createTime;
+	}
+
+	public Integer getCompanyid() {
+		return companyid;
+	}
+
+	public void setCompanyid(Integer companyid) {
+		this.companyid = companyid;
 	}
 	
 }

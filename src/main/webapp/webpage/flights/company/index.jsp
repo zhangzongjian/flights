@@ -103,7 +103,7 @@ $(document).ready(function(){
 	        <td>
 		        <a href="${contextPath}/company/detail?id=${company.id }&page=${pager.page }" class="tablelink">查看</a>     
 		        <a href="${contextPath}/company/intoUpdate?id=${company.id }&page=${pager.page }" class="tablelink">修改</a>
-		        <a href="${contextPath}/company/delete?id=${company.id }&page=${pager.page }" onclick="javascript:if(!confirm('确定删除该记录？')) return false;" class="tablelink">删除</a>
+		        <a href="${contextPath}/company/delete?id=${company.id }&page=${pager.page }" onclick="javascript:if(!confirm('所有属于该公司的机型也会被删除！')) return false;" class="tablelink">删除</a>
 	        </td>
 	        </tr> 
         </c:forEach>

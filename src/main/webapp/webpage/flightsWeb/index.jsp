@@ -26,7 +26,7 @@
 									<form id="form_1" action="${contextPath }/searchFlights">
 										<div>
 											<div class="radio">
-												<div class="wrapper">
+												<div class="wrapper" style="display:none">
 													 <input type="radio" name="flightType" value="1" checked>
 													 <span class="left">单程</span>
 													 <input type="radio" name="flightType" value="2">
@@ -60,7 +60,7 @@
 											</div>
 											<div class="wrapper">
 												<span class="right relative"><a href="javascript:void(0);" class="button1" onClick="document.getElementById('form_1').submit()"><strong>搜索</strong></a></span>
-												<a href="${contextPath }/#" class="link1">更多选项</a>
+												<a href="${contextPath }/flightDT" class="link1">航班动态</a>
 											</div>
 										</div>
 									</form>

@@ -29,7 +29,7 @@
 <div class="main">
 <jsp:include page="common/header.jsp"></jsp:include>
 
-	<div id="base_bd" style="width:985px;height:550px;margin-left:-10px">
+	<div id="base_bd" style="width:960px;height:550px;margin-left:-10px">
 
 		<script>
 			if (document.body.className.indexOf('version3') < 0) {
@@ -243,7 +243,7 @@
 									<input type="hidden" name="ticketPriceId" value="${flight.ticketPrice[0].id }"/>
 								</div>
 							</td>
-							<td class="label">
+							<td class="label" style="text-align:center">
 								<c:if test="${flight.ticketPrice[0].discounttype != null }">
 								<span class="ico_whole_aw" >
 								   ${flight.ticketPrice[0].discounttype }

@@ -107,7 +107,7 @@ a:focus,*:focus {
     display:table;
 }
 .clearfix:after {
-    clear:both;
+    /* clear:both; */
     overflow:hidden;
 }
 .clearfix {

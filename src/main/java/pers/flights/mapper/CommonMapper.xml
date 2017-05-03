@@ -8,7 +8,10 @@
   </insert>
   
   <select id="searchPassengerByOrderId" resultType="map">
-  	select orderid, passengerid from order_passenger where orderid = #{orderid}
+  	select id, orderid, passengerid from order_passenger where orderid = #{orderid}
   </select>
   
+  <delete id="deleteOrderAndPassenger">
+  	delete from order_passenger where id= #{id}
+  </delete>
 </mapper>
