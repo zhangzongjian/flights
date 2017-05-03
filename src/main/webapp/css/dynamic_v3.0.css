@@ -6,7 +6,6 @@ a{text-decoration:none;color:#1069c9;}
 a:hover{text-decoration:none;}
 input,input:focus{outline:none;}
 
-body{font-size:12px;line-height:24px;background:#f4f4f4 !important;font-family:Tahoma, Arial, \5b8b\4f53, sans-serif;}
 
 .gray{color:#999;}
 .green{color:#81ca33;}
@@ -17,7 +16,7 @@ body{font-size:12px;line-height:24px;background:#f4f4f4 !important;font-family:T
 .fsans{font-family:"Helvetica Neue",Helvetica,Arial,STHeiti,"Microsoft Yahei",sans-serif;}
 
 .clearfix,.row{*zoom:1;}
-.clearfix:after,.row:after{content:"";display:table;height:0;overflow:hidden;clear:both;}
+.clearfix:after,.row:after{content:"";display:table;height:0;overflow:hidden;/* clear:both; */}
 .fl{float:left;}
 .fr{float:right;}
 .middle{vertical-align:middle;}

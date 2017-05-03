@@ -37,6 +37,7 @@
 			<mvc:exclude-mapping path="/login/**" />
 			<mvc:exclude-mapping path="/intoCustomerLogin/**" />
 			<mvc:exclude-mapping path="/customerLogin/**" />
+			<mvc:exclude-mapping path="/customerLogout/**" />
 			
 			<mvc:exclude-mapping path="/css/**" />
 			<mvc:exclude-mapping path="/js/**" />
@@ -52,6 +53,6 @@
 	<mvc:view-controller view-name="webpage/main/top" path="top"/>   
 	<mvc:view-controller view-name="webpage/main/index" path="index"/>   
 	<mvc:view-controller view-name="webpage/flightsWeb/index" path="/"/>   
-	<mvc:view-controller view-name="webpage/flightsWeb/myOrder" path="myOrder"/>   
 	<mvc:view-controller view-name="webpage/flightsWeb/contact" path="contact"/>   
+	<mvc:view-controller view-name="webpage/flightsWeb/register" path="register"/>   
 </beans>

@@ -22,7 +22,7 @@
 #navs a.active,#navs a:hover {text-decoration: none;color: #96E443;}
 
 /* container */
-.container {border: 1px solid #C5C5C5;border-radius: 2px;-webkit-border-radius: 2px;-moz-border-radius: 2px;box-shadow: 0 0 3px #ccc;-webkit-box-shadow: 0 0 3px #ccc;}
+.container {/* border: 1px solid #C5C5C5; */border-radius: 2px;-webkit-border-radius: 2px;-moz-border-radius: 2px;/* box-shadow: 0 0 3px #ccc; *//* -webkit-box-shadow: 0 0 3px #ccc; */}
 #processor {background-color: #565656;padding: 15px 70px;position: relative;}
 #step1 {display: block;}
 .processorBox li {float: left;width:33.333%;}

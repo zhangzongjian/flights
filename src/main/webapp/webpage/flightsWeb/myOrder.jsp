@@ -11,14 +11,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>我的订单</title>
+<jsp:include page="common/link.jsp" ></jsp:include>
 <link href="${contextPath }/css/cui110425.css" type="text/css"
 	rel="stylesheet" />
 <link href="${contextPath }/css/private_myctrip.css" type="text/css"
 	rel="stylesheet" />
 <link href="${contextPath }/css/PageHeader_v2.css" rel="stylesheet" />
-</head>
-<body>
+<style>
 
+</style>
+</head>
+<body id="page6">
+<div class="main">
+<jsp:include page="common/header.jsp"></jsp:include>
 	<div class="orders_list mb20" style="display: block" id="orderListView">
 
 		<%-- 
@@ -49,17 +54,14 @@
 			<table class="t_head orders_thead" style="display:table;" id="tbHead">
 				<thead>
 					<tr>
-						<th width="180px;" class="tal pl10"><label
-							class="base_label sel_all"> <input type="checkbox"
-								value="">全选
-						</label>
+						<th width="178px;" class="tal pl10"><label><input type="checkbox" value=""/>&nbsp;&nbsp;全选</label>
 						</th>
-						<th width="10%">航班</th>
+						<th width="10%">航班动态</th>
 						<th width="9.04%">联系人</th>
 						<th width="20%">行程/有效日期</th>
 						<th width="12%">舱位单价</th>
 						<th></th>
-						<th width="10%" id="thStatusWithUl" class="td_left">
+						<th width="12%" id="thStatusWithUl" class="td_left">
 							<div class="dropdown" style="width: 95px;" id="ddOrderStatus">
 								<span class="curr"><em>订单状态</em><i></i>
 								</span>
@@ -88,16 +90,16 @@
 			</table>
 
 
-			<ul class="t_body" style="display:block;" id="orderList">
+			<ul class="t_body" style="display:block;height:500px;overflow:auto" id="orderList">
 				<c:forEach items="${orderDetail }" var="order">
 				<li biz="FlightDomestic" class="item">
 					<h3>
 						<label class="base_label"><input rid="3723039120"
 							type="checkbox" value="">
-						</label> <span class="ilb mr10"> 订单号： <a
+						</label> <span class="ilb mr10" style="font-size:20px"> 订单号： <a
 							href="${contextPath }/orderDetail?orderid=${order.id}&customerid=${order.customerid}"
 							class="fs14" target="_blank">${order.orderno }</a> </span> <span
-							class="ilb mr10 bookingDate" bd="2017-04-26 23:13:21">预订日期：<fmt:formatDate value="${order.ordertime }" pattern="yyyy-MM-dd"/></span>
+							class="ilb mr10 bookingDate"  style="font-size:20px">预订日期：<fmt:formatDate value="${order.ordertime }" pattern="yyyy-MM-dd"/></span>
 
 
 						<a biz="FlightDomestic" rid="3723039120" href="${contextPath }/deleteOrder?id=${order.id}&customerid=${order.customerid }"
@@ -109,11 +111,11 @@
 							<tr>
 								<td width="180px" class="tal pl10">&nbsp;&nbsp;&nbsp;${order.startAirportCity } - ${order.arrivalAirportCity }</td>
 
-								<td width="10%" class="td_left"><a href="${contextPath }/flightDT?flightno=${order.flightno }&startTime=${order.starttime}">航班动态</a>(${order.status })</td>
+								<td width="10%"><a href="${contextPath }/flightDT?flightno=${order.flightno }&startTime=${order.starttime}">${order.status }</a></td>
 
 								<td width="9.04%">
 									<div class="people_box">
-										<div class="people">${order.person }</div>
+										${order.person }
 									</div></td>
 								<td width="20%" style="white-space: nowrap;"><fmt:formatDate value="${order.starttime }" pattern="yyyy-MM-dd HH:mm"/>
 									</td>
@@ -154,7 +156,7 @@
 
 		</div>
 	</div>
-
-
+<jsp:include page="common/footer.jsp"></jsp:include>
+</div>
 </body>
 </html>

@@ -22,9 +22,14 @@
 <link
 	href="${contextPath }/css/PageHeader_v2.css"
 	rel="stylesheet" />
-</head>
-<body>
-	<div id="base_bd">
+  <jsp:include page="common/link.jsp" ></jsp:include>
+ </head> 
+ <body id="page6"> 
+
+<div class="main">
+<jsp:include page="common/header.jsp"></jsp:include>
+
+	<div id="base_bd" style="width:985px;height:550px;margin-left:-10px">
 
 		<script>
 			if (document.body.className.indexOf('version3') < 0) {
@@ -36,20 +41,12 @@
 
 		<!-- 重新搜索表单 start -->
 		<form id="reSearchForm" action="${contextPath }/searchFlights">
-			<div id="search_form" class="search_form clearfix">
-				<div class="flight_way">
-					<div class="search_form_select" id="FlightSearchType">
-						<select name="flightType" disabled="disabled">
-							<option value="1">单程</option>
-							<option value="2">双程</option>
-						</select>
-					</div>
-				</div>
+			<div id="search_form" class="search_form clearfix" style="">
 				<div class="flight_attribute" id="flightTypeList">
 					<div class="">
 						<div class="first_line">
 							<div class="type_item">
-								<span class="ico_search_type ico_search_dcity"></span> <input style="width:130px"
+								<span class="ico_search_type ico_search_dcity"></span> <input style="width:125px"
 									type="text" id="DCityName1" name="startCity" value="广州"
 									mod="address|notice" data-ubt="DCityName1" mod_address_tpl="on"
 									mod_address_reference="DCity1" placeholder="出发城市"
@@ -60,7 +57,7 @@
 									data-ubt="ChangeCity"></a>
 							</div>
 							<div class="type_item">
-								<span class="ico_search_type ico_search_acity"></span> <input style="width:130px"
+								<span class="ico_search_type ico_search_acity"></span> <input style="width:125px"
 									type="text" id="ACityName1" name="arrivalCity" value="北京"
 									data-ubt="ACityName1" mod_address_reference="ACity1"
 									mod_address_tpl="on" mod="address|notice"
@@ -74,14 +71,14 @@
 									autocomplete="off"
 									style="background-image: url(&quot;http://pic.c-ctrip.com/cquery/pic_fir.png&quot;); background-position: 100% 50%; background-repeat: no-repeat;" />
 							</div>
-							<div class="type_item">
+							<div class="type_item" style="">
 								<span class="ico_search_type ico_search_adate"></span> <input style="width:130px"
 									type="text" id="ReturnDate1" name="returnTime"
 									data-ubt="ReturnDate1" mod="calendar|notice" placeholder="返回日期"
 									autocomplete="off" style="background-image: none;" />
 							</div>
 							<div class="type_item">
-								<span class="ico_search_type ico_search_class"></span> <input style="width:130px"
+								<span class="ico_search_type ico_search_class"></span> <input style="width:50px"
 									type="text" id="ACityName1" name="count" value="2"
 									data-ubt="ACityName1" mod_address_reference="ACity1"
 									mod_address_tpl="on" mod="address|notice"
@@ -102,7 +99,7 @@
 
 		<!-- 筛选条件 start -->
 
-		<div class="base_side" id="demo_side" style="float: left;margin-top: 10px">
+		<div class="base_side" id="demo_side" style="float: left;margin-top: 10px; display:none">
 			<div class="side-box mb10" id="J_sideFilter">
 				<div class="hd">
 					筛选 <span id="J_flight_num" class="flight-num">（共${fn:length(flightList) }条航班信息）</span> <a
@@ -143,7 +140,7 @@
 
 		<!-- 航班列表 start -->
 		<div id="J_sort_controls" class="sort-controls clearfix"
-			style="float: left;margin-left: 10px">
+			style="">
 			<ul class="sorts sort-guideline">
 				<li class="default-sort">航班信息</li>
 				<li class="dtime-sort"><a id="dtime_sort"
@@ -195,7 +192,7 @@
 			
 		</div>
 
-		<div id="J_flightlist2" style="float: right;width: 944px">
+		<div id="J_flightlist2" style="">
 			<c:forEach items="${flightList }" var="flight">
 			<div id="flight_${flight.flightno }"
 				class="search_box search_box_tag search_box_light " ispromotion=""
@@ -325,5 +322,7 @@
 	}
 </script>
 	
+	<jsp:include page="common/footer.jsp" ></jsp:include>
+	</div>
 </body>
 </html>

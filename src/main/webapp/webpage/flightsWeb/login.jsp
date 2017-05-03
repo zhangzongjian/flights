@@ -12,24 +12,23 @@
   
   <link rel="stylesheet" href="${contextPath }/css/base1.css"/>
   <link id="css" rel="stylesheet" type="text/css" href="${contextPath }/css/zclc2.1460959081.css" />
+  <jsp:include page="common/link.jsp" ></jsp:include>
   <script language="JavaScript" src="${contextPath }/js/jquery.js"></script>
   <script language="JavaScript" src="${contextPath }/js/jquery.cookie.js"></script>
  </head> 
- <body > 
+<body id="page6">
+<div class="main">
+<jsp:include page="common/header.jsp"></jsp:include>
+
  <div class="head_foot_content"> 
    <div class="header">
     <div class="header-layer"></div>
-    <div class="lin"> 
-     <div class="tit"> 
-      <img src="${contextPath }/images/t2.png" alt="登录" /> 
-     </div> 
-    </div> 
-    <div class="content-bd" status="available"> 
-     <div class="content-l" status="available"> 
+    <div class="content-bd" style="height:480px;margin-top:30px"> 
+     <div class="content-l" style="margin-left:50px"> 
        <img src="${contextPath }/images/timg.jpg"/>
      </div> 
      <div class="line"></div> 
-     <div class="content-r"> 
+     <div class="content-r" style="margin-right:48px"> 
       <form action="${contextPath }/customerLogin" method="post" jveventinit="1"> 
        <div class="box"> 
         <span id="userIdSpt" jvnormaltip="&amp;nbsp;">&nbsp;</span> 
@@ -51,9 +50,8 @@
          <label style="height: 25px; position: relative;"> <input id="rmbuser" class="jz" type="checkbox" remember-me="2592000" no-remember-me="84600" /> <em>记住我<strong>不是自己的电脑上不要勾选此项</strong></em> </label> 
         </div> 
        </div> 
-       <input type="hidden" name="gourl" value=""/>
        <input type="button" id="submit" class="login" value="登录"/> 
-       <a class="zhuce" href="${contextPath }/webpage/flightsWeb/register.jsp">注册</a> 
+       <a class="zhuce" href="${contextPath }/register">注册</a> 
       </form> 
      </div> 
     </div> 
@@ -70,7 +68,7 @@ $(function(){
 	} 
 	
 	//cookie保存用户信息
-	$("#submit").click(function() {
+	$("#submit").click(function() { 
 		if ($("#rmbuser").attr("checked") == true) { 
 			var userName = $("[name='username']").val(); 
 			var passWord = $("[name='password']").val(); 
@@ -109,5 +107,8 @@ $(function(){
 	
 });  
 </script>
+
+<jsp:include page="common/footer.jsp" ></jsp:include>
+</div>
  </body>
 </html>

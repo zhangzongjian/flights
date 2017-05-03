@@ -8,101 +8,12 @@
 <head>
 <title>机票预定网站</title>
 <meta charset="utf-8">
-<link rel="stylesheet" href="${contextPath }/css/nav.css">
-<link rel="stylesheet" href="${contextPath }/css/reset.css" type="text/css" media="all">
-<link rel="stylesheet" href="${contextPath }/css/layout.css" type="text/css" media="all">
-<link rel="stylesheet" href="${contextPath }/css/style1.css" type="text/css" media="all">
-<script type="text/javascript" src="${contextPath }/js/jquery-1.5.2.js" ></script>
-<script type="text/javascript" src="${contextPath }/js/cufon-yui.js"></script>
-<script type="text/javascript" src="${contextPath }/js/cufon-replace.js"></script>  
-<script type="text/javascript" src="${contextPath }/js/Cabin_400.font.js"></script>
-<script type="text/javascript" src="${contextPath }/js/tabs.js"></script> 
-<script type="text/javascript" src="${contextPath }/js/jquery.jqtransform.js" ></script>
-<script type="text/javascript" src="${contextPath }/js/jquery.nivo.slider.pack.js"></script>
-<script type="text/javascript" src="${contextPath }/js/atooltip.jquery.js"></script>
-<script type="text/javascript" src="${contextPath }/js/script.js"></script>
-<!--[if lt IE 9]>
-<script type="text/javascript" src="js/html5.js"></script>
-<style type="text/css">
-	.main, .tabs ul.nav a, .content, .button1, .box1, .top { behavior:url(js/PIE.htc)}
-</style>
-<![endif]-->
-<!--[if lt IE 7]>
-	<div style=' clear: both; text-align:center; position: relative;'>
-		<a href="http://www.microsoft.com/windows/internet-explorer/default.aspx?ocid=ie6_countdown_bannercode"><img src="http://www.theie6countdown.com/images/upgrade.jpg" border="0"  alt="" /></a>
-	</div>
-<![endif]-->
+<jsp:include page="common/link.jsp" ></jsp:include>
 </head>
 
 <body id="page6">
 <div class="main">
-<!--header -->
-	<header>
-		<div class="wrapper">
-			<h1><a href="${contextPath }/index.html" id="logo">Air lines</a></h1>
-			<span id="slogan">Fast, Frequent &amp; Safe Flights</span>
-			<nav id="top_nav">
-				<ul>
-					<li><a href="${contextPath }/index.html" class="nav1">首页</a></li>
-					<li><a href="${contextPath }/#" class="nav2">关于</a></li>
-					<li><a href="${contextPath }/Contacts.html" class="nav3">联系</a></li>
-				</ul>
-			</nav>
-		</div>
-		
-		<div class="wrapper">
-		<ul class="nav-menu clearfix unstyled">
-			<li>
-				<a href="${contextPath }/" class="three-d">
-					首页
-					<span class="three-d-box"><span class="front">首页</span><span class="back">首页</span></span>
-				</a>
-			</li>
-			<li>
-				<a href="${contextPath }/#" class="three-d">
-					航班动态
-					<span class="three-d-box"><span class="front">航班动态</span><span class="back">航班动态</span></span>
-				</a>
-			</li>
-			<li>
-				<a href="javascript:void(0);" class="three-d">
-					个人中心
-					<span class="three-d-box"><span class="front">个人中心</span><span class="back">个人中心</span></span>
-				</a>
-				<ul class="clearfix unstyled drop-menu">
-					<li>
-						<a href="${contextPath }/#" class="three-d">
-							登录/注册
-							<span class="three-d-box"><span class="front">登录/注册</span><span class="back">登录/注册</span></span>
-						</a>
-					</li>
-					<li><a href="${contextPath }/#" class="three-d">
-							我的资料
-							<span class="three-d-box"><span class="front">我的资料</span><span class="back">我的资料</span></span>
-						</a>
-					</li>
-					<li><a href="${contextPath }/#" class="three-d">
-							我的订单
-							<span class="three-d-box"><span class="front">我的订单</span><span class="back">我的订单</span></span>
-						</a>
-					</li>
-					<li><a href="${contextPath }/customerLogout" class="three-d">
-							退出账号
-							<span class="three-d-box"><span class="front">退出账号</span><span class="back">退出账号</span></span>
-						</a>
-					</li>
-				</ul>
-			</li>
-			<li>
-				<a href="${contextPath }/#" class="three-d active">
-					联系我们
-					<span class="three-d-box"><span class="front">联系我们</span><span class="back">联系我们</span></span>
-				</a>
-			</li>
-		</ul>
-	</div>
-	</header>
-<!-- / header -->
+<jsp:include page="common/header.jsp"></jsp:include>
 <!--content -->
 	<section id="content">
 		<div class="wrapper pad1">
@@ -151,22 +62,7 @@
 				</div>
 			</section>
 			<!--content end-->
-			<!--footer -->
-			<footer>
-				<div class="wrapper">
-					<ul id="icons">
-						<li><a href="${contextPath }/#" class="normaltip" title="Facebook"><img src="${contextPath }/images/icon1.jpg" alt=""></a></li>
-						<li><a href="${contextPath }/#" class="normaltip" title="Delicious"><img src="${contextPath }/images/icon2.jpg" alt=""></a></li>
-						<li><a href="${contextPath }/#" class="normaltip" title="Stumble Upon"><img src="${contextPath }/images/icon3.jpg" alt=""></a></li>
-						<li><a href="${contextPath }/#" class="normaltip" title="Twitter"><img src="${contextPath }/images/icon4.jpg" alt=""></a></li>
-						<li><a href="${contextPath }/#" class="normaltip" title="Linkedin"><img src="${contextPath }/images/icon5.jpg" alt=""></a></li>
-						<li><a href="${contextPath }/#" class="normaltip" title="Reddit"><img src="${contextPath }/images/icon6.jpg" alt=""></a></li>
-					</ul>
-					<div class="links">
-Copyright &copy; 2014.Company name All rights reserved.<a target="_blank" href="http://777moban.com/">æ¨¡æ¿å¤§å¨</a></div>
-				</div>
-			</footer>
-			<!--footer end-->
+			<jsp:include page="common/footer.jsp"></jsp:include>
 		</div>
 <script type="text/javascript"> Cufon.now(); </script>
 

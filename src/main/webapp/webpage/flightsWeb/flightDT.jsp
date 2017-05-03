@@ -1,5 +1,6 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <% 
    String contextPath = request.getContextPath(); 
@@ -12,13 +13,14 @@
   <title>航班动态</title> 
   <link href="${contextPath }/css/dynamic_v3.0.css" type="text/css" rel="stylesheet" /> 
   <link href="${contextPath }/css/PageHeader_v2.css" rel="stylesheet" type="text/css" /> 
-
+  <jsp:include page="common/link.jsp" ></jsp:include>
  </head> 
- <body > 
+ <body id="page6"> 
 
-<div id="base_bd">
+<div class="main">
+<jsp:include page="common/header.jsp"></jsp:include>
 <!-- 查询form start -->
-<div class="search-box">
+<div class="search-box" style="margin-top:8px">
 	<form action="${contextPath }/flightDT" method="get">
     <div class="search-inner fsans clearfix">
         <div class="type-select">
@@ -30,7 +32,7 @@
             <div class="type-item">
                 <label class="label-input">
                     <span class="t">航班号</span>
-                    <input type="text" name="flightno" id="WZ_flightNo" class="input-text" style="width:370px;" value="AQ1037" autocomplete="on" placeholder="如 MU1234">
+                    <input type="text" name="flightno" id="WZ_flightNo" class="input-text" style="width:307px;" value="AQ1037" autocomplete="on" placeholder="如 MU1234">
                     <ul class="flight-associate" id="wz_likeFlightNos" style="position: absolute;left: 62px;top:37px;display:none"></ul>
                 </label>
                 <label class="label-input">
@@ -46,6 +48,9 @@
 </div>
 <!-- 查询form end -->
 
+<c:if test="${fn:length(flightDetail) ==0 }">
+	<div style="height:380px"></div>
+</c:if>
 
 <!-- 查询结果 start -->
 <c:forEach items="${flightDetail }" var="flight">
@@ -118,7 +123,7 @@
 </c:forEach>
 <!-- 查询结果 end -->
 
-
+<jsp:include page="common/footer.jsp"></jsp:include>
 
 </div>
  </body>

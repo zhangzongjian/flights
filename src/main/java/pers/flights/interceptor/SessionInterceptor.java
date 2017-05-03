@@ -49,6 +49,7 @@ public class SessionInterceptor implements HandlerInterceptor {
         if(requestURI.equals("/flights/") ||
            requestURI.equals("/flights/searchFlights") ||
         		requestURI.equals("/flights/selectFlight") ||
+        		requestURI.equals("/flights/contact") ||
         		requestURI.equals("/flights/flightDT")) {
         	return true;
         }

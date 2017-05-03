@@ -10,10 +10,12 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
   <title>添加乘客</title> 
   <link href="${contextPath }/css/book.css" type="text/css" rel="stylesheet" />
-
+ <jsp:include page="common/link.jsp" ></jsp:include>
  </head> 
- 
- <body > 
+ <body id="page6"> 
+
+<div class="main">
+<jsp:include page="common/header.jsp"></jsp:include>
 <script>
  	//window.onload = function() {alert('${ticketPriceId}');};
 </script>
@@ -139,5 +141,7 @@
   </form>
 </div>
 
+<jsp:include page="common/footer.jsp" ></jsp:include>
+</div>
  </body>
 </html>

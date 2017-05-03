@@ -13,8 +13,11 @@
   	<link rel="stylesheet" href="${contextPath }/css/base.css" />
 	<link rel="stylesheet" href="${contextPath }/css/layout1.css"/>
 	<script src="${contextPath }/js/jquery-1.11.3.min.js"></script>
+	<jsp:include page="common/link.jsp" ></jsp:include>
  </head> 
- <body > 
+<body id="page6">
+<div class="main">
+<jsp:include page="common/header.jsp"></jsp:include>
  	<div id="wrapper">
 		<div class="container w960 mt20">
 			<div id="processor" >
@@ -160,5 +163,7 @@
 		});
 	</script>
 
+<jsp:include page="common/footer.jsp" ></jsp:include>
+</div>
  </body>
 </html>

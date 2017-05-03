@@ -10,10 +10,12 @@
   <title>我的信息</title> 
   <link href="${contextPath }/css/cui110425.css" type="text/css" rel="stylesheet" />
   <link href="${contextPath }/css/private_account.css" type="text/css" rel="stylesheet" />
-  <link href="${contextPath }/css/PageHeader_v2.css" rel="stylesheet" />
+  <jsp:include page="common/link.jsp" ></jsp:include>
+  <style>h3{margin-top:0px;}</style>
  </head> 
- <body > 
-
+<body id="page6">
+<div class="main">
+<jsp:include page="common/header.jsp" ></jsp:include>
 <!-- 个人信息 -->
 <div id="info_id" class="box01 box01_c">
 		<div id="info_title_id" class="box_hd hd02">
@@ -165,6 +167,7 @@
 		else document.forms[1].submit();
 	}
 </script>
-
+<jsp:include page="common/footer.jsp" ></jsp:include>
+</div>
  </body>
 </html>
