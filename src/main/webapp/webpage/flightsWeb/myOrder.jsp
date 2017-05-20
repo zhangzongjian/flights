@@ -111,7 +111,7 @@
 							<tr>
 								<td width="180px" class="tal pl10">&nbsp;&nbsp;&nbsp;${order.startAirportCity } - ${order.arrivalAirportCity }</td>
 
-								<td width="10%"><a href="${contextPath }/flightDT?flightno=${order.flightno }&startTime=${order.starttime}">${order.status }</a></td>
+								<td width="10%"><a href="${contextPath }/flightDT?flightno=${order.flightno }&startTime=${order.starttime}">${order.flightno }(${order.status })</a></td>
 
 								<td width="9.04%">
 									<div class="people_box">
@@ -123,15 +123,15 @@
 								<span class="base_price fs14"><dfn>¥</dfn>
 								<c:if test="${order.discounttype == null && order.dprice != null}">
 			                        <c:set var="price" value="${order.dprice }"/>
-									<c:out value="${price}"/>（${order.classtype }）
+									<fmt:formatNumber type="number" value="${price}" maxFractionDigits="0"/>（${order.classtype }）
 								</c:if>
 								<c:if test="${order.discounttype == null && order.dprice == null}">
 									<c:set var="price" value="${order.price }"/>
-									<c:out value="${price}"/>（${order.classtype }）
+									<fmt:formatNumber type="number" value="${price}" maxFractionDigits="0"/>（${order.classtype }）
 								</c:if>
 								<c:if test="${order.discounttype != null }">
 									<c:set var="price" value="${order.price * order.discountrate}"/>
-									<c:out value="${price}"/>（${order.classtype }）
+									<fmt:formatNumber type="number" value="${price}" maxFractionDigits="0"/>（${order.classtype }）
 								</c:if>
 								</span>
 								</td>

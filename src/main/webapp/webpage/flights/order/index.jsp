@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <% 
    String contextPath = request.getContextPath(); 
    request.setAttribute("contextPath", contextPath);
@@ -98,12 +99,12 @@ $(document).ready(function(){
 	  		<td>${order.orderNo }</td>
 	  		<td>${order.flightId }</td>
 	  		<td>${order.ticketPriceId }</td>
-	  		<td>${order.orderTime }</td>
+	  		<td><fmt:formatDate value="${order.orderTime }" pattern="yyyy-MM-dd HH:mm" /></td>
 	  		<td>${order.person }</td>
 	  		<td>${order.phone }</td>
 	  		<td>${order.orderStatus }</td>
 	  		<td>${order.customerId }</td>
-	  		<td>${order.createTime }</td>
+	  		<td><fmt:formatDate value="${order.createTime }" pattern="yyyy-MM-dd HH:mm" /></td>
 	        <td>
 		        <a href="${contextPath}/order/detail?id=${order.id }&page=${pager.page }" class="tablelink">查看</a>     
 		        <a href="${contextPath}/order/intoUpdate?id=${order.id }&page=${pager.page }" class="tablelink">修改</a>

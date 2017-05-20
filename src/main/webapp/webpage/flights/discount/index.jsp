@@ -79,6 +79,7 @@ $(document).ready(function(){
     	<thead>
     	<tr>
         <th style="width:35px;"><input class="checkAll" type="checkbox" value=""/></th>
+        <th>编号</th>
 	  	<th>折扣类型</th>
 	  	<th>折扣率</th>
 	  	<th>创建时间</th>
@@ -89,6 +90,7 @@ $(document).ready(function(){
         <c:forEach items="${pager.datas }" var="discount">
 	        <tr>
 	        <td><input name="id" type="checkbox" value="${discount.id }" /></td>
+	  		<td>${discount.id }</td>
 	  		<td>${discount.discountType }</td>
 	  		<td>${discount.discountRate }</td>
 	  		<td>${discount.createTime }</td>

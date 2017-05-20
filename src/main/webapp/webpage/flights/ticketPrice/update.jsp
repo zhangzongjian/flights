@@ -33,7 +33,7 @@
 	  	<li><label>舱位数量</label><input name="classAmount" type="text" class="dfinput" value="${ticketPrice.classAmount }"/></li>
 	  	<li><label>价格</label><input name="price" type="text" class="dfinput" value="${ticketPrice.price }"/></li>
 	  	<li><label>航班编号</label><input name="flightId" type="text" class="dfinput" value="${ticketPrice.flightId }"/></li>
-	  	<li><label>折扣类型</label><input name="discountId" type="text" class="dfinput" value="${ticketPrice.discountId }"/></li>
+	  	<li><label>折扣编号</label><input name="discountId" type="text" class="dfinput" value="${ticketPrice.discountId }"/></li>
 	  	<li><label>优惠价</label><input name="dprice" type="text" class="dfinput" value="${ticketPrice.dprice }"/></li>
 	  	<li><label>创建时间</label><input name="createTime" type="text" class="dfinput" value="${ticketPrice.createTime }"/></li>
 	    <li><label>&nbsp;</label><input name="" type="submit" class="btn" value="确认保存"/>&nbsp;&nbsp;<input name="" type="button" class="btn" value="返回" onclick="javascript:history.go(-1);"/></li>

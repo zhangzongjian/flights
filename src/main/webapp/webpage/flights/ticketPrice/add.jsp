@@ -33,7 +33,7 @@
 	  	<li><label>舱位数量</label><input name="classAmount" type="text" class="dfinput" /></li>
 	  	<li><label>价格</label><input name="price" type="text" class="dfinput" /></li>
 	  	<li><label>航班编号</label><input name="flightId" type="text" class="dfinput" /></li>
-	  	<li><label>折扣类型</label><input name="discountId" type="text" class="dfinput" /></li>
+	  	<li><label>折扣编号</label><input name="discountId" type="text" class="dfinput" /></li>
 	  	<li><label>优惠价</label><input name="dprice" type="text" class="dfinput" /></li>
 	    <li><label>&nbsp;</label><input name="" type="submit" class="btn" value="确认保存"/></li>
 	    </ul>

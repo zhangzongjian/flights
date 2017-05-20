@@ -24,10 +24,12 @@ import pers.flights.mapper.CommonMapper;
 import pers.flights.model.Customer;
 import pers.flights.model.Order;
 import pers.flights.model.Passenger;
+import pers.flights.model.TicketPrice;
 import pers.flights.service.CustomerService;
 import pers.flights.service.FlightService;
 import pers.flights.service.OrderService;
 import pers.flights.service.PassengerService;
+import pers.flights.service.TicketPriceService;
 import pers.flights.util.Attribute;
 
 @Controller
@@ -45,6 +47,9 @@ public class WebController {
 	
 	@Autowired
 	private PassengerService passengerService;
+	
+	@Autowired
+	private TicketPriceService ticketPriceService;
 	
 	@Autowired
 	private CommonMapper commonMapper;
@@ -178,6 +183,47 @@ public class WebController {
 		else {
 			return "";
 		}
+	}
+	
+	
+	@RequestMapping("orderOperate")
+	@ResponseBody
+	public Map<String, Object> orderOperate(HttpServletRequest request, String op, Order order) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		if(order.getCustomerId() == loginCustomer.getId()) {
+			Order order2 = orderService.searchByPrimaryKey(order.getId());
+			if("returnMoney".equals(op) || "cancelOrder".equals(op)) {
+				String status = "已取消";
+				if("returnMoney".equals(op)) status = "退款审核中"; 
+				order2.setOrderStatus(status);
+				orderService.update(order2);
+				map.put("message", status+"!");
+			}
+			else if("goPay".equals(op)) {
+				int passengerCount = commonMapper.searchPassengerByOrderId(order.getId()).size();
+				Map<String, Object> order3 = orderService.getOrderDetailById(order.getId());
+				Date starttime = (Date) order3.get("starttime");
+				if( (starttime.getTime() - new Date().getTime()) < 30*60*1000) {
+					map.put("message", "距离飞机起飞时间小于30分钟，不能完成付款！");
+				}
+				else if((Integer)order3.get("classamount") < passengerCount) {
+					map.put("message", "非常抱歉，您预订的舱位数量不足，不能完成付款！");
+				}
+				else {
+					//修改舱位数量-count
+					TicketPrice t = ticketPriceService.searchByPrimaryKey(order2.getTicketPriceId());
+					t.setClassAmount(t.getClassAmount() - passengerCount);
+					ticketPriceService.update(t);
+					order2.setOrderStatus("已付款");
+					orderService.update(order2);
+					map.put("message", "付款成功！");
+				}
+			}
+		}
+		else {
+			map.put("message", "请求参数有误！");
+		}
+		return map;
 	}
 	
 	/**

@@ -83,7 +83,7 @@ $(document).ready(function(){
 	  	<th>舱位数量</th>
 	  	<th>价格</th>
 	  	<th>航班编号</th>
-	  	<th>折扣类型</th>
+	  	<th>折扣编号</th>
 	  	<th>优惠价</th>
 	  	<th>创建时间</th>
         <th style="width:150px;">操作</th>

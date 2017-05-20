@@ -6,7 +6,7 @@ public class TicketPrice {
 	  
 	private String classType;//舱位类型
 	  
-	private String classAmount;//舱位数量
+	private int classAmount;//舱位数量
 	  
 	private Float price;//价格
 	  
@@ -34,11 +34,11 @@ public class TicketPrice {
 		 this.classType = classType;
 	}
 	
-	public String getClassAmount() {
+	public int getClassAmount() {
 		 return classAmount;
 	}
 	
-	public void setClassAmount(String classAmount) {
+	public void setClassAmount(int classAmount) {
 		 this.classAmount = classAmount;
 	}
 	

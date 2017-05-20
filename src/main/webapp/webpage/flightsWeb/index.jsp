@@ -45,18 +45,18 @@
 												<div class="col1">
 													<div class="row">
 														<span class="left">出发日期</span>
-														<input name="startTime" type="text" class="input1" value="2017-04-27"  onblur="if(this.value=='') this.value='2017-04-27'" onFocus="if(this.value =='2017-04-27' ) this.value=''">
+														<input name="startTime" type="text" class="input1" value="2017-05-05"  onblur="if(this.value=='') this.value='2017-05-05'" onFocus="if(this.value =='2017-05-05' ) this.value=''">
 													</div>
 													<div class="row">
 														<span class="left">返回日期</span>
-														<input name="returnTime" type="text" class="input1" value="2017-04-29"  onblur="if(this.value=='') this.value='2017-04-29'" onFocus="if(this.value =='2017-04-29' ) this.value=''">
+														<input name="returnTime" type="text" class="input1" value="2017-05-07"  onblur="if(this.value=='') this.value='2017-05-07'" onFocus="if(this.value =='2017-05-07' ) this.value=''">
 													</div>
 												</div>
 												<input type="text" class="input1 marg_top1" value="+/- 0 Days"  onblur="if(this.value=='') this.value='+/- 0 Days'" onFocus="if(this.value =='+/- 0 Days' ) this.value=''">
 											</div>
 											<div class="row">
 												<span class="left">乘客数量</span>
-												<input name="count" type="text" class="input2" value="2"  onblur="if(this.value=='') this.value='2'" onFocus="if(this.value =='2' ) this.value=''">
+												<input name="count" type="text" class="input2" value="1"  onblur="if(this.value=='') this.value='1'" onFocus="if(this.value =='1' ) this.value=''">
 											</div>
 											<div class="wrapper">
 												<span class="right relative"><a href="javascript:void(0);" class="button1" onClick="document.getElementById('form_1').submit()"><strong>搜索</strong></a></span>

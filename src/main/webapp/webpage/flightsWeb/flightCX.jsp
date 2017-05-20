@@ -23,6 +23,18 @@
 	href="${contextPath }/css/PageHeader_v2.css"
 	rel="stylesheet" />
   <jsp:include page="common/link.jsp" ></jsp:include>
+  <script>
+  	$(function(){
+  		$('#J_change_swap').click(function() {
+  			var startcity = $('input[name="startCity"]');
+  			var arrivalcity = $('input[name="arrivalCity"]');
+  			var tmp = startcity.val();
+  			startcity.val(arrivalcity.val());
+  			arrivalcity.val(tmp);
+  		});
+  	});
+  </script>
+  
  </head> 
  <body id="page6"> 
 
@@ -66,7 +78,7 @@
 							</div>
 							<div class="type_item">
 								<span class="ico_search_type ico_search_ddate"></span> <input style="width:130px"
-									id="DDate1" name="startTime" type="text" value="2017-04-27"
+									id="DDate1" name="startTime" type="text" value="2017-05-05"
 									mod="calendar|notice" placeholder="出发日期" data-ubt="DDate1"
 									autocomplete="off"
 									style="background-image: url(&quot;http://pic.c-ctrip.com/cquery/pic_fir.png&quot;); background-position: 100% 50%; background-repeat: no-repeat;" />
@@ -79,7 +91,7 @@
 							</div>
 							<div class="type_item">
 								<span class="ico_search_type ico_search_class"></span> <input style="width:50px"
-									type="text" id="ACityName1" name="count" value="2"
+									type="text" id="ACityName1" name="count" value="1"
 									data-ubt="ACityName1" mod_address_reference="ACity1"
 									mod_address_tpl="on" mod="address|notice"
 									mod_address_source="flight_new" placeholder="乘客数量"
@@ -235,11 +247,14 @@
 								<div class="service-item">
 									<select onchange="changeTicketPrice(this);">
 										<c:forEach items="${flight.ticketPrice }" var="ticketPrice">
-										<option value="${ticketPrice.id },${ticketPrice.discounttype },${ticketPrice.discountrate },${ticketPrice.dprice },${ticketPrice.price }">
+										<option value="${ticketPrice.id },${ticketPrice.discounttype },${ticketPrice.discountrate },${ticketPrice.dprice },${ticketPrice.price },${ticketPrice.classamount}">
 											${ticketPrice.classtype } ${ticketPrice.price }&yen;
 										</option>
 										</c:forEach>
 									</select>
+									<br/>
+									<br/>
+									<span>仅剩${flight.ticketPrice[0].classamount }张</span>
 									<input type="hidden" name="ticketPriceId" value="${flight.ticketPrice[0].id }"/>
 								</div>
 							</td>
@@ -258,13 +273,13 @@
 							<td class="price lowest_price "><span class="J_base_price"><span
 									class="base_price02">
 									<c:if test="${flight.ticketPrice[0].discounttype == null && flight.ticketPrice[0].dprice != null}">
-										${flight.ticketPrice[0].dprice }
+										<fmt:formatNumber type="number" value="${flight.ticketPrice[0].dprice }" maxFractionDigits="0"/>
 									</c:if>
 									<c:if test="${flight.ticketPrice[0].discounttype == null && flight.ticketPrice[0].dprice == null}">
-										${flight.ticketPrice[0].price }
+										<fmt:formatNumber type="number" value="${flight.ticketPrice[0].price }" maxFractionDigits="0"/>
 									</c:if>
 									<c:if test="${flight.ticketPrice[0].discounttype != null }">
-										${flight.ticketPrice[0].price * flight.ticketPrice[0].discountrate}
+										<fmt:formatNumber type="number" value="${flight.ticketPrice[0].price * flight.ticketPrice[0].discountrate}" maxFractionDigits="0"/>
 									</c:if>
 									<dfn>&yen;</dfn>
 									</span><br />
@@ -293,13 +308,18 @@
 
 <script>
 	function changeTicketPrice(selectE) {
-		//id ,discounttype ,discountrate ,dprice, price
+		//id ,discounttype ,discountrate ,dprice, price, classamount
 		var data = selectE.value.split(',');
 		var id = data[0];
 		var discounttype = data[1] == ''? null : data[1];
 		var discountrate = data[2] == ''? null : data[2];
 		var dprice = data[3] == ''? null : data[3];
 		var price = data[4] == ''? null : data[4];
+		var classamount = data[5];
+		
+		var span = selectE.parentNode.getElementsByTagName("span")[0];
+		span.innerHTML = "仅剩"+data[5]+"张";
+			
 		//当前select所在的<td>节点
 		var td1 = selectE.parentNode.parentNode;
 		var td2 = td1.nextSibling.nextSibling;
@@ -314,7 +334,7 @@
 		}
 		if(discounttype != null) {
 			td2.innerHTML = "<span class='ico_whole_aw' >"+discounttype+"</span>";
-			td3.getElementsByTagName('span')[1].innerHTML = discountrate*price+"<dfn>&yen;</dfn>";
+			td3.getElementsByTagName('span')[1].innerHTML = parseInt(discountrate*price)+"<dfn>&yen;</dfn>";
 		}
 		
 		var input = selectE.nextSibling.nextSibling;

@@ -54,6 +54,7 @@ $(function(){
     	<ul class="menuson">
         <li class="active"><cite></cite><a href="${contextPath }/index" target="rightFrame">首页</a><i></i></li>
         <li><cite></cite><a href="${contextPath }/flight/index" target="rightFrame">航班列表</a><i></i></li>
+        <li><cite></cite><a href="${contextPath }/ticketPrice/index" target="rightFrame">票价类型</a><i></i></li>
         <li><cite></cite><a href="${contextPath }/flight/intoAdd" target="rightFrame">新增航班</a><i></i></li>
         </ul>    
     </dd>
@@ -107,7 +108,6 @@ $(function(){
         <li class="active"><cite></cite><a href="${contextPath }/company/index" target="rightFrame">航空公司</a><i></i></li>
         <li><cite></cite><a href="${contextPath }/plane/index" target="rightFrame">机型信息</a><i></i></li>
         <li><cite></cite><a href="${contextPath }/airport/index" target="rightFrame">机场信息</a><i></i></li>
-        <li><cite></cite><a href="${contextPath }/ticketPrice/index" target="rightFrame">票价类型</a><i></i></li>
         <li><cite></cite><a href="${contextPath }/discount/index" target="rightFrame">折扣类型</a><i></i></li>
         <li><cite></cite><a href="${contextPath }/passenger/index" target="rightFrame">乘客信息</a><i></i></li>
     </ul>

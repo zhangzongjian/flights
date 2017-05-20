@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <% 
    String contextPath = request.getContextPath(); 
@@ -78,6 +79,7 @@ $(document).ready(function(){
     	<thead>
     	<tr>
         <th style="width:35px;"><input class="checkAll" type="checkbox" value=""/></th>
+        <th>编号</th>
 	  	<th>航班号</th>
 	  	<th>出发时间</th>
 	  	<th>出发机场</th>
@@ -95,16 +97,17 @@ $(document).ready(function(){
         <c:forEach items="${pager.datas }" var="flight">
 	        <tr>
 	        <td><input name="id" type="checkbox" value="${flight.id }" /></td>
+	  		<td>${flight.id }</td>
 	  		<td>${flight.flightNo }</td>
-	  		<td>${flight.startTime }</td>
+	  		<td><fmt:formatDate value="${flight.startTime }" pattern="yyyy-MM-dd HH:mm" /></td>
 	  		<td>${flight.startAirportId }</td>
-	  		<td>${flight.arrivalTime }</td>
+	  		<td><fmt:formatDate value="${flight.arrivalTime }" pattern="yyyy-MM-dd HH:mm" /></td>
 	  		<td>${flight.endAirportId }</td>
 	  		<td>${flight.planeId }</td>
-	  		<td>${flight.startRealTime }</td>
-	  		<td>${flight.arrivalRealTIme }</td>
+	  		<td><fmt:formatDate value="${flight.startRealTime }" pattern="yyyy-MM-dd HH:mm" /></td>
+	  		<td><fmt:formatDate value="${flight.arrivalRealTIme }" pattern="yyyy-MM-dd HH:mm" /></td>
 	  		<td>${flight.status }</td>
-	  		<td>${flight.createTime }</td>
+	  		<td><fmt:formatDate value="${flight.createTime }" pattern="yyyy-MM-dd HH:mm" /></td>
 	        <td>
 		        <a href="${contextPath}/flight/detail?id=${flight.id }&page=${pager.page }" class="tablelink">查看</a>     
 		        <a href="${contextPath}/flight/intoUpdate?id=${flight.id }&page=${pager.page }" class="tablelink">修改</a>

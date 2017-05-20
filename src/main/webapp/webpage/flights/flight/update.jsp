@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <% 
    String contextPath = request.getContextPath(); 
    request.setAttribute("contextPath", contextPath);
@@ -30,15 +31,15 @@
 	    <input name="id" type="hidden" class="dfinput" value="${flight.id }"/>
 	    <ul class="forminfo">
 	  	<li><label>航班号</label><input name="flightNo" type="text" class="dfinput" value="${flight.flightNo }"/></li>
-	  	<li><label>出发时间</label><input name="startTime" type="text" class="dfinput" value="${flight.startTime }"/></li>
+	  	<li><label>出发时间</label><input name="startTime" type="text" class="dfinput" value="<fmt:formatDate value="${flight.startTime }" pattern="yyyy-MM-dd HH:mm" />"/></li>
 	  	<li><label>出发机场</label><input name="startAirportId" type="text" class="dfinput" value="${flight.startAirportId }"/></li>
-	  	<li><label>抵达时间</label><input name="arrivalTime" type="text" class="dfinput" value="${flight.arrivalTime }"/></li>
+	  	<li><label>抵达时间</label><input name="arrivalTime" type="text" class="dfinput" value="<fmt:formatDate value="${flight.arrivalTime }" pattern="yyyy-MM-dd HH:mm" />"/></li>
 	  	<li><label>目的机场</label><input name="endAirportId" type="text" class="dfinput" value="${flight.endAirportId }"/></li>
 	  	<li><label>飞机</label><input name="planeId" type="text" class="dfinput" value="${flight.planeId }"/></li>
-	  	<li><label>实际出发时间</label><input name="startRealTime" type="text" class="dfinput" value="${flight.startRealTime }"/></li>
-	  	<li><label>实际抵达时间</label><input name="arrivalRealTIme" type="text" class="dfinput" value="${flight.arrivalRealTIme }"/></li>
+	  	<li><label>实际出发时间</label><input name="startRealTime" type="text" class="dfinput" value="<fmt:formatDate value="${flight.startRealTime }" pattern="yyyy-MM-dd HH:mm" />"/></li>
+	  	<li><label>实际抵达时间</label><input name="arrivalRealTIme" type="text" class="dfinput" value="<fmt:formatDate value="${flight.arrivalRealTIme }" pattern="yyyy-MM-dd HH:mm" />"/></li>
 	  	<li><label>状态</label><input name="status" type="text" class="dfinput" value="${flight.status }"/></li>
-	  	<li><label>创建时间</label><input name="createTime" type="text" class="dfinput" value="${flight.createTime }"/></li>
+	  	<li><label>创建时间</label><input name="createTime" type="text" class="dfinput" value="<fmt:formatDate value="${flight.createTime }" pattern="yyyy-MM-dd HH:mm" />"/></li>
 	    <li><label>&nbsp;</label><input name="" type="submit" class="btn" value="确认保存"/>&nbsp;&nbsp;<input name="" type="button" class="btn" value="返回" onclick="javascript:history.go(-1);"/></li>
 	    </ul>
 	    <input name="page" type="hidden" class="dfinput" value="${pager.page }"/>

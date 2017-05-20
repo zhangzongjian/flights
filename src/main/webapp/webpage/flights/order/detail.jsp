@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <% 
    String contextPath = request.getContextPath(); 
    request.setAttribute("contextPath", contextPath);
@@ -31,12 +32,12 @@
 	  	<li><label>订单号</label><input name="orderNo" type="text" class="dfinput" value="${order.orderNo }" readonly="readonly"/></li>
 	  	<li><label>航班编号</label><input name="flightId" type="text" class="dfinput" value="${order.flightId }" readonly="readonly"/></li>
 	  	<li><label>票价编号</label><input name="ticketPriceId" type="text" class="dfinput" value="${order.ticketPriceId }" readonly="readonly"/></li>
-	  	<li><label>预定时间</label><input name="orderTime" type="text" class="dfinput" value="${order.orderTime }" readonly="readonly"/></li>
+	  	<li><label>预定时间</label><input name="orderTime" type="text" class="dfinput" value="<fmt:formatDate value="${order.orderTime }" pattern="yyyy-MM-dd HH:mm" />" readonly="readonly"/></li>
 	  	<li><label>联系人</label><input name="person" type="text" class="dfinput" value="${order.person }" readonly="readonly"/></li>
 	  	<li><label>联系电话</label><input name="phone" type="text" class="dfinput" value="${order.phone }" readonly="readonly"/></li>
 	  	<li><label>订单状态</label><input name="orderStatus" type="text" class="dfinput" value="${order.orderStatus }" readonly="readonly"/></li>
 	  	<li><label>客户编号</label><input name="customerId" type="text" class="dfinput" value="${order.customerId }" readonly="readonly"/></li>
-	  	<li><label>创建时间</label><input name="createTime" type="text" class="dfinput" value="${order.createTime }" readonly="readonly"/></li>
+	  	<li><label>创建时间</label><input name="createTime" type="text" class="dfinput" value="<fmt:formatDate value="${order.createTime }" pattern="yyyy-MM-dd HH:mm" />" readonly="readonly"/></li>
 	    <li><label>&nbsp;</label><input name="" type="button" class="btn" value="返回" onclick="javascript:history.go(-1);"/></li>
 	    </ul>
 	    <input name="page" type="hidden" class="dfinput" value="${pager.page }"/>

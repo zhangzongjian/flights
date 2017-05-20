@@ -19,17 +19,17 @@
 		<div class="wrapper pad1">
 			<article class="col1">
 				<div class="box1">
-							<h2 class="top">Contact Us</h2>
+							<h2 class="top">联系我们</h2>
 							<div class="pad">
 								<div class="wrapper pad_bot1">
 									<p class="cols pad_bot2"><strong>Country:<br>
-										City:<br>
-										Address:<br>
-										Email:</strong></p>
-									<p class="color1 pad_bot2">USA<br>
-										San Diego<br>
-										Beach st. 54<br>
-										<a href="mailto:">airlines@mail.com</a></p>
+										城市:<br>
+										地址:<br>
+										邮箱:</strong></p>
+									<p class="color1 pad_bot2">中国<br>
+										广州<br>
+										广东工业大学<br>
+										<a href="mailto:">110616516@mail.com</a></p>
 								</div>
 							</div>
 							<h2>Miscellaneous Info</h2>
@@ -39,23 +39,23 @@
 						</div>
 					</article>
 					<article class="col2">
-						<h3 class="pad_top1">Contact Form</h3>
+						<h3 class="pad_top1">联系我们</h3>
 						<form id="ContactForm">
 							<div>
 								<div  class="wrapper">
-									<span>Name:</span>
+									<span>姓名:</span>
 									<input type="text" class="input" >
 								</div>
 								<div  class="wrapper">
-									<span>Email:</span>
+									<span>邮箱:</span>
 									<input type="text" class="input" >								
 								</div>
 								<div  class="textarea_box">
-									<span>Message:</span>
+									<span>内容:</span>
 									<textarea name="textarea" cols="1" rows="1"></textarea>								
 								</div>
-								<a href="${contextPath }/#" class="button1" onClick="document.getElementById('ContactForm').submit()"><strong>Send</strong></a>
-								<a href="${contextPath }/#" class="button1" onClick="document.getElementById('ContactForm').reset()"><strong>Clear</strong></a>
+								<a href="${contextPath }/#" class="button1" onClick="document.getElementById('ContactForm').submit()"><strong>发送</strong></a>
+								<a href="${contextPath }/#" class="button1" onClick="document.getElementById('ContactForm').reset()"><strong>清除</strong></a>
 							</div>
 						</form>
 					</article>

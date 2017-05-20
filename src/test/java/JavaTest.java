@@ -1,4 +1,7 @@
 import java.lang.reflect.InvocationTargetException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 
@@ -9,12 +12,13 @@ public class JavaTest {
 	 * @param args
 	 * @throws InvocationTargetException 
 	 * @throws IllegalAccessException 
+	 * @throws ParseException 
 	 */
-	public static void main(String[] args) throws IllegalAccessException, InvocationTargetException {
-		A a = new A(); a.a = "aa";a.c = "cc";
-		A b = new A(); b.b = "bb";
-
-		System.out.println(a.b);
+	public static void main(String[] args) throws IllegalAccessException, InvocationTargetException, ParseException {
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		Date starttime = format.parse("2017-5-4 23:37");
+		Date d2 = format.parse("2017-5-5 23:08");
+		System.out.println((starttime.getTime()-d2.getTime()) < 30*60*1000);
 	}
 
 	

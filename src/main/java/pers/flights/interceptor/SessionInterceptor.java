@@ -36,6 +36,7 @@ public class SessionInterceptor implements HandlerInterceptor {
 			requestURI.equals("/flights/myOrder") ||
 			requestURI.equals("/flights/deleteOrder") ||
 			requestURI.equals("/flights/updateMyInfo") ||
+			requestURI.equals("/flights/orderOperate") ||
 			requestURI.equals("/flights/saveOrder")) {
         	Customer loginCustomer = (Customer) request.getSession().getAttribute("loginCustomer");
         	if(loginCustomer == null) {

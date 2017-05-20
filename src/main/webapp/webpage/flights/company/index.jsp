@@ -79,6 +79,7 @@ $(document).ready(function(){
     	<thead>
     	<tr>
         <th style="width:35px;"><input class="checkAll" type="checkbox" value=""/></th>
+	  	<th>编号</th>
 	  	<th>公司代码</th>
 	  	<th>公司信息</th>
 	  	<th>公司名称</th>
@@ -93,6 +94,7 @@ $(document).ready(function(){
         <c:forEach items="${pager.datas }" var="company">
 	        <tr>
 	        <td><input name="id" type="checkbox" value="${company.id }" /></td>
+	  		<td>${company.id }</td>
 	  		<td>${company.companyCode }</td>
 	  		<td>${company.information }</td>
 	  		<td>${company.companyName }</td>

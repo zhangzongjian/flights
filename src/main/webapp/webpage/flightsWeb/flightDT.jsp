@@ -37,7 +37,7 @@
                 </label>
                 <label class="label-input">
                     <span class="t">时间</span>
-                    <input type="text" name="startTime" id="ipt_time2" class="input-text" placeholder="yyyy-mm-dd" value="2017-04-27">
+                    <input type="text" name="startTime" id="ipt_time2" class="input-text" placeholder="yyyy-mm-dd" value="2017-05-05">
                 </label>
             </div>
         </div>

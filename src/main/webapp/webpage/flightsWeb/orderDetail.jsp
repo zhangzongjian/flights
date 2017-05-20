@@ -13,7 +13,7 @@
   <link href="${contextPath }/css/cui101103.css" type="text/css" rel="stylesheet" />
   <link href="${contextPath }/css/ordermanage_flt.css" type="text/css" rel="stylesheet" />
   <link href="${contextPath }/css/public_flights_logo.css" type="text/css" rel="stylesheet" />
-  
+  <script language="JavaScript" src="${contextPath }/js/jquery.js"></script>
  </head> 
  <body > 
 
@@ -44,15 +44,15 @@
                         RMB
                         <c:if test="${orderDetail.discounttype == null && orderDetail.dprice != null}">
 	                        <c:set var="price" value="${orderDetail.dprice * orderDetail.passengerCount }"/>
-							<c:out value="${price}"/>
+							<fmt:formatNumber type="number" value="${price}" maxFractionDigits="0"/>
 						</c:if>
 						<c:if test="${orderDetail.discounttype == null && orderDetail.dprice == null}">
 							<c:set var="price" value="${orderDetail.price * orderDetail.passengerCount }"/>
-							<c:out value="${price}"/>
+							<fmt:formatNumber type="number" value="${price}" maxFractionDigits="0"/>
 						</c:if>
 						<c:if test="${orderDetail.discounttype != null }">
 							<c:set var="price" value="${orderDetail.price * orderDetail.discountrate * orderDetail.passengerCount}"/>
-							<c:out value="${price}"/>
+							<fmt:formatNumber type="number" value="${price}" maxFractionDigits="0"/>
 						</c:if>
                     </span>
                 </p>
@@ -213,7 +213,7 @@ ${orderDetail.arrivalAirportName }                        <span class="f-txtblue
                         &nbsp;
                     </td>
                     <td>
-                        ·微信：RMB<span class="base_price"><strong><c:out value="${price}"/> </strong></span>元
+                        ·微信：RMB<span class="base_price"><strong><fmt:formatNumber type="number" value="${price}" maxFractionDigits="0"/></strong></span>元
                     </td>
                     <td>
                         ·现金账户支付：RMB<span class="base_price"><strong>0 </strong></span>元
@@ -231,6 +231,8 @@ ${orderDetail.arrivalAirportName }                        <span class="f-txtblue
 
 
         <div class="btnbox_printlist bottombtn_printlist">
+        	<input type="hidden" name="orderid" value="${orderDetail.id }"/>
+        	<input type="hidden" name="customerid" value="${orderDetail.customerid }"/>
             <c:if test="${orderDetail.orderstatus == '未付款' }">
             <input type="button" value="取消订单" class="base_btns2" onclick="orderOperate('cancelOrder')" />
             <input type="button" value="去付款" class="base_btns2" onclick="orderOperate('goPay')" />
@@ -241,28 +243,48 @@ ${orderDetail.arrivalAirportName }                        <span class="f-txtblue
             <c:if test="${orderDetail.orderstatus == '已完成' }">
             <input type="button" value="打印订单" class="base_btns2" onclick="window.print()" />
             </c:if>
+            <c:if test="${orderDetail.orderstatus == '已取消' or orderDetail.orderstatus == '退款审核中' }">
+            <input type="button" value="关闭窗口" class="base_btns2" onclick="window.close()" />
+            </c:if>
         </div>
 	
 	<script>
 		function orderOperate(op) {
+			var orderid = $("input[name='orderid']").val();
+			var customerid = $("input[name='customerid']").val();
+			var flag = 0;
 			if(op == 'goPay') {
 				var value = prompt('输入支付密码','');
 				if(value != null) {
 					//付款，离‘航班出发时间’前半个小时未付款的自动取消，检查舱位剩余量
 					//付款，订单状态置为‘已付款’
+					flag = 1;
 				}
 			}
 			if(op == 'cancelOrder') {
 				var value = confirm('确定取消该订单？');
 				if(value == true) {
 					//取消订单，订单状态置为‘已取消’
+					flag = 1;
 				}
 			}
 			if(op == 'returnMoney') {
 				var value = confirm('申请退款？');
 				if(value == true) {
 					//申请退款，订单状态置为‘退款审核中’
+					flag = 1;
 				}
+			}
+			if(flag != 0) {
+				$.ajax({
+					url:"${contextPath}/orderOperate",
+					type:"post",
+					data:{"op":op, "id":orderid, "customerId":customerid},
+					success:function(data) {
+						alert(data.message);
+						window.location.reload();
+					}
+				});
 			}
 		}
 	</script>
