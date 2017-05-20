@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <% 
    String contextPath = request.getContextPath(); 
    request.setAttribute("contextPath", contextPath);
@@ -32,9 +33,8 @@
 	  	<li><label>密码</label><input name="password" type="text" class="dfinput" value="${administrator.password }" readonly="readonly"/></li>
 	  	<li><label>姓名</label><input name="realName" type="text" class="dfinput" value="${administrator.realName }" readonly="readonly"/></li>
 	  	<li><label>职位</label><input name="position" type="text" class="dfinput" value="${administrator.position }" readonly="readonly"/></li>
-	  	<li><label>最后登录时间</label><input name="lastLoginTime" type="text" class="dfinput" value="${administrator.lastLoginTime }" readonly="readonly"/></li>
-	  	<li><label>创建时间</label><input name="createTime" type="text" class="dfinput" value="${administrator.createTime }" readonly="readonly"/></li>
-	  	<li><label>权限</label><input name="authority" type="text" class="dfinput" value="${administrator.authority }" readonly="readonly"/></li>
+	  	<li><label>最后登录时间</label><input name="lastLoginTime" type="text" class="dfinput" value="<fmt:formatDate value="${administrator.lastLoginTime }" pattern="yyyy-MM-dd HH:mm" />" readonly="readonly"/></li>
+	  	<li><label>创建时间</label><input name="createTime" type="text" class="dfinput" value="<fmt:formatDate value="${administrator.createTime }" pattern="yyyy-MM-dd HH:mm" />" readonly="readonly"/></li>
 	    <li><label>&nbsp;</label><input name="" type="button" class="btn" value="返回" onclick="javascript:history.go(-1);"/></li>
 	    </ul>
 	    <input name="page" type="hidden" class="dfinput" value="${pager.page }"/>

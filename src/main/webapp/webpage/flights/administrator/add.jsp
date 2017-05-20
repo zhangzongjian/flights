@@ -33,9 +33,6 @@
 	  	<li><label>密码</label><input name="password" type="text" class="dfinput" /></li>
 	  	<li><label>姓名</label><input name="realName" type="text" class="dfinput" /></li>
 	  	<li><label>职位</label><input name="position" type="text" class="dfinput" /></li>
-	  	<li><label>最后登录时间</label><input name="lastLoginTime" type="text" class="dfinput" /></li>
-	  	<li><label>创建时间</label><input name="createTime" type="text" class="dfinput" /></li>
-	  	<li><label>权限</label><input name="authority" type="text" class="dfinput" /></li>
 	    <li><label>&nbsp;</label><input name="" type="submit" class="btn" value="确认保存"/></li>
 	    </ul>
     </form>

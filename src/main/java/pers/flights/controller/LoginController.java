@@ -1,5 +1,6 @@
 package pers.flights.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -40,6 +41,8 @@ public class LoginController {
 		}
 		else {
 			administrator = list.get(0);
+			administrator.setLastLoginTime(new Date());
+			administratorService.insert(administrator);
 			//登录成功
 			if(password.equals(administrator.getPassword())) {
 				request.getSession().setAttribute("loginUser", administrator);

@@ -14,6 +14,18 @@
 	<link rel="stylesheet" href="${contextPath }/css/layout1.css"/>
 	<script src="${contextPath }/js/jquery-1.11.3.min.js"></script>
 	<jsp:include page="common/link.jsp" ></jsp:include>
+	
+	<script>
+		$(function(){
+			if('${message}' == 'success') {
+				alert('注册成功，即将跳转登录页面...');
+				window.location.href = "${contextPath}/intoCustomerLogin";
+			}
+			else if('${message}' != '') {
+				alert('${message}');
+			}
+		});
+	</script>
  </head> 
 <body id="page6">
 <div class="main">
@@ -38,18 +50,18 @@
 			</div>
 			<div class="content">
 				<div id="step1" class="step hide">
-					<form action="" method="post" id="step1_frm">
+					<form action="${contextPath }/customerRegister" method="post" id="step1_frm">
 						<div class="frm_control_group">
 							<label class="frm_label">邮箱</label>
 							<div class="frm_controls">
-								<input type="text" name="" class="frm_input email" maxlength="32"/>
+								<input type="text" name="email" class="frm_input email" maxlength="32" onblur="checkRegister(this)"/>
 								<p class="frm_tips">请填写常用邮箱</p>
 							</div>
 						</div>
 						<div class="frm_control_group">
 							<label class="frm_label">密码</label>
 							<div class="frm_controls">
-								<input type="password" name="" class="frm_input passwd"/>
+								<input type="password" name="password" class="frm_input passwd"/>
 								<p class="frm_tips">字母、数字或者英文符号，最短6位，区分大小写</p>
 							</div>
 						</div>
@@ -62,28 +74,28 @@
 						<div class="frm_control_group">
 							<label class="frm_label">邮件验证码</label>
 							<div class="frm_controls verifycode">
-								<input type="text" name="" class="frm_input verifyCode" maxlength="4"/>
+								<input type="text" name="verifycode" class="frm_input verifyCode" maxlength="4" value="666"/>
 								<input type="button" value="获取验证码" class="btn btn_default" />
 							</div>
 						</div>
 						<div class="toolBar">
-							<a id="nextBtn" class="btn btn_primary" href="javascript:;">提交</a>
+							<a id="nextBtn" class="btn btn_primary" href="javascript:document.forms[0].submit();">提交</a>
 						</div>
 					</form>
 				</div><!-- // step1 end -->
 				<div id="step3" class="step hide">
-					<form action="" method="post" id="step3_frm">
+					<form action="${contextPath }/customerRegister" method="post" id="step3_frm">
 						<div class="frm_control_group">
 							<label class="frm_label">手机号</label>
 							<div class="frm_controls">
-								<input type="text" name="" class="frm_input phone"/>
+								<input type="text" name="mobilePhone" id="mobilePhone" class="frm_input phone" onblur="checkRegister(this)"/>
 								<p class="frm_tips">请填写常用手机号</p>
 							</div>
 						</div>
 						<div class="frm_control_group">
 							<label class="frm_label">密码</label>
 							<div class="frm_controls">
-								<input type="password" name="" class="frm_input passwd"/>
+								<input type="password" name="password" class="frm_input passwd"/>
 								<p class="frm_tips">字母、数字或者英文符号，最短6位，区分大小写</p>
 							</div>
 						</div>
@@ -96,12 +108,12 @@
 						<div class="frm_control_group">
 							<label class="frm_label">手机验证码</label>
 							<div class="frm_controls">
-								<input type="text" name="" class="frm_input phoneYzm"/>
+								<input type="text" name="verifycode" class="frm_input phoneYzm" value="666"/>
 								<input type="button" value="获取验证码" class="btn btn_default" />
 							</div>
 						</div>
 						<div class="toolBar">
-							<a id="finishedBtn" class="btn btn_primary" href="javascript:;">提交</a>
+							<a id="finishedBtn" class="btn btn_primary" href="javascript:document.forms[1].submit();">提交</a>
 						</div>
 					</form>
 				</div><!-- // step3 end -->
@@ -110,6 +122,22 @@
 	</div><!-- // wrapper end -->
 	
 	<script> 
+		function checkRegister(e) {
+			var email = $('.email').val();
+			var mobilePhone = $('#mobilePhone').val();
+			$.ajax({
+				url : "${contextPath}/checkRegister",
+				data : {"email":email, "mobilePhone":mobilePhone},
+				type : "post",
+				success:function(data) {
+					if(data.message != "success") {
+						alert(data.message);
+						e.focus();
+					}				
+				}
+			});
+		}
+	
 		//显示提示框，目前三个参数(txt：要显示的文本；time：自动关闭的时间（不设置的话默认1500毫秒）；status：默认0为错误提示，1为正确提示；)
 		function showTips(txt,time,status)
 		{

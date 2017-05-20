@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <% 
    String contextPath = request.getContextPath(); 
    request.setAttribute("contextPath", contextPath);
@@ -85,7 +86,6 @@ $(document).ready(function(){
 	  	<th>职位</th>
 	  	<th>最后登录时间</th>
 	  	<th>创建时间</th>
-	  	<th>权限</th>
         <th style="width:150px;">操作</th>
         </tr>
         </thead>
@@ -97,9 +97,8 @@ $(document).ready(function(){
 	  		<td>${administrator.password }</td>
 	  		<td>${administrator.realName }</td>
 	  		<td>${administrator.position }</td>
-	  		<td>${administrator.lastLoginTime }</td>
-	  		<td>${administrator.createTime }</td>
-	  		<td>${administrator.authority }</td>
+	  		<td><fmt:formatDate value="${administrator.lastLoginTime }" pattern="yyyy-MM-dd HH:mm" /></td>
+	  		<td><fmt:formatDate value="${administrator.createTime }" pattern="yyyy-MM-dd HH:mm" /></td>
 	        <td>
 		        <a href="${contextPath}/administrator/detail?id=${administrator.id }&page=${pager.page }" class="tablelink">查看</a>     
 		        <a href="${contextPath}/administrator/intoUpdate?id=${administrator.id }&page=${pager.page }" class="tablelink">修改</a>
@@ -152,7 +151,7 @@ $(document).ready(function(){
 			pageNum = document.getElementById('page_input').value;
 		}
 		if(pageNum > 0 && pageNum <= '${pager.pageSum }') {
-			location.href = "${contextPath}/administrator/index?page="+pageNum;
+			location.href = "${contextPath}/administrator/index?limit=${pager.limit}&page="+pageNum;
 		}
 	}
 	//每页显示条目

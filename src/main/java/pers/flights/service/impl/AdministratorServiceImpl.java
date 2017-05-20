@@ -1,5 +1,6 @@
 package pers.flights.service.impl;
 
+import java.util.Date;
 import java.util.List;
 import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,7 @@ public class AdministratorServiceImpl implements AdministratorService {
 	
 	@Transactional
 	public int insert(Administrator administrator) {
+		administrator.setCreateTime(new Date());
 		return administratorMapper.insert(administrator);
 	}
 	

@@ -33,19 +33,19 @@
                             <label class="tit">邮箱</label><span>${customer.email }</span><a class="ml10" target="_self" href="JavaScript:void(0);">更换邮箱</a>
                         </li>
                         <li id="li_edit_nickname">
-                            <label class="tit">昵称</label><span class="val">${customer.nickName == ''? '未设置': customer.nickName}</span>
+                            <label class="tit">昵称</label><span class="val">${customer.nickName == null? '未设置': customer.nickName}</span>
                         </li>
                         <li id="li_edit_username">
-                            <label class="tit">姓名</label><span class="val">${customer.realName == ''? '未设置': customer.realName}</span>
+                            <label class="tit">姓名</label><span class="val">${customer.realName == null? '未设置': customer.realName}</span>
                         </li>
                         <li id="li_edit_sex" class="li_sex">
-                            <label class="tit">性别</label><span class="val_sex">${customer.sex == ''? '未设置': customer.sex}</span>
+                            <label class="tit">性别</label><span class="val_sex">${customer.sex == null? '未设置': customer.sex}</span>
                         </li>
                         <li id="li_edit_birth">
-                            <label class="tit">生日</label><span class="val">${customer.birthday == ''? '未设置': customer.birthday}</span>
+                            <label class="tit">生日</label><span class="val">${customer.birthday == null? '未设置': customer.birthday}</span>
                         </li>
                         <li id="li_edit_tel">
-                            <label class="tit">联系固话</label><span class="val">${customer.phone == ''? '未设置': customer.phone}</span>
+                            <label class="tit">联系固话</label><span class="val">${customer.phone == null? '未设置': customer.phone}</span>
                         </li>
                         <li>
                             <label class="tit">&nbsp;</label><button id="button_edit" class="btn_l3" type="button" onclick="goEdit()"><span><em>编辑</em></span></button>
@@ -59,10 +59,10 @@
                                 登录名</label><span id="spanLoginName"></span><a href="#" data-role="jmp" data-params="{options: {&quot;template&quot;:&quot;#jmp_alert&quot;}}" id="icoLoginName" class="ico_tips1"></a>
                         </li>
                         <li class="li_edit_mobile" id="li_save_mobile">
-                            <label class="tit">手机</label><span>${customer.mobilePhone }</span><a class="ml10" href="https://accounts.ctrip.com/AccountsCenter/AccountCenter/AccountSecurity.aspx?v=mobile">修改</a>
+                            <label class="tit">手机</label><span>${customer.mobilePhone }</span><a class="ml10" href="JavaScript:void(0);">修改</a>
                         </li>
                         <li class="li_edit_email" id="li_save_email">
-                            <label class="tit">邮箱</label><span>${customer.email }</span><a class="ml10" href="https://accounts.ctrip.com/AccountsCenter/AccountCenter/AccountSecurity.aspx?v=email">验证</a>
+                            <label class="tit">邮箱</label><span>${customer.email }</span><a class="ml10" href="JavaScript:void(0);">修改</a>
                         </li>
                         <li id="liNickName" class="">
                             <label class="tit">

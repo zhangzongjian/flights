@@ -304,6 +304,42 @@ public class WebController {
 		return "redirect:intoCustomerLogin";
 	}
 	
+	
+	@RequestMapping("customerRegister")
+	public String register(RedirectAttributes red, Customer customer, String verifycode) {
+		if(!verifycode.equals("666")) {
+			red.addFlashAttribute("message", "验证码不正确");
+		}
+		else {
+			customerService.insert(customer);
+			red.addFlashAttribute("message", "success");
+		}
+		return "redirect:register";
+	}
+	
+	@RequestMapping("checkRegister")
+	@ResponseBody
+	public Map<String, Object> checkRegister(Customer customer) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		String username = customer.getEmail().equals("") == false ? customer.getEmail() : customer.getMobilePhone();
+		List<Attribute> phoneAttr = new Attribute().put("mobilephone", username).getList();
+		List<Attribute> emailAttr = new Attribute().put("email", username).getList();
+		List<Customer> list = customerService.searchByAttributes(phoneAttr);
+		if(list.size() == 0) {
+			list = customerService.searchByAttributes(emailAttr);
+		}
+		if(list.size() == 0) {
+			map.put("message", "success");
+		}
+		else {
+			map.put("message", "该账户已被注册！");
+		}
+		return map;
+	}
+	
+	
+	
+	
 	@InitBinder  
 	public void initBinder(WebDataBinder binder) {  
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");  

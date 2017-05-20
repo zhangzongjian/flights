@@ -146,7 +146,7 @@ $(document).ready(function(){
 			pageNum = document.getElementById('page_input').value;
 		}
 		if(pageNum > 0 && pageNum <= '${pager.pageSum }') {
-			location.href = "${contextPath}/discount/index?page="+pageNum;
+			location.href = "${contextPath}/discount/index?limit=${pager.limit}&page="+pageNum;
 		}
 	}
 	//每页显示条目

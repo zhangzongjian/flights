@@ -29,7 +29,7 @@
 									<p class="color1 pad_bot2">中国<br>
 										广州<br>
 										广东工业大学<br>
-										<a href="mailto:">110616516@mail.com</a></p>
+										<a href="mailto:">1102349546@qq.com</a></p>
 								</div>
 							</div>
 							<h2>Miscellaneous Info</h2>

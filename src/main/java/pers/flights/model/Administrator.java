@@ -1,5 +1,7 @@
 package pers.flights.model;
 
+import java.util.Date;
+
 public class Administrator {
 	
 	private Integer id;//编号
@@ -12,9 +14,9 @@ public class Administrator {
 	  
 	private String position;//职位
 	  
-	private String lastLoginTime;//最后登录时间
+	private Date lastLoginTime;//最后登录时间
 	  
-	private String createTime;//创建时间
+	private Date createTime;//创建时间
 	  
 	private String authority;//权限
 	  
@@ -58,19 +60,19 @@ public class Administrator {
 		 this.position = position;
 	}
 	
-	public String getLastLoginTime() {
+	public Date getLastLoginTime() {
 		 return lastLoginTime;
 	}
 	
-	public void setLastLoginTime(String lastLoginTime) {
+	public void setLastLoginTime(Date lastLoginTime) {
 		 this.lastLoginTime = lastLoginTime;
 	}
 	
-	public String getCreateTime() {
+	public Date getCreateTime() {
 		 return createTime;
 	}
 	
-	public void setCreateTime(String createTime) {
+	public void setCreateTime(Date createTime) {
 		 this.createTime = createTime;
 	}
 	
