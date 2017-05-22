@@ -65,7 +65,7 @@ $(document).ready(function(){
         <li class="add"><span><img src="${contextPath}/images/t01.png" /></span>添加</li>
         <li class="update"><span><img src="${contextPath}/images/t02.png" /></span>修改</li>
         <li class="delete"><span><img src="${contextPath}/images/t03.png" /></span>删除</li>
-        <li><span><img src="${contextPath}/images/t04.png" /></span>统计</li>
+        <!--<li><span><img src="${contextPath}/images/t04.png" /></span>统计</li>-->
         </ul>
         
         
@@ -81,7 +81,6 @@ $(document).ready(function(){
     	<tr>
         <th style="width:35px;"><input class="checkAll" type="checkbox" value=""/></th>
 	  	<th>订单号</th>
-	  	<th>航班编号</th>
 	  	<th>票价编号</th>
 	  	<th>预定时间</th>
 	  	<th>联系人</th>
@@ -97,7 +96,6 @@ $(document).ready(function(){
 	        <tr>
 	        <td><input name="id" type="checkbox" value="${order.id }" /></td>
 	  		<td>${order.orderNo }</td>
-	  		<td>${order.flightId }</td>
 	  		<td>${order.ticketPriceId }</td>
 	  		<td><fmt:formatDate value="${order.orderTime }" pattern="yyyy-MM-dd HH:mm" /></td>
 	  		<td>${order.person }</td>

@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <% 
    String contextPath = request.getContextPath(); 
    request.setAttribute("contextPath", contextPath);
@@ -38,7 +39,7 @@
 	  	<li><label>出生日期</label><input name="birthday" type="text" class="dfinput" value="${customer.birthday }"/></li>
 	  	<li><label>性别</label><input name="sex" type="text" class="dfinput" value="${customer.sex }"/></li>
 	  	<li><label>联系固话</label><input name="phone" type="text" class="dfinput" value="${customer.phone }"/></li>
-	  	<li><label>创建时间</label><input name="createTime" type="text" class="dfinput" value="${customer.createTime }"/></li>
+	  	<li><label>创建时间</label><input name="createTime" type="text" class="dfinput" value="<fmt:formatDate value="${customer.createTime }" pattern="yyyy-MM-dd HH:mm" />"/></li>
 	    <li><label>&nbsp;</label><input name="" type="submit" class="btn" value="确认保存"/>&nbsp;&nbsp;<input name="" type="button" class="btn" value="返回" onclick="javascript:history.go(-1);"/></li>
 	    </ul>
 	    <input name="page" type="hidden" class="dfinput" value="${pager.page }"/>

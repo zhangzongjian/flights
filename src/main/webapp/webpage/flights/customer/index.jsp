@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <% 
    String contextPath = request.getContextPath(); 
    request.setAttribute("contextPath", contextPath);
@@ -64,7 +65,7 @@ $(document).ready(function(){
         <li class="add"><span><img src="${contextPath}/images/t01.png" /></span>添加</li>
         <li class="update"><span><img src="${contextPath}/images/t02.png" /></span>修改</li>
         <li class="delete"><span><img src="${contextPath}/images/t03.png" /></span>删除</li>
-        <li><span><img src="${contextPath}/images/t04.png" /></span>统计</li>
+        <!--<li><span><img src="${contextPath}/images/t04.png" /></span>统计</li>-->
         </ul>
         
         
@@ -81,7 +82,6 @@ $(document).ready(function(){
         <th style="width:35px;"><input class="checkAll" type="checkbox" value=""/></th>
 	  	<th>邮箱</th>
 	  	<th>手机号码</th>
-	  	<th>账号类型</th>
 	  	<th>昵称</th>
 	  	<th>姓名</th>
 	  	<th>密码</th>
@@ -98,14 +98,13 @@ $(document).ready(function(){
 	        <td><input name="id" type="checkbox" value="${customer.id }" /></td>
 	  		<td>${customer.email }</td>
 	  		<td>${customer.mobilePhone }</td>
-	  		<td>${customer.accountType }</td>
 	  		<td>${customer.nickName }</td>
 	  		<td>${customer.realName }</td>
 	  		<td>${customer.password }</td>
 	  		<td>${customer.birthday }</td>
 	  		<td>${customer.sex }</td>
 	  		<td>${customer.phone }</td>
-	  		<td>${customer.createTime }</td>
+	  		<td><fmt:formatDate value="${customer.createTime }" pattern="yyyy-MM-dd HH:mm" /></td>
 	        <td>
 		        <a href="${contextPath}/customer/detail?id=${customer.id }&page=${pager.page }" class="tablelink">查看</a>     
 		        <a href="${contextPath}/customer/intoUpdate?id=${customer.id }&page=${pager.page }" class="tablelink">修改</a>

@@ -65,7 +65,7 @@ $(document).ready(function(){
         <li class="add"><span><img src="${contextPath}/images/t01.png" /></span>添加</li>
         <li class="update"><span><img src="${contextPath}/images/t02.png" /></span>修改</li>
         <li class="delete"><span><img src="${contextPath}/images/t03.png" /></span>删除</li>
-        <li><span><img src="${contextPath}/images/t04.png" /></span>统计</li>
+        <!--<li><span><img src="${contextPath}/images/t04.png" /></span>统计</li>-->
         </ul>
         
         

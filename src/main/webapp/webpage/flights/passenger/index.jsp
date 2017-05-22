@@ -64,7 +64,7 @@ $(document).ready(function(){
         <li class="add"><span><img src="${contextPath}/images/t01.png" /></span>添加</li>
         <li class="update"><span><img src="${contextPath}/images/t02.png" /></span>修改</li>
         <li class="delete"><span><img src="${contextPath}/images/t03.png" /></span>删除</li>
-        <li><span><img src="${contextPath}/images/t04.png" /></span>统计</li>
+        <!--<li><span><img src="${contextPath}/images/t04.png" /></span>统计</li>-->
         </ul>
         
         
@@ -81,7 +81,6 @@ $(document).ready(function(){
         <th style="width:35px;"><input class="checkAll" type="checkbox" value=""/></th>
 	  	<th>乘客姓名</th>
 	  	<th>身份证号</th>
-	  	<th>乘客类型</th>
 	  	<th>手机号码</th>
 	  	<th>客户编号</th>
         <th style="width:150px;">操作</th>
@@ -93,7 +92,6 @@ $(document).ready(function(){
 	        <td><input name="id" type="checkbox" value="${passenger.id }" /></td>
 	  		<td>${passenger.passengerName }</td>
 	  		<td>${passenger.passengerCard }</td>
-	  		<td>${passenger.passengerType }</td>
 	  		<td>${passenger.mobilePhone }</td>
 	  		<td>${passenger.customerId }</td>
 	        <td>
